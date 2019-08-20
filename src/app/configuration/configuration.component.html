@@ -1,0 +1,69 @@
+<section id="calendar">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="content-header">Settings</div>
+			<p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
+				example lists all the events on the calendar.</p>
+		</div>
+  </div>
+  <!-- <div class="row">
+      <div class="col-6">
+         Omini Chanales
+        </div>
+        <div class="col-6">
+
+            <div class="projects-carousel touch-carousel  text-center">
+                <div class="portfolio-item item" *ngIf="MobileList.length>0">
+                   
+                </div>
+            </div>
+          </div>
+    </div> -->
+	<div class="row">
+    <div class="col-6">
+        Customer Facing Essentials--🡪
+      </div>
+      <div class="col-6">
+          <div class="card text-center" *ngFor="let item of CustomerFacingList" (click)="ClickOmini(item)" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+          border-radius: 8px!important;cursor: pointer;">
+                            <span class="font-medium-2 text-uppercase">{{item.Name}}</span>
+
+              <!-- <div class="card-body" *ngIf="item.Name=='OMNI Channel'" (click)="ClickOmini()">
+                  <span class="font-medium-2 text-uppercase">{{item.Name}}</span>
+
+              </div>
+              <div class="card-body" *ngIf="item.Name!='OMNI Channel'">
+                  <span class="font-medium-2 text-uppercase">{{item.Name}}</span>
+
+              </div> -->
+            </div>
+        </div>
+  </div>
+  <div class="row" style="margin-top:30px!important">
+      <div class="col-6">
+          Administrator--🡪
+        </div>
+        <div class="col-6">
+            <div class="card text-center" *ngFor="let item of AdminList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+            border-radius: 8px!important;cursor: pointer;">
+                <div class="card-body">
+                    <span class="font-medium-2 text-uppercase">{{item.Name}}</span>
+                </div>
+              </div>
+          </div>
+    </div>
+    <div class="row" style="margin-top:30px!important">
+        <div class="col-6">
+            Api And WebHooks--🡪
+          </div>
+          <div class="col-6">
+              <div class="card text-center" *ngFor="let item of getApiHooksList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+              border-radius: 8px!important;cursor: pointer;">
+                  <div class="card-body">
+                      <span class="font-medium-2 text-uppercase">{{item.Name}}</span>
+                  </div>
+                </div>
+            </div>
+      </div>
+	
+</section>
