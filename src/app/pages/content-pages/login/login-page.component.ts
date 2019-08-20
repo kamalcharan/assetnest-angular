@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import {CommonserviceService} from "../../../shared/commonservice.service"
 import{ APIURL} from "../../../../URL"
 import{UserDataServiceService} from '../../../shared/user-data-service.service'
+import * as CryptoJS from 'crypto-js';
 @Component({
     selector: 'app-login-page',
     templateUrl: './login-page.component.html',
@@ -63,8 +64,10 @@ export class LoginPageComponent {
     //       this.toastr.error(data.Message);
     //   }
     //   });
-
-        this.service.PostMethod (APIURL.ValidateLogin, this.payload)
+    var FarePayload= this.payload;
+    var pwd = CryptoJS.HmacMD5(FarePayload.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
+    FarePayload.Password= pwd;
+        this.service.PostMethod (APIURL.ValidateLogin, FarePayload)
         .subscribe(data => {
 
 
@@ -103,6 +106,8 @@ export class LoginPageComponent {
                   this.UserService.logoutUser();
                   this.UserService.setData(userObject);
 
+                  this.router.navigateByUrl("/dashboard/dashboard1");
+
             }
             else
             {
@@ -114,7 +119,7 @@ export class LoginPageComponent {
         {
 
         }
-        this.router.navigateByUrl("dashboard/dashboard1");
+        
   
       }
       });
