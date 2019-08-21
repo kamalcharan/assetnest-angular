@@ -1,4 +1,4 @@
-var BaseUrl="http://localhost:3000/api/"
+var BaseUrl="https://assetnestapi.azurewebsites.net/api/"
 
 var version ="1.1"
 export const APIURL = {

@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UIComponentsRoutingModule } from "./ui-components-routing.module";
-import { NouisliderModule } from 'ng2-nouislider/src/nouislider';
+//import { NouisliderModule } from 'ng2-nouislider/src/nouislider';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JsonpModule } from '@angular/http';
@@ -16,7 +16,7 @@ import { ListsComponent } from "./bootstrap/lists/lists.component";
 import { AlertsComponent } from "./bootstrap/alerts/alerts.component";
 import { SweetAlertsComponent } from "./extra/sweet-alerts/sweet-alerts.component";
 import { ToastrComponent } from "./extra/toastr/toastr.component";
-import { NouiSliderComponent } from "./extra/nouislider/nouislider.component";
+
 import { BadgesComponent } from "./bootstrap/badges/badges.component";
 import { DropdownsComponent } from "./bootstrap/dropdowns/dropdowns.component";
 import { InputGroupsComponent } from "./bootstrap/input-groups/input-groups.component";
@@ -44,7 +44,7 @@ import { TourComponent } from './extra/tour/tour.component';
     imports: [
         CommonModule,
         UIComponentsRoutingModule,
-        NouisliderModule,
+        //NouisliderModule,
         FileUploadModule,
         FormsModule,
         ReactiveFormsModule,
@@ -60,7 +60,7 @@ import { TourComponent } from './extra/tour/tour.component';
         AlertsComponent,
         SweetAlertsComponent,
         ToastrComponent,
-        NouiSliderComponent,
+       
         BadgesComponent,
         DropdownsComponent,
         InputGroupsComponent,

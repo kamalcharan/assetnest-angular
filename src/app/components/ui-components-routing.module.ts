@@ -6,7 +6,7 @@ import { ListsComponent } from "./bootstrap/lists/lists.component";
 import { AlertsComponent } from "./bootstrap/alerts/alerts.component";
 import { SweetAlertsComponent } from "./extra/sweet-alerts/sweet-alerts.component";
 import { ToastrComponent } from "./extra/toastr/toastr.component";
-import { NouiSliderComponent } from "./extra/nouislider/nouislider.component";
+
 import { BadgesComponent } from "./bootstrap/badges/badges.component";
 import { DropdownsComponent } from "./bootstrap/dropdowns/dropdowns.component";
 import { InputGroupsComponent } from "./bootstrap/input-groups/input-groups.component";
@@ -70,13 +70,8 @@ const routes: Routes = [
           title: 'Toastr'
         }
       },     
-      {
-        path: 'nouislider',
-        component: NouiSliderComponent,
-        data: {
-          title: 'NoUI Slider'
-        }
-      },
+      
+      
       {
         path: 'editor',
         component: EditorComponent,
