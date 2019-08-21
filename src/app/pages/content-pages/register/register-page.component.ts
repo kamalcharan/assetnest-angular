@@ -14,7 +14,7 @@ import * as CryptoJS from 'crypto-js';
 })
 
 export class RegisterPageComponent {
-
+    adminToken = null;
 
     payload={
         "User":{
@@ -26,7 +26,9 @@ export class RegisterPageComponent {
     }
     @ViewChild('f') registerForm: NgForm;
     constructor(private router: Router, private service :CommonserviceService,
-        private route: ActivatedRoute,private UserService:UserDataServiceService) { }
+        private route: ActivatedRoute,private UserService:UserDataServiceService) { 
+            this.GetAdminToken()
+        }
     //  On submit click, reset field value
     onSubmit() {
         this.registerForm.reset();
@@ -38,7 +40,7 @@ export class RegisterPageComponent {
         var FarePayload= this.payload;
         var pwd = CryptoJS.HmacMD5(FarePayload.User.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
         FarePayload.User.Password= pwd;
-        this.service.PostMethod (APIURL.CompanySignup, FarePayload)
+        this.service.PostMethod (APIURL.CompanySignup, FarePayload,this.adminToken)
         .subscribe(data => {
 
 
@@ -70,5 +72,32 @@ export class RegisterPageComponent {
       }
       });
 
+    }
+    
+    GetAdminToken() {
+
+        this.service.getMethod(APIURL.GetAdminToken, this.adminToken)
+            .subscribe(data => {
+                console.log(data);
+                if (data) {
+
+                    if (data.Response) {
+                        if (data.Response == 1) {
+
+                            this.adminToken = data.Data.Token
+
+                        }
+                        else {
+
+                        }
+
+                    }
+                    else {
+
+                    }
+
+
+                }
+            });
     }
 }

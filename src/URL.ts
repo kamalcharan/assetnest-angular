@@ -5,6 +5,8 @@ export const APIURL = {
     TestAPI:BaseUrl ,
     ValidateLogin : BaseUrl+"users/login",
     CompanySignup :BaseUrl+"users/UserCreation",
-    GetCategoryMasters: BaseUrl + "CreateMaster/GetCategoryData"
+    GetCategoryMasters: BaseUrl + "CreateMaster/GetCategoryData",
+    GetAdminToken:BaseUrl +"GetAdminToken"
+
    
   }
