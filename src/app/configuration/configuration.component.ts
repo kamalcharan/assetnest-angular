@@ -39,6 +39,8 @@ console.log("ClickOmini",item);
 if(item._id==10){
   this.router.navigateByUrl("/pages/OmniChanal");
 
+}else if(item._id==2){
+  this.router.navigateByUrl("/pages/Brands");
 }
 }
 getMobilePanelData(val){

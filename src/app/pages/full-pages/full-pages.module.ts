@@ -14,6 +14,7 @@ import { UserProfilePageComponent } from "./user-profile/user-profile-page.compo
 import {HomeComponent} from "../../home/home/home.component";
 import { ConfigurationComponent } from '../../configuration/configuration.component';
 import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.component';
+import { CreateBrandsComponent } from '../../create-brands/create-brands.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.compon
         UserProfilePageComponent,
         HomeComponent,
         ConfigurationComponent,
-        OminichaneelsComponent
+        OminichaneelsComponent,
+        CreateBrandsComponent
     ]
 })
 export class FullPagesModule { }

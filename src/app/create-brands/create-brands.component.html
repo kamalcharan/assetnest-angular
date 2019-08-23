@@ -1,0 +1,120 @@
+<section id="calendar">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="content-header">Brands</div>
+          <p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
+            example lists all the events on the calendar.</p>
+        </div>
+      </div>
+  <div class="row">
+    <div class="col-6">
+  Create Brands
+    </div>
+    <div class="col-6" text-center>
+        <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" (click)="CreteBrands(item,content)" style="width:100px;">+ Brands</button>
+      </div>
+  </div>
+  <div class="row">
+      
+        <div class="col-12" *ngFor="let item of allBrands" style="margin-top: -29px;">
+            <div class="card" *ngIf="item.Status!='52'" style="padding:10px!important;display: table;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+            border-radius: 8px!important;cursor: pointer;width:500px">
+            <div class="row" >
+              <div class="col-4">
+                  <span class="font-medium-2 text-uppercase"><img src="http://hivebox.in/app_icons/Biomedicals/bloodcellanalyser.jpg" style="width:40px"></span>
+              </div>
+              <div class="col-4">
+                    <p class="content-sub-header" style="text-transform: capitalize;">{{item.Name}}</p>
+                  <!-- <span class="font-medium-2 text-uppercase">{{item.Name}}</span> -->
+
+                </div>
+                <div class="col-4" style="padding-left: 90px;">
+                    <button class="btn btn-flat btn-text btn-pink" title="Active" (click)="Active(item)" style="padding:2px 5px !important" *ngIf="item.Status=='50'">
+                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-flat btn-text btn-pink" title="InActive" (click)="InActive(item)" style="padding:2px 5px !important" *ngIf="item.Status=='51'">
+                        <i class="fa fa-thumbs-down"  aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-flat btn-text btn-pink" title="Delete" style="padding:2px 5px !important" (click)="Deleteitem(item)">
+                        <i class="fa fa-lg fa-trash"></i>
+                    </button>
+                  </div>
+            </div>
+  
+ 
+               
+              </div>
+          </div>
+    </div>
+</section>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Brand</h4>
+      <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm">  
+          <div class="row">
+            <div class="col-6">
+                <fieldset class="form-group" style="margin-top: -16px;">
+                    <label for="basicInput">BrandName</label>
+                    <input type="text" class="form-control" name="Name" id="Name" [(ngModel)]="CreateCompanyBrandMapping.Name" required  style="height: 33px">
+                  </fieldset>
+            </div>
+            <div class="col-6">
+                    <span class="font-medium-2 text-uppercase"><img src="http://hivebox.in/app_icons/Biomedicals/bloodcellanalyser.jpg" style="width: 64px;
+                        margin-left: 48px;"></span>
+      
+               
+            </div>
+          </div> 
+          <div class="row">
+              <div class="col-lg-6 col-md-12" style="margin-top: -16px;">
+                    <fieldset class="form-group">
+                            <label for="basicInput">AliasName</label>
+                            <input type="text" class="form-control" name="DisplayName" id="DisplayName" [(ngModel)]="CreateCompanyBrandMapping.DisplayName" style="height: 33px" required >
+                          </fieldset>
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                    <fieldset class="form-group" style="margin-top: -16px;">
+                            <label for="basicInputFile">Upload Image</label>
+                            <input type="file" class="form-control-file" id="basicInputFile">
+                        </fieldset>
+              </div>
+          </div>                                    
+           
+              <div class="row" style="margin-top: -42px;
+              margin-bottom: -31px;">
+                <div class="col-6 text-right">
+                    <p style="    margin-top: 33px;
+                    border: 1px solid #604E98;
+                    width: 81px;
+                    padding-right: 10px;
+                    margin-left: 146px;
+                    height: 37px;
+                    border-radius: 5px;
+                    padding-top: 6px;" (click)="c('Close click')">Cancel</p>
+                </div>
+                <div class="col-6">
+                    <button type="button" *ngIf="editActive" (click)="SaveBrands()" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+                    margin-top: 7px;" data-dismiss="modal">Update Brand</button>&nbsp;&nbsp;
+                    <button type="button" *ngIf="!editActive" (click)="c(SaveBrands(content))" style="height: 39px;
+                    margin-top: 7px;width: 113px;" class="btn btn-pink btn-block btn-raised">Add Brand</button>&nbsp;&nbsp;
+                </div>
+              </div>
+                
+          
+          
+        </form>           
+             
+
+   
+    </div>
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-outline-dark"  (click)="Submit()">Save</button> -->
+    </div>
+  </ng-template>

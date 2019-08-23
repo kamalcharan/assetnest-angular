@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 //Toastr global configuration option
 @Injectable()
 export class CustomOption extends ToastOptions {
-  animate = 'flyRight'; // you can pass any options to override defaults
+  positionClass = 'toast-bottom-right';
   dismiss = 'auto';
   toastLife = 3000;
 }
