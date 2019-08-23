@@ -1,4 +1,4 @@
-var BaseUrl="http://localhost:3000/api/"
+var BaseUrl="https://assetnestapi.azurewebsites.net/api/"
 
 var version ="1.1"
 export const APIURL = {
@@ -7,6 +7,9 @@ export const APIURL = {
     GetCategoryMasters: BaseUrl + "CreateMaster/GetCategoryData",
     CreateCompanyBrandMap: BaseUrl + "CompanyBrandMap",
     GetAllBrandsForCompany: BaseUrl + "CompanyBrandMap",
-    ActiveInactiveBrands: BaseUrl + "CompanyBrandMap/ActiveInactive"
+    ActiveInactiveBrands: BaseUrl + "CompanyBrandMap/ActiveInactive",
+    CompanySignup :BaseUrl+"users/UserCreation",
+    GetAdminToken:BaseUrl +"GetAdminToken"
+
    
   }

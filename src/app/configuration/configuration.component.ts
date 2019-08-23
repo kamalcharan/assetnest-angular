@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CommonserviceService} from "../shared/commonservice.service"
 import{ APIURL} from "../../URL";
 import { Router, ActivatedRoute } from "@angular/router";
-
+import { UserDataServiceService } from '../shared/user-data-service.service'
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
@@ -13,8 +13,14 @@ CustomerFacingList=[];
 AdminList=[];
 MobileList=[];
 getApiHooksList=[];
+UserData=null
   constructor(private service :CommonserviceService,private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,private UserService: UserDataServiceService) {
+
+
+      this.UserData= JSON.parse(UserService.getData()) ;
+      console.log(" this.UserData", this.UserData);
+     }
 
   ngOnInit() {
     this.GetParentBaseValues(1);
@@ -26,7 +32,7 @@ getApiHooksList=[];
 }
 getApiHooks(val){
   var GroupID=val;
-  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID)
+  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID,this.UserData.Token)
   .subscribe(data => {
     console.log("check data mobile",data);
     if(data.Response==1){
@@ -45,7 +51,7 @@ if(item._id==10){
 }
 getMobilePanelData(val){
   var GroupID=val;
-  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID)
+  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID,this.UserData.Token)
   .subscribe(data => {
     console.log("check data mobile",data);
     if(data.Response==1){
@@ -55,7 +61,7 @@ getMobilePanelData(val){
 }
 GetParentBaseValues(val){
   var GroupID=val;
-  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID)
+  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID,this.UserData.Token)
   .subscribe(data => {
     console.log("check data",data);
     if(data.Response==1){
@@ -65,7 +71,7 @@ GetParentBaseValues(val){
 }
 GetParentBaseValuesAdmin(val){
   var GroupID=val;
-  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID)
+  this.service.getMethod(APIURL.GetCategoryMasters + '/' + GroupID,this.UserData.Token)
   .subscribe(data => {
     console.log("check data",data);
     if(data.Response==1){
