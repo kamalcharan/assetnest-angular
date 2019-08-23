@@ -80,5 +80,10 @@ GetParentBaseValuesAdmin(val){
   }) 
 }
 
- 
+AdminNavigate(item){
+console.log("item",item);
+if(item._id==8){
+  this.router.navigateByUrl("/pages/Users"); 
+}
+} 
 }

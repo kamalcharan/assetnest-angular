@@ -16,6 +16,7 @@ import { ConfigurationComponent } from '../../configuration/configuration.compon
 import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.component';
 import { CreateBrandsComponent } from '../../create-brands/create-brands.component';
 
+import { ConfigureUsersComponent } from '../../configure-users/configure-users.component';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { CreateBrandsComponent } from '../../create-brands/create-brands.compone
         HomeComponent,
         ConfigurationComponent,
         OminichaneelsComponent,
-        CreateBrandsComponent
+        CreateBrandsComponent,
+        ConfigureUsersComponent
     ]
 })
 export class FullPagesModule { }
