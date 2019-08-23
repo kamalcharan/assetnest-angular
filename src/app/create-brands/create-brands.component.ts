@@ -41,7 +41,7 @@ StatusBrands=[];
   }
   GetParentBaseValues(val){
     var GroupID=val;
-    this.cms.getMethod(APIURL.GetCategoryMasters + '/' + GroupID)
+    this.cms.getMethod(APIURL.GetCategoryMasters + '/' + GroupID,this.UserData.Token)
     .subscribe(data => {
       console.log("check data",data);
       if(data.Response==1){
@@ -71,7 +71,7 @@ StatusBrands=[];
   allBrands=[];
   getAllCompanyBrands() {
     this.allBrands=[];
-    this.cms.getMethod(APIURL.GetAllBrandsForCompany + "/" +Number(this.CreateCompanyBrandMapping.CompanyID)).subscribe(data => {
+    this.cms.getMethod(APIURL.GetAllBrandsForCompany + "/" +Number(this.CreateCompanyBrandMapping.CompanyID),this.UserData.Token).subscribe(data => {
       console.log("createdallbrands", data)
       if (data.Response == 1) {
         this.allBrands = data.Data;
@@ -91,7 +91,7 @@ StatusBrands=[];
    
     console.log("this.CreateCompanyBrandMapping",this.CreateCompanyBrandMapping);
     if(this.CreateCompanyBrandMapping.Name && this.CreateCompanyBrandMapping.DisplayName){
-      this.cms.PostMethod(APIURL.CreateCompanyBrandMap, this.CreateCompanyBrandMapping).subscribe(data => {
+      this.cms.PostMethod(APIURL.CreateCompanyBrandMap, this.CreateCompanyBrandMapping,this.UserData.Token).subscribe(data => {
         console.log("create", data)
         if (data.Response == 1) {
          // this.toastr.success(data.Message);
@@ -146,7 +146,7 @@ StatusBrands=[];
       "CompanyID":item.CompanyBrandID,
       "Status":51
     }
-    this.cms.PostMethod(APIURL.ActiveInactiveBrands,payload).subscribe(data=>{
+    this.cms.PostMethod(APIURL.ActiveInactiveBrands,payload,this.UserData.Token).subscribe(data=>{
      console.log("check me please have",data)
      this.toastr.success(data.Message.MessageContent);
         this.getAllCompanyBrands(); 
@@ -161,7 +161,7 @@ StatusBrands=[];
       "CompanyID":item.CompanyBrandID,
       "Status":50
     }
-    this.cms.PostMethod(APIURL.ActiveInactiveBrands,payload).subscribe(data=>{
+    this.cms.PostMethod(APIURL.ActiveInactiveBrands,payload,this.UserData.Token).subscribe(data=>{
       console.log("check me please have",data);
       this.toastr.success(data.Message.MessageContent);
   this.getAllCompanyBrands();
@@ -174,7 +174,7 @@ StatusBrands=[];
       "CompanyID":item.CompanyBrandID,
       "Status":52
     }
-    this.cms.PostMethod(APIURL.ActiveInactiveBrands,payload).subscribe(data=>{
+    this.cms.PostMethod(APIURL.ActiveInactiveBrands,payload,this.UserData.Token).subscribe(data=>{
       console.log("check me please have",data);
       this.toastr.success(data.Message.MessageContent);     
 
