@@ -26,9 +26,8 @@ import * as $ from 'jquery';
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        ContentLayoutComponent,
-      
-        ],
+        ContentLayoutComponent
+                ],
     imports: [
         HttpClientModule,
         HttpModule,

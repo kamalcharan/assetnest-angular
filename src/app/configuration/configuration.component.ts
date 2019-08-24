@@ -45,6 +45,8 @@ console.log("ClickOmini",item);
 if(item._id==10){
   this.router.navigateByUrl("/pages/OmniChanal");
 
+}else if(item._id==2){
+  this.router.navigateByUrl("/pages/Brands");
 }
 }
 getMobilePanelData(val){
@@ -78,5 +80,10 @@ GetParentBaseValuesAdmin(val){
   }) 
 }
 
- 
+AdminNavigate(item){
+console.log("item",item);
+if(item._id==8){
+  this.router.navigateByUrl("/pages/Users"); 
+}
+} 
 }

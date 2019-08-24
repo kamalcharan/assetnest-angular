@@ -10,6 +10,8 @@ import {HomeComponent} from "../../home/home/home.component";
   import { from } from 'rxjs/observable/from';
   import { ConfigurationComponent } from '../../configuration/configuration.component';
   import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.component';
+  import { CreateBrandsComponent } from '../../create-brands/create-brands.component';
+  import { ConfigureUsersComponent } from '../../configure-users/configure-users.component';
 
 
 
@@ -36,6 +38,20 @@ const routes: Routes = [
         component: OminichaneelsComponent,
         data: {
           title: 'OmniChanal'
+        }
+      },
+      {
+        path: 'Brands',
+        component: CreateBrandsComponent,
+        data: {
+          title: 'Brands'
+        }
+      },
+      {
+        path: 'Users',
+        component: ConfigureUsersComponent,
+        data: {
+          title: 'Users'
         }
       },
       {
