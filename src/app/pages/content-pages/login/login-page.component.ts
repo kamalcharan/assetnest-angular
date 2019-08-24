@@ -86,6 +86,7 @@ export class LoginPageComponent {
                                 "Name": data.Data.Name,
                                 "EmailID": data.Data.EmailID,
                                 "Token":data.TokenData.Token,
+                                "IsLive":null,
                                 "Company": {
                                     "CompanyID": data.Data.CompanyID.CompanyID,
                                     "Name": data.Data.CompanyID.Name,
@@ -107,7 +108,9 @@ export class LoginPageComponent {
                             this.UserService.logoutUser();
                             this.UserService.setData(userObject);
 
-                            this.router.navigateByUrl("/dashboard/dashboard1");
+                            this.router.navigateByUrl("/pages/Environment")
+
+                           // this.router.navigateByUrl("/dashboard/dashboard1");
 
                         }
                         else {

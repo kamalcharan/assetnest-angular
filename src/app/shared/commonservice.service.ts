@@ -166,30 +166,32 @@ private ErrorHandler(err) {
 }
 
 
-PostWithClient(url, data,token)
-{
-    
-    const header = {'accesstoken':token , 'content-type': 'application/json'} ;
-
-    return this.httpc.request("post", url, {
-      body: data,
-      responseType: 'json',
-      observe: 'body',
-      headers: header
-    }).map((res:any) => {
-        this.loderStatus.next(false);
-        try {
-            let data = res.json();
-        
-            if (data) {
-                if (data.Response) {
-                    if (data.Response == 403) {
-                        var err = {
-                            status: data.Response,
-                            statusText: "token exire"
+UploadPostMethod(url, data) {
+    // let myHeaders = new Headers(); 
+    // myHeaders.set('Content-Type', 'application/json');
+   
+    // myHeaders.set('accesstoken', token); 
+   
+    // let options = new RequestOptions({ headers: myHeaders });
+    this.loderStatus.next(true);
+    return this.http.post(url, data)
+        .map((res) => {
+            try {
+                this.loderStatus.next(false);
+                let data = res.json();
+                if (data) {
+                    if (data.Response) {
+                        if (data.Response == 403) {
+                            var err = {
+                                status: data.Response,
+                                statusText: "token exire"
+                            }
+                           // this.ErrorHandler(err);
+                           return Observable.throw(err);
                         }
-                       // this.ErrorHandler(err);
-                       return Observable.throw(err);
+                        else {
+                            return data;
+                        }
                     }
                     else {
                         return data;
@@ -198,16 +200,10 @@ PostWithClient(url, data,token)
                 else {
                     return data;
                 }
+            } catch (err) {
+                this.ErrorHandler(err);
             }
-            else {
-                return data;
-            }
-           
-        } catch (err) {
-            this.ErrorHandler(err);
-        }
-
-    })
-    .catch(this.ErrorHandler);
+        })
+        .catch(this.ErrorHandler);
 }
 }

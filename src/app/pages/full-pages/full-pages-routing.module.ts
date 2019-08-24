@@ -12,6 +12,7 @@ import {HomeComponent} from "../../home/home/home.component";
   import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.component';
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -71,7 +72,8 @@ const routes: Routes = [
         data: {
           title: 'User Profile Page'
         }
-      }  
+      }  ,
+     
     ]
   }
 ];

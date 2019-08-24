@@ -16,6 +16,7 @@ import { ConfigurationComponent } from '../../configuration/configuration.compon
 import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.component';
 
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -33,6 +34,7 @@ import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.compon
         HomeComponent,
         ConfigurationComponent,
         OminichaneelsComponent
+      
     ]
 })
 export class FullPagesModule { }

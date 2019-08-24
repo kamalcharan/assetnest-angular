@@ -21,11 +21,13 @@ import * as $ from 'jquery';
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        ContentLayoutComponent
+        ContentLayoutComponent,
+      
         ],
     imports: [
         HttpClientModule,
