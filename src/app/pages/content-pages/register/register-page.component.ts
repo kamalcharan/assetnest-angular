@@ -143,7 +143,8 @@ export class RegisterPageComponent {
         
         
         formData.append("CompanyID", 1);
-        this.service.UploadPostMethod("https://assetnestapi.herokuapp.com/api/"+"FileUploadDrive", formData)
+        //https://assetnestapi.herokuapp.com/api/
+        this.service.UploadPostMethod("http://localhost:3000/api/"+"FileUploadDrive", formData)
         .subscribe(results => {
           //results= JSON.parse(results);
         if (results.Response == 1) {
