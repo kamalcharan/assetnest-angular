@@ -12,6 +12,10 @@ import {HomeComponent} from "../../home/home/home.component";
   import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.component';
   import { CreateBrandsComponent } from '../../create-brands/create-brands.component';
   import { ConfigureUsersComponent } from '../../configure-users/configure-users.component';
+  import { CategorieslistComponent } from '../../categorieslist/categorieslist.component';
+  import { SingleIntegrationsComponent } from '../../single-integrations/single-integrations.component';
+  import { ManageIntegrationsComponent } from '../../manage-integrations/manage-integrations.component';
+  import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
 
 
 const routes: Routes = [
@@ -33,12 +37,41 @@ const routes: Routes = [
         }
       },
       {
+        path: 'Settings2',
+        component: CategorieslistComponent,
+        data: {
+          title: 'Settings2'
+        }
+      },
+      {
+        path: 'Integrations',
+        component: SingleIntegrationsComponent,
+        data: {
+          title: 'Integrations'
+        }
+      },
+      {
+        path: 'Manage',
+        component: ManageIntegrationsComponent,
+        data: {
+          title: 'Manage'
+        }
+      },
+      {
+        path: 'Editor',
+        component: ManageTextEditorComponent,
+        data: {
+          title: 'Editor'
+        }
+      },
+      {
         path: 'OmniChanal',
         component: OminichaneelsComponent,
         data: {
           title: 'OmniChanal'
         }
       },
+      
       {
         path: 'Brands',
         component: CreateBrandsComponent,

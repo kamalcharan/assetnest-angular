@@ -12,5 +12,15 @@ export const APIURL = {
     GetAdminToken:BaseUrl +"GetAdminToken",  
     SaveUsersData: BaseUrl + "CreateMaster/SaveUSersList",
     GetUSersList: BaseUrl + "CreateMaster/GetUSersList",
-    ActiveInactiveUser: BaseUrl + "CreateMaster/InActiveDelete"
+    ActiveInactiveUser: BaseUrl + "CreateMaster/InActiveDelete",
+    GetParentData: BaseUrl + "CreateMaster/getParentData",
+    CategoryMastersList: BaseUrl + "CreateMaster/GetCategoryMastersList",
+    getSingleIntegrations: BaseUrl + "CreateMaster/getSingleIntegrations",
+    InsertCompanyIntegration: BaseUrl + "CreateMaster/insertCompanyIntegration",
+    AppsConnectedData: BaseUrl + "CreateMaster/AppsConnectedData",
+    GetManageData: BaseUrl + "CreateMaster/GetManageData",
+    DisConnecdData: BaseUrl + "CreateMaster/DisConnecdData",
+    UpdateTblCompany: BaseUrl + "CreateMaster/UpdateTblCompany",
+    UpdateDefaultText: BaseUrl + "CreateMaster/UpdateDefaultText",
+    getSingleManageIntegrate: BaseUrl + "CreateMaster/getSingleManageIntegrate"
   }

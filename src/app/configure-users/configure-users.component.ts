@@ -33,8 +33,7 @@ constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr:
     this.getUsers();
   }
   modelpop: any;
-  CreteUsers(val,content){
-    console.log("val",val);
+  CreteUsers(content){
     this.Users={
       "Name":null,
       "MobileNo": null,

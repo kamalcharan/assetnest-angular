@@ -18,6 +18,9 @@ import {UserDataServiceService} from "./shared/user-data-service.service"
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import * as $ from 'jquery';
+import { CKEditorModule } from 'ngx-ckeditor';
+
+
 
 
 
@@ -25,11 +28,12 @@ import * as $ from 'jquery';
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        ContentLayoutComponent
-                ],
+        ContentLayoutComponent        
+      ],
     imports: [
         HttpClientModule,
         HttpModule,
+        CKEditorModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         SharedModule,

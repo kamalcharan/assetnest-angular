@@ -1,0 +1,129 @@
+<section id="calendar">
+    <div class="row" style="background: #F2F0C4;margin-left: -32px;
+    margin-right: -32px;height:54px">
+        <div class="col-2" style="margin-top: 22px;">
+            <i class="fa fa-chevron-left btn-pink" aria-hidden="true" style="cursor: pointer;margin-top: -15px;font-size: 36px;" (click)="BackNav()"></i>
+
+        </div>
+        <div class="col-4" style="margin-left: -126px;">
+            <span class="content-header" *ngFor="let item of SignleData">
+
+                <p style="font-weight: lighter">ThirdParty Integrations</p>
+                <p style=" margin-top: -15px;"><b>{{item.Name}}</b></p>
+            </span>
+        </div>
+    </div>
+    
+    <div class="row" style="margin-top: 54px;">
+            <div class="col-6">
+                    <div class="card text-center" *ngFor="let item of SignleData" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+                    border-radius: 8px!important;cursor: pointer;">
+                        <div class="card-body">
+                               <div class="row">
+                                 <div class="col-3">
+                                    <span class="font-medium-2">{{item.Name}}</span>
+
+                                 </div>
+                                 <div class="col-3">
+                                    <span class="font-medium-2">Date</span>
+
+                                 </div>
+                                 <div class="col-3">
+                                    <button type="button" style="height: 39px;
+                                      margin-top: 7px;width: 156px;" class="btn btn-pink btn-block btn-raised" (click)="Connectarameters(item,content)">Change Settings</button>
+
+                                 </div>
+                               </div>
+                                      
+                              
+                        </div>
+                      </div>
+                   </div>
+                   <div class="col-6">
+                        <button type="button" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+                        margin-top: 32px;width: 156px;">Sync Rules</button>&nbsp;&nbsp;
+                        
+                    </div>
+     
+    </div>
+    <div class="row" style="margin-top: 54px;">
+            <div class="col-3">
+                    <div class="card text-center" style=" padding: 20px!important;
+                    margin-top: -14px;
+                    box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+                    border-radius: 8px!important;
+                    cursor: pointer;
+                    width: 141px;
+                    height: 100px;">
+                        <div class="card-body">
+                            <span class="font-medium-2">Last Sync Date</span>
+                        </div>
+                      </div>
+               
+             
+            </div>
+            <div class="col-3" style="margin-left:-99px">
+                <div class="card text-center" style="padding: 20px!important;
+                margin-top: -14px;
+                box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+                border-radius: 8px!important;
+                cursor: pointer;
+                width: 154px;
+                height: 100px;">
+                    <div class="card-body">
+                        <span class="font-medium-2">Next Sync Date</span>
+                    </div>
+                  </div>
+           
+         
+        </div>
+        <div class="col-4" style="margin-top:-13px">
+            <button type="button" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+            width: 156px;">Sync Now</button>
+                    <button type="button" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+                   width: 156px;" (click)="DisconnectData()">Disconnect</button>
+               
+       
+     
+    </div>
+     
+    </div>
+   
+           
+    
+  </section>
+
+
+  
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Parameters</h4>
+      <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm">  
+            <div class="row" *ngFor="let item of SignleData">
+                <div class="col-12" >
+                    <fieldset class="form-group" style="margin-top: -16px;" *ngFor=" let g of item.Parameters">
+                        <label for="basicInput">{{g.LabelName}}</label>
+                        <input type="text" class="form-control" name="{{g.Value}}" id="g.Value" [(ngModel)]="g.Value"  required  style="height: 33px">
+                      </fieldset>
+                      <button type="button" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+                      margin-top: 32px;width: 156px;" (click)="c(checkUpdate(item))">Update</button>                      
+                       </div>                     
+         
+        </div>
+                
+          
+          
+        </form>           
+             
+  
+   
+    </div>
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-outline-dark"  (click)="Submit()">Save</button> -->
+    </div>
+  </ng-template>
