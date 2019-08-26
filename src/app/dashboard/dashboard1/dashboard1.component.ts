@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ChartType, ChartEvent } from "ng-chartist/dist/chartist.component";
+import { UserDataServiceService } from '../../shared/user-data-service.service'
 
 declare var require: any;
 
@@ -21,7 +22,14 @@ export interface Chart {
 })
 
 export class Dashboard1Component {
+    UserData=null
+    constructor( private UserService: UserDataServiceService) {
 
+
+        this.UserData= JSON.parse(UserService.getData()) ;
+        console.log(" this.UserData", this.UserData);
+     }
+    
     // Line area chart configuration Starts
     lineArea: Chart = {
         type: 'Line',

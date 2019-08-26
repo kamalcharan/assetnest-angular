@@ -35,22 +35,20 @@ constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr:
   modelpop: any;
   CreteUsers(content){
     this.Users={
-      "Name":null,
-      "MobileNo": null,
-      "password": null,
-      "CompanyID":null,
-      "EmailID":null,
-      "_id":null
+    "Name":null,
+    "MobileNo": null,
+    "password": null,
+    "CompanyID":null,
+    "EmailID":null,
+    "_id":null
     }
-    
     this.modelpop=this.modalService.open(content, {}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+    this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-  
-
-  }
+    
+    }
   UsersList=[];
   getUsers(){
     this.UsersList=[];

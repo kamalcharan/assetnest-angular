@@ -53,18 +53,18 @@ StatusBrands=[];
   CreteBrands(content){
     // console.log("val",val);
     // if(val){
-    //   this.editActive=true
-    //   this.CreateCompanyBrandMapping.Name=val.Name;
-    //   this.CreateCompanyBrandMapping.DisplayName=val.DisplayName;  
+    // this.editActive=true
+    // this.CreateCompanyBrandMapping.Name=val.Name;
+    // this.CreateCompanyBrandMapping.DisplayName=val.DisplayName;
     // }
     this.modelpop=this.modalService.open(content, {}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+    this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-
-
-  }
+    
+    
+    }
   allBrands=[];
   getAllCompanyBrands() {
     this.allBrands=[];

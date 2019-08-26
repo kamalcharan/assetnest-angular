@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { JsonPipe } from '@angular/common';
+import { parse } from 'date-fns';
 
 @Injectable()
 export class UserDataServiceService {
@@ -7,6 +9,7 @@ userData={
   "Name": null,
   "EmailID": null,
   "Token":null,
+  "IsLive":null,
   "Company": {
       "CompanyID": null,
       "Name": null,
@@ -56,6 +59,12 @@ userData={
     } else {
       return false;
     }
+  }
+  SetEnvironment(value)
+  {
+    let myItem = JSON.parse(localStorage.getItem("UserData")) ;
+    myItem.IsLive= value;
+    localStorage.setItem("UserData", JSON.stringify(myItem));
   }
   logoutUser()
   {

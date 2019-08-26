@@ -24,7 +24,9 @@ export class RegisterPageComponent {
          "Password":null
        }
     }
+    filesToUpload: Array<File> = [];
     @ViewChild('f') registerForm: NgForm;
+    @ViewChild('filectrl') fileInputVariable: any;
     constructor(private router: Router, private service :CommonserviceService,
         private route: ActivatedRoute,private UserService:UserDataServiceService) { 
             this.GetAdminToken()
@@ -100,4 +102,101 @@ export class RegisterPageComponent {
                 }
             });
     }
+
+    fileChangeEvent(fileInput: any) {
+ 
+        console.log("file change event");
+        //this.filesToUpload
+       var fileUploaded  = <Array<File>>fileInput.target.files;
+        if(this.checkIsImage(fileUploaded[0].name))
+        {
+         this.filesToUpload= fileUploaded;
+         this.saveTicket();
+        }
+        else
+        {
+          this.removeFile();
+        //  this.toastr.error("Only JPEG/JPG/PNG image are allowed to upload","oops!")
+        }
+      
+      
+      
+          }
+          removeFile()
+          {
+          
+            this.fileInputVariable.nativeElement.value = "";
+          }
+          saveTicket()
+{
+
+    try{
+        var formData: any = new FormData();
+        const files: Array<File> = this.filesToUpload;
+        
+        if(files.length>0)
+        {
+        for (var i = 0; i < files.length; i++) {
+        formData.append("file" + i, files[i]);
+        }
+        
+        
+        
+        formData.append("CompanyID", 1);
+        //https://assetnestapi.herokuapp.com/api/
+        this.service.UploadPostMethod("http://localhost:3000/api/"+"FileUploadDrive", formData)
+        .subscribe(results => {
+          //results= JSON.parse(results);
+        if (results.Response == 1) {
+         // this.toastr.success("uploaded successfully");
+        //this.toastr.success(results.Message, 'Success!');
+         var DocURL = results.Path;
+         console.log(results);
+         console.log(results.Response);
+        //this.customerData.Icon=DocURL;
+        //this.saveCustomer();
+        //APIURL.API_IMAGE_LOCATION
+        //this.tempImage=APIURL.API_IMAGE_LOCATION+DocURL;
+        }
+        else {
+            console.log(results);
+            
+         // this.tempImage="";
+        //this.toastr.error(results.Message);
+        }
+        })
+        }
+        else
+        {
+          //this.saveCustomer();
+        }
+        
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+
+
+
+
+
+}
+checkIsImage(uploadUrl:String) {
+ 
+
+    var nameSplit= uploadUrl.split('.');
+    var fileExtension = nameSplit[nameSplit.length-1];
+  
+    if(fileExtension.toUpperCase()=="JPEG"||fileExtension.toUpperCase()=="JPG"||fileExtension.toUpperCase()=="PNG")
+    {
+      return true; 
+  
+    }
+    else
+    {
+      return false;
+    }
+  
+  }
 }

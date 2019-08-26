@@ -18,6 +18,7 @@ import {HomeComponent} from "../../home/home/home.component";
   import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -120,7 +121,8 @@ const routes: Routes = [
         data: {
           title: 'User Profile Page'
         }
-      }  
+      }  ,
+     
     ]
   }
 ];

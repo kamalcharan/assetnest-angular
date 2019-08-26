@@ -23,6 +23,7 @@ import { ManageIntegrationsComponent } from '../../manage-integrations/manage-in
 import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
 import { CKEditorModule } from 'ngx-ckeditor';
 
+
 @NgModule({
     imports: [
         CommonModule,

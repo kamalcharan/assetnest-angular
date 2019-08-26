@@ -8,7 +8,7 @@ import { LockScreenPageComponent } from "./lock-screen/lock-screen-page.componen
 import { LoginPageComponent } from "./login/login-page.component";
 import { MaintenancePageComponent } from "./maintenance/maintenance-page.component";
 import { RegisterPageComponent } from "./register/register-page.component";
-
+import { WebenvironmentComponent } from '../../webenvironment/webenvironment.component';
 
 const routes: Routes = [
   {
@@ -64,6 +64,15 @@ const routes: Routes = [
           title: 'Register Page'
         }
       }   
+      ,
+      {
+        path: 'Environment',
+        component: WebenvironmentComponent,
+        data: {
+          title: 'Environment'
+        }
+      }
+
       
     ]
   }
