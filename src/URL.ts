@@ -1,9 +1,10 @@
-var BaseUrl="https://assetnestapi.herokuapp.com/api/"
-//var  BaseUrl ="http://localhost:3000/api/"
+//var BaseUrl="https://assetnestapi.herokuapp.com/api/"
+var  BaseUrl ="http://localhost:3000/api/"
 var version ="1.1"
 export const APIURL = {
     BaseUrl: BaseUrl,
     TestAPI:BaseUrl ,
+    Image_Path:"https://drive.google.com/uc?export=view&id=",
     ValidateLogin : BaseUrl +"users/login",
     GetCategoryMasters: BaseUrl + "CreateMaster/GetCategoryData",
     CreateCompanyBrandMap: BaseUrl + "CompanyBrandMap",

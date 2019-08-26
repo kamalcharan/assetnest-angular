@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit,ViewChild, ViewContainerRef } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import{UserDataServiceService} from '../shared/user-data-service.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +21,8 @@ CreateCompanyBrandMapping = {
   CreatedBy: null,
   Type: null
 }
+filesToUpload: Array<File> = [];
+@ViewChild('filectrl') fileInputVariable: any;
 editActive:boolean=false;
 StatusBrands=[];
   constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr: ViewContainerRef,public toastr: ToastsManager,private UserService:UserDataServiceService) {
@@ -49,6 +51,99 @@ StatusBrands=[];
       }
     }) 
   }
+  fileChangeEvent(fileInput: any) {
+ 
+    console.log("file change event");
+    //this.filesToUpload
+   var fileUploaded  = <Array<File>>fileInput.target.files;
+    if(this.checkIsImage(fileUploaded[0].name))
+    {
+     this.filesToUpload= fileUploaded;
+     this.saveTicket();
+    }
+    else
+    {
+      this.removeFile();
+    //  this.toastr.error("Only JPEG/JPG/PNG image are allowed to upload","oops!")
+    }
+  
+  
+  
+      }
+      removeFile()
+      {
+      
+        this.fileInputVariable.nativeElement.value = "";
+      }
+
+      checkIsImage(uploadUrl:String) {
+ 
+
+        var nameSplit= uploadUrl.split('.');
+        var fileExtension = nameSplit[nameSplit.length-1];
+      
+        if(fileExtension.toUpperCase()=="JPEG"||fileExtension.toUpperCase()=="JPG"||fileExtension.toUpperCase()=="PNG")
+        {
+          return true; 
+      
+        }
+        else
+        {
+          return false;
+        }
+      
+      }
+      DocURL="http://hivebox.in/app_icons/Biomedicals/bloodcellanalyser.jpg";
+      fileUploadUrl: any;
+      saveTicket()
+{
+
+try{
+    var formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    
+    if(files.length>0)
+    {
+    for (var i = 0; i < files.length; i++) {
+    formData.append("file" + i, files[i]);
+    }
+    
+    
+    
+    formData.append("CompanyID", 1);
+    this.cms.UploadPostMethod(APIURL.BaseUrl+"FileUploadDrive", formData)
+    .subscribe(results => {
+    if (results.Response == 1) {
+   
+     this.DocURL = APIURL.Image_Path+results.Path;
+     this.fileUploadUrl=results.Path;
+     this.CreateCompanyBrandMapping.Icon=results.Path;
+     this.toastr.success(results.Message)
+     console.log("results",results);
+     console.log(results.Response);
+   
+    }
+    else {
+        console.log(results);
+     
+    }
+    })
+    }
+    else
+    {
+    }
+    
+}
+catch(error)
+{
+    console.log(error);
+}
+
+
+
+
+
+}
   modelpop: any;
   CreteBrands(content){
     // console.log("val",val);
