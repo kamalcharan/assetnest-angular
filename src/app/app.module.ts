@@ -22,11 +22,15 @@ import * as $ from 'jquery';
 
 
 
+
+
 @NgModule({
     declarations: [
         AppComponent,
         FullLayoutComponent,
         ContentLayoutComponent
+     
+        
                 ],
     imports: [
         HttpClientModule,

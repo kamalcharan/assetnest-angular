@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild , ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { CommonserviceService } from "../../../shared/commonservice.service"
 import { APIURL } from "../../../../URL"
 import { UserDataServiceService } from '../../../shared/user-data-service.service'
 import * as CryptoJS from 'crypto-js';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 @Component({
     selector: 'app-login-page',
     templateUrl: './login-page.component.html',
@@ -12,6 +13,7 @@ import * as CryptoJS from 'crypto-js';
 })
 
 export class LoginPageComponent {
+   
     payload = {
         Email: null,
         Password: null
@@ -21,7 +23,12 @@ export class LoginPageComponent {
     @ViewChild('f') loginForm: NgForm;
 
     constructor(private router: Router, private service: CommonserviceService,
-        private route: ActivatedRoute, private UserService: UserDataServiceService) {
+        private route: ActivatedRoute, private UserService: UserDataServiceService,
+        vcr: ViewContainerRef,
+        public toastr: ToastsManager
+
+        ) {
+            this.toastr.setRootViewContainerRef(vcr);
         this.GetAdminToken()
     }
 
@@ -40,32 +47,7 @@ export class LoginPageComponent {
         this.router.navigate(['register'], { relativeTo: this.route.parent });
     }
     login() {
-        //     this.service.PostMethod('/api/MUser/LogIn',this.payload)
-        //     .subscribe(data => {
-        //   console.log("data",data);
-        //   if(data.Data){
-        //       this.toastr.success(data.Message);
-        //       this.UserService.logoutUser();
-        //       this.UserService.setData({
-        //           UserNumber:data.Data[0].UserNumber,
-        //     UserCode:data.Data[0].UserCode,
-        //     Name:data.Data[0].Name,
-        //     Phone:data.Data[0].Phone,
-        //     EmailID:data.Data[0].EmailID,
-        //     Address:data.Data[0].Address,
-        //     City:data.Data[0].City,
-        //     GeoLocation:data.Data[0].GeoLocation,
-        //     UserType:data.Data[0].UserType,
-        //     UserID:data.Data[0]._id,
-        //     Password:data.Data[0].Password,
-        //     PrimaryOAuthID:data.Data[0].PrimaryOAuthID
-        //         })
-        //       this.router.navigate(['Dashboard'], { relativeTo: this.route.parent });
-
-        //   }else{
-        //       this.toastr.error(data.Message);
-        //   }
-        //   });
+       
         var FarePayload = this.payload;
         var pwd = CryptoJS.HmacMD5(FarePayload.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
         FarePayload.Password = pwd;
@@ -108,22 +90,31 @@ export class LoginPageComponent {
                             this.UserService.logoutUser();
                             this.UserService.setData(userObject);
 
-                            this.router.navigateByUrl("/pages/Environment")
+                            this.toastr.success(data.Message);;
+
+                            setTimeout(()=>{
+                                this.router.navigateByUrl("/pages/Environment")
+                            },2000)
+                           
 
                            // this.router.navigateByUrl("/dashboard/dashboard1");
 
                         }
                         else {
-
+                            this.toastr.error(data.Message);;
                         }
 
                     }
                     else {
-
+                        this.toastr.error(data);;
                     }
 
 
                 }
+            }
+            ,
+            error=>{
+                console.log(error);
             });
     }
 

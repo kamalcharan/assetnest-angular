@@ -18,7 +18,8 @@ import { CreateBrandsComponent } from '../../create-brands/create-brands.compone
 
 import { ConfigureUsersComponent } from '../../configure-users/configure-users.component';
 
-
+import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
+import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -37,7 +38,9 @@ import { ConfigureUsersComponent } from '../../configure-users/configure-users.c
         ConfigurationComponent,
         OminichaneelsComponent,
         CreateBrandsComponent,
-        ConfigureUsersComponent
+        ConfigureUsersComponent,
+        ViewApikeysComponent,
+        CreateApikeyComponent
     ]
 })
 export class FullPagesModule { }

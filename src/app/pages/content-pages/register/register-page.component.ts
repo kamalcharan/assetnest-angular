@@ -1,10 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild ,OnInit, ViewContainerRef  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import {CommonserviceService} from "../../../shared/commonservice.service"
 import{ APIURL} from "../../../../URL"
 import{UserDataServiceService} from '../../../shared/user-data-service.service'
-
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import * as CryptoJS from 'crypto-js';
 @Component({
@@ -15,7 +15,7 @@ import * as CryptoJS from 'crypto-js';
 
 export class RegisterPageComponent {
     adminToken = null;
-
+    terms=false;
     payload={
         "User":{
             "Name":null,
@@ -27,9 +27,11 @@ export class RegisterPageComponent {
     filesToUpload: Array<File> = [];
     @ViewChild('f') registerForm: NgForm;
     @ViewChild('filectrl') fileInputVariable: any;
-    constructor(private router: Router, private service :CommonserviceService,
-        private route: ActivatedRoute,private UserService:UserDataServiceService) { 
-            this.GetAdminToken()
+    constructor(private router: Router, private service :CommonserviceService,vcr: ViewContainerRef,
+        private route: ActivatedRoute,private UserService:UserDataServiceService,public toastr: ToastsManager) { 
+           
+          this.toastr.setRootViewContainerRef(vcr);
+          this.GetAdminToken()
         }
     //  On submit click, reset field value
     onSubmit() {
@@ -39,6 +41,9 @@ export class RegisterPageComponent {
     Signup()
     {
 
+
+      if(this.terms&&this.payload.User.Name  && this.EmailValid(this.payload.User.EmailID) && this.payload.User.Password)
+      {
         var FarePayload= this.payload;
         var pwd = CryptoJS.HmacMD5(FarePayload.User.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
         FarePayload.User.Password= pwd;
@@ -54,25 +59,52 @@ export class RegisterPageComponent {
         {
             if(data.Response==1)
             {
+              this.toastr.success(data.Message);;
 
+              setTimeout(()=>{
                 this.router.navigateByUrl("pages/login")
+              },2000)
+
+              
            
 
             }
             else
             {
+              this.toastr.error(data.Message);
 
             }
 
         }
         else
         {
-
+          this.toastr.error(data);
         }
         
   
       }
       });
+      }
+       
+      else
+      {
+        if(!this.payload.User.Name){
+          this.toastr.error("Please Enter Name")
+        }else if(!this.payload.User.EmailID){
+          this.toastr.error("Please Enter EmailID");
+        }else if(!this.EmailValid(this.payload.User.EmailID))
+        {
+          this.toastr.error("Please Enter valid Email ID");
+        }
+        
+        if(!this.payload.User.Password){
+          this.toastr.error("Please Enter Password");  
+        }
+        if(!this.terms)
+        {
+          this.toastr.error("Please check terms and conditions checkbox");
+        }
+      }
 
     }
     
@@ -198,5 +230,10 @@ checkIsImage(uploadUrl:String) {
       return false;
     }
   
+  }
+  EmailValid(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+
   }
 }

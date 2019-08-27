@@ -13,8 +13,8 @@ import {HomeComponent} from "../../home/home/home.component";
   import { CreateBrandsComponent } from '../../create-brands/create-brands.component';
   import { ConfigureUsersComponent } from '../../configure-users/configure-users.component';
 
-
-
+  import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
+  import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
 const routes: Routes = [
   {
     path: '',
@@ -89,6 +89,22 @@ const routes: Routes = [
           title: 'User Profile Page'
         }
       }  ,
+      {
+        path: 'ViewAPIKeys',
+        component: ViewApikeysComponent,
+        data: {
+          title: 'View API Keys'
+        }
+      } ,
+      {
+        path: 'CreateAPIKey',
+        component:CreateApikeyComponent ,
+        data: {
+          title: 'Create API Key'
+        }
+      }  
+     
+      
      
     ]
   }

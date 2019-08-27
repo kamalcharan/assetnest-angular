@@ -12,7 +12,7 @@ app.get('/*', function(req,res) {
 
 // app.use(express.static('/dist/matngular'));
 // res.sendFile(path.join('/dist/index.html'));
-
+///  "start": "node server.js",
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
