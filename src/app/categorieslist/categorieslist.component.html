@@ -1,0 +1,154 @@
+<section id="calendar">
+        <div class="row">
+                <div class="col-sm-12">
+                    <div class="content-header">Apps Connected({{AppConnectedList.length}})</div>
+        
+                </div>
+            </div>
+            <div class="row" style="margin-top:30px">
+                    <div class="col-sm-12">
+                        <div class="card text-center" *ngFor="let item of AppConnectedList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+                            border-radius: 8px!important;cursor: pointer;width: 430px;">
+                            <div class="row">
+                                <div class="col-2">
+                                        <img [src]="item.Icon" alt="Random third slide" style="width:36px">
+            
+                                </div>
+                                <div class="col-5">
+                                        <p class="content-sub-header" style="text-transform:capitalize">{{item.Name}}</p>
+            
+                                </div>
+                                <div class="col-5" (click)="ClickManage(item)">
+                                        <p class="content-sub-header" style="text-transform:capitalize">Manage--></p>
+            
+                                </div>
+                            </div>
+                            
+            
+                        </div>
+            
+                    </div>
+                </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="content-header">Settings</div>
+            <p class="content-sub-header">This is the most basic example having navigation button to navigate next and
+                previous months and today button. This basic
+                example lists all the events on the calendar.</p>
+        </div>
+    </div>
+    
+   
+
+    <div class="row" *ngFor="let item of SalesForceList">
+        <div class="col-6">
+            {{item.Name}}
+        </div>
+        <div class="col-3" *ngFor="let pq of item.ChildList" (click)="SingleIntegrate(pq)">
+            <div class="card horizontal" style="height: 113px;cursor: pointer">
+                <div class="card-body">
+                    <div class="card-img">
+                        <img [src]="pq.Icon" alt="Random third slide">
+
+                    </div>
+                    <div class="card-stacked align-self-center">
+                        <div class="px-3">
+                            <h4 class="card-title" style="text-transform:capitalize">{{pq.Name}}</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div class="row" style="margin-top:30px!important">
+    <div class="col-6" *ngFor="let item of CustomerServiceList">
+      {{item.Name}}
+     </div>
+        <div class="col-3" *ngFor="let item of CustomerchildList">
+            <div class="card horizontal">
+                <div class="card-body">
+                    <div class="card-img">                    
+                                <img [src]="item.Icon" alt="Random third slide">
+                                
+                    </div>
+                    <div class="card-stacked align-self-center">
+                        <div class="px-3">
+                            <h4 class="card-title">{{item.Name}}</h4>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+          </div>
+    </div>
+    <div class="row" style="margin-top:30px!important">
+      <div class="col-6" *ngFor="let item of AccountingData">
+        {{item.Name}}
+       </div>
+         
+            <div class="col-3" *ngFor="let item of AccountingListData">
+                <div class="card horizontal">
+                    <div class="card-body">
+                        <div class="card-img">                    
+                                    <img [src]="item.Icon" alt="Random third slide">
+                                    
+                        </div>
+                        <div class="card-stacked align-self-center">
+                            <div class="px-3">
+                                <h4 class="card-title">{{item.Name}}</h4>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+    </div>
+      <div class="row" style="margin-top:30px!important">
+        <div class="col-6" *ngFor="let item of AnalyticsData">
+          {{item.Name}}
+         </div>
+            
+              <div class="col-3" *ngFor="let item of AnalyticsList">
+                  <div class="card horizontal">
+                      <div class="card-body">
+                          <div class="card-img">                    
+                                      <img [src]="item.Icon" alt="Random third slide">
+                                      
+                          </div>
+                          <div class="card-stacked align-self-center">
+                              <div class="px-3">
+                                  <h4 class="card-title">{{item.Name}}</h4>
+                                 
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              
+        </div>
+      </div>
+        <div class="row" style="margin-top:30px!important">
+          <div class="col-6" *ngFor="let item of MarketingData">
+            {{item.Name}}
+           </div>
+             
+                <div class="col-3" *ngFor="let item of MarketingList">
+                    <div class="card horizontal">
+                        <div class="card-body">
+                            <div class="card-img">                    
+                                        <img [src]="item.Icon" alt="Random third slide">                                        
+                            </div>
+                            <div class="card-stacked align-self-center">
+                                <div class="px-3">
+                                    <h4 class="card-title">{{item.Name}}</h4>                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          </div>
+        </div> -->
+
+
+</section>

@@ -17,6 +17,11 @@ import { OminichaneelsComponent } from '../../ominichaneels/ominichaneels.compon
 import { CreateBrandsComponent } from '../../create-brands/create-brands.component';
 
 import { ConfigureUsersComponent } from '../../configure-users/configure-users.component';
+import { CategorieslistComponent } from '../../categorieslist/categorieslist.component';
+import { SingleIntegrationsComponent } from '../../single-integrations/single-integrations.component';
+import { ManageIntegrationsComponent } from '../../manage-integrations/manage-integrations.component';
+import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
+import { CKEditorModule } from 'ngx-ckeditor';
 
 import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
@@ -26,7 +31,8 @@ import { CreateApikeyComponent } from '../../create-apikey/create-apikey.compone
         FullPagesRoutingModule,
         FormsModule,
         ChartistModule,
-        AgmCoreModule
+        AgmCoreModule,
+        CKEditorModule
     ],
     declarations: [       
         GalleryPageComponent,
@@ -40,7 +46,11 @@ import { CreateApikeyComponent } from '../../create-apikey/create-apikey.compone
         CreateBrandsComponent,
         ConfigureUsersComponent,
         ViewApikeysComponent,
-        CreateApikeyComponent
+        CreateApikeyComponent,
+        CategorieslistComponent,
+        SingleIntegrationsComponent,
+        ManageIntegrationsComponent,
+        ManageTextEditorComponent
     ]
 })
 export class FullPagesModule { }

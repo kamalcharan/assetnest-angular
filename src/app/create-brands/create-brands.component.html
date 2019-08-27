@@ -65,7 +65,7 @@
                   </fieldset>
             </div>
             <div class="col-6">
-                    <span class="font-medium-2 text-uppercase"><img src="http://hivebox.in/app_icons/Biomedicals/bloodcellanalyser.jpg" style="width: 64px;
+                    <span class="font-medium-2 text-uppercase"><img [src]="DocURL" style="width: 64px;
                         margin-left: 48px;"></span>
       
                
@@ -82,7 +82,7 @@
               <div class="col-lg-6 col-md-12">
                     <fieldset class="form-group" style="margin-top: -16px;">
                             <label for="basicInputFile">Upload Image</label>
-                            <input type="file" class="form-control-file" id="basicInputFile">
+                            <input type="file"  #filectrl (change)="fileChangeEvent($event)" class="form-control-file" id="basicInputFile">
                         </fieldset>
               </div>
           </div>                                    

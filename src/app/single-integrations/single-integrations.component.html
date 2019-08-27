@@ -1,0 +1,81 @@
+<section id="calendar">
+    <div class="row" style="background: #F2F0C4;margin-left: -32px;
+    margin-right: -32px;height:54px">
+        <div class="col-2" style="margin-top: 22px;">
+            <i class="fa fa-chevron-left btn-pink" aria-hidden="true" style="cursor: pointer;margin-top: -15px;font-size: 36px;" (click)="BackNav()"></i>
+
+        </div>
+        <div class="col-4" style="margin-left: -126px;">
+            <span class="content-header" *ngFor="let item of SignleData">
+
+                <p style="font-weight: lighter">ThirdParty Integrations</p>
+                <p style=" margin-top: -15px;"><b>{{item.Name}}</b></p>
+            </span>
+        </div>
+    </div>
+
+    <div class="row" *ngFor="let item of SignleData" style="margin-top: 54px;">
+        <div class="col-2" style="margin-top: -18px">
+            <div class="card text-center" style="height: 73px;
+            width: 100px;
+            padding: 4px;">
+                <div class="card-body">
+                    <img [src]="item.Icon" alt="Random third slide">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            Integrate {{item.Name}} With AssetNest<br>
+            <p *ngIf="item.DisplayText">{{item.DisplayText}}</p>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top: 54px;">
+        <div class="col-6" *ngFor="let item of SignleData">
+            <div class="card text-center" *ngIf="item.Connect=='1'" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+                    border-radius: 8px!important;cursor: pointer;">
+                <div class="card-body">
+                    <fieldset class="form-group" style="margin-top: -16px;" *ngFor=" let g of item.Parameters">
+                        <label for="basicInput" style="float: left;
+                                        margin-top: 20px;">{{g.LabelName}}</label>
+                        <input type="text" class="form-control" name="{{g.Value}}" id="g.Value" [(ngModel)]="g.Value"
+                            required style="height: 33px">
+                    </fieldset>
+                    <button type="button" style="height: 39px;
+                    margin-top: 7px;width: 156px;"
+      class="btn btn-pink btn-block btn-raised" *ngIf="editActive" (click)="UpdateConnect(item)">Update</button>
+                    <button type="button" style="height: 39px;
+                                      margin-top: 7px;width: 156px;"
+                        class="btn btn-pink btn-block btn-raised" *ngIf="!editActive" (click)="Connectarameters(item)">Connect</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6" *ngFor="let item of SignleData">
+            <button type="button" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+                        margin-top: 32px;width: 156px;"
+                (click)="clickHeader(item,'Header')">Configure Header</button>&nbsp;&nbsp;
+            <button type="button" style="height: 39px;
+                        margin-top: 7px;width: 156px;" (click)="clickHeader(item,'Footer')"
+                class="btn btn-pink btn-block btn-raised">Configure Footer</button>&nbsp;&nbsp;
+        </div>
+
+    </div>
+    <div class="row" *ngFor="let item of SignleData" style="margin-top: 54px;">
+        <div class="col-12" *ngIf="item.FooterText">
+            <div class="card text-center" style="padding:10px!important;margin-top: -14px;
+                    border-radius: 8px!important;cursor: pointer;width:546px;height: 110px;background-image: url('../../assets/img/gallery/dottedimage.jpg')">
+                <div class="card-body">
+                    <p class="font-medium-2" style="text-transform: capitalize;float: left;">{{item.FooterText}}</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</section>
