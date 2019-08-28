@@ -3,6 +3,8 @@
 
 .modal-content {
   border-radius: $border-radius;
+  width: 200%;
+  margin-left: -235px;
   .modal-footer {
     .btn {
       margin: 0;

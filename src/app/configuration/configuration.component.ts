@@ -47,6 +47,12 @@ if(item._id==10){
 
 }else if(item._id==2){
   this.router.navigateByUrl("/pages/Brands");
+}else if(item._id==4){
+  this.router.navigateByUrl("/pages/Catlog");
+
+}else if(item._id==3){
+  this.router.navigateByUrl("/pages/Region");
+
 }
 }
 getMobilePanelData(val){

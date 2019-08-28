@@ -18,7 +18,8 @@ Users={
   "password": null,
   "CompanyID":null,
   "EmailID":null,
-  "_id":null
+  "_id":null,
+  "DataType":null
 }
 closeResult: string;
 UserData=null
@@ -40,7 +41,8 @@ constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr:
     "password": null,
     "CompanyID":null,
     "EmailID":null,
-    "_id":null
+    "_id":null,
+    "DataType":null
     }
     this.modelpop=this.modalService.open(content, {}).result.then((result) => {
     this.closeResult = `Closed with: ${result}`;
@@ -72,6 +74,7 @@ constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr:
     var pwd = CryptoJS.HmacMD5(this.Users.password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
 this.Users.password=pwd;
 this.Users.CompanyID=this.UserData.Company._id;
+this.Users.DataType=this.UserData.IsLive;
   if(this.Users.Name && this.Users.MobileNo && this.EmailValid(this.Users.EmailID) && this.Users.password){
   console.log("uaudha",this.Users);
   this.cms.PostMethod(APIURL.SaveUsersData,this.Users,this.UserData.Token).subscribe(data=>{
@@ -83,7 +86,9 @@ if (data.Response == 1) {
     "password": null,
     "CompanyID":null,
     "EmailID":null,
-    "_id":null
+    "_id":null,
+    "DataType":null
+
   }
   
   this.getUsers();
@@ -96,7 +101,9 @@ if (data.Response == 1) {
     "password": null,
     "CompanyID":null,
     "EmailID":null,
-    "_id":null
+    "_id":null,
+    "DataType":null
+
   }
 }
   })

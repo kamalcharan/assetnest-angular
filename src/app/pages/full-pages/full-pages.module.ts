@@ -22,6 +22,9 @@ import { SingleIntegrationsComponent } from '../../single-integrations/single-in
 import { ManageIntegrationsComponent } from '../../manage-integrations/manage-integrations.component';
 import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
 import { CKEditorModule } from 'ngx-ckeditor';
+import { CatlogCatagoriesComponent } from '../../catlog-catagories/catlog-catagories.component';
+import { RegionCreationComponent } from '../../region-creation/region-creation.component';
+
 
 import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
@@ -50,7 +53,9 @@ import { CreateApikeyComponent } from '../../create-apikey/create-apikey.compone
         CategorieslistComponent,
         SingleIntegrationsComponent,
         ManageIntegrationsComponent,
-        ManageTextEditorComponent
+        ManageTextEditorComponent,
+        CatlogCatagoriesComponent,
+        RegionCreationComponent
     ]
 })
 export class FullPagesModule { }

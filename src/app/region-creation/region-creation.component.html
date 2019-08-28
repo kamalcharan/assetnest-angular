@@ -1,0 +1,91 @@
+<section id="calendar">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="content-header">Region</div>
+          <p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
+            example lists all the events on the calendar.</p>
+        </div>
+      </div>
+  <div class="row">
+    <div class="col-6">
+  Create Region
+    </div>
+    <div class="col-6" text-center>
+        <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" (click)="CreateRegion(content)" style="width:100px;">+ Region</button>
+      </div>
+  </div>
+  <div class="row" style="margin-top:30px">
+      <div class="col-sm-12">
+          <div class="card text-center" *ngFor="let item of regionList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+              border-radius: 8px!important;cursor: pointer;width: 430px;">
+              <div class="row">
+                
+                  <div class="col-5">
+                          <p class="content-sub-header" style="text-transform:capitalize">{{item.Name}}</p>
+
+                  </div>
+                  <div class="col-5">
+                      <button class="btn btn-flat btn-text btn-pink" title="Delete" style="padding:2px 5px !important" (click)="DeleteRegion(item)">
+                          <i class="fa fa-lg fa-trash"></i>
+                      </button>
+                  </div>
+                  
+              </div>
+              
+
+          </div>
+
+      </div>
+  </div>
+
+</section>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Region</h4>
+      
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm">  
+          <div class="row">
+            <div class="col-6">
+                <fieldset class="form-group" style="margin-top: -16px;">
+                    <label for="basicInput">RegionName</label>
+                    <input type="text" class="form-control" name="Name" id="Name" [(ngModel)]="region.Name" required  style="height: 33px;width:250px">
+                  </fieldset>
+            </div>
+           
+          </div> 
+         
+                                              
+           
+              <div class="row" style="margin-top: -42px;
+              margin-bottom: -31px;">
+                <div class="col-6 text-right">
+                    <p style="    margin-top: 33px;
+                    border: 1px solid #604E98;
+                    width: 81px;
+                    padding-right: 10px;
+                    margin-left: 396px;
+                    height: 37px;
+                    border-radius: 5px;
+                    padding-top: 6px;" (click)="c('Close click')">Cancel</p>
+                </div>
+                <div class="col-6">
+                    
+                    <button type="button" style="height: 39px;
+                       margin-top: 32px;width: 113px;" class="btn btn-pink btn-block btn-raised" 
+                       (click)="c(AddRegion())">Add Region</button>&nbsp;&nbsp;
+                </div>
+              </div>
+                
+          
+          
+        </form>           
+             
+
+   
+    </div>
+    <div class="modal-footer">
+    </div>
+  </ng-template>

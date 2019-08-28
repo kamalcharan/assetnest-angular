@@ -16,6 +16,10 @@ import {HomeComponent} from "../../home/home/home.component";
   import { SingleIntegrationsComponent } from '../../single-integrations/single-integrations.component';
   import { ManageIntegrationsComponent } from '../../manage-integrations/manage-integrations.component';
   import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
+  import { CatlogCatagoriesComponent } from '../../catlog-catagories/catlog-catagories.component';
+  import { RegionCreationComponent } from '../../region-creation/region-creation.component';
+
+
 
   import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
   import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
@@ -56,6 +60,20 @@ const routes: Routes = [
         component: ManageIntegrationsComponent,
         data: {
           title: 'Manage'
+        }
+      },
+      {
+        path: 'Catlog',
+        component: CatlogCatagoriesComponent,
+        data: {
+          title: 'Catlog'
+        }
+      },
+      {
+        path: 'Region',
+        component: RegionCreationComponent,
+        data: {
+          title: 'Region'
         }
       },
       {
