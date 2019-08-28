@@ -1,5 +1,5 @@
-var BaseUrl="https://assetnestapi.herokuapp.com/api/"
-//var  BaseUrl ="http://localhost:3000/api/"
+//var BaseUrl="https://assetnestapi.herokuapp.com/api/"
+var  BaseUrl ="http://localhost:3000/api/"
 var version ="1.1"
 export const APIURL = {
     BaseUrl: BaseUrl,
@@ -38,5 +38,6 @@ export const APIURL = {
     GetSubCategories: BaseUrl + "CreateMaster/GetSubCategories",
     DeleteCategory: BaseUrl + "CreateMaster/DeleteCategory",
     InsertRegions: BaseUrl + "CreateMaster/InsertRegions",
-    GetRegionDetails: BaseUrl + "CreateMaster/GetRegionDetails"
+    GetRegionDetails: BaseUrl + "CreateMaster/GetRegionDetails",
+    DeleteRegionUpdate: BaseUrl + "CreateMaster/DeleteRegionUpdate"
   }

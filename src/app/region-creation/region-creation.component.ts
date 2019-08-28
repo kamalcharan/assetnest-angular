@@ -25,6 +25,7 @@ export class RegionCreationComponent implements OnInit {
     this.getregionDeatils()
   }
   getregionDeatils(){
+    this.regionList=[];
     this.cms.getMethod(APIURL.GetRegionDetails+ '/'+this.UserData.Company._id,this.UserData.Token).subscribe(list=>{
       console.log("hvdhvds",list)
         this.regionList=list.Data;
@@ -64,6 +65,15 @@ export class RegionCreationComponent implements OnInit {
             "Name":null  
           }
           this.toastr.success(list.Message);
+        }
+      })
+    }
+    DeleteRegion(item){
+      console.log("test",item)
+      this.cms.getMethod(APIURL.DeleteRegionUpdate+'/'+item._id,this.UserData.Token).subscribe(list=>{
+        if (list.Response == 1) {
+          this.toastr.success(list.Message);
+          this.getregionDeatils();
         }
       })
     }
