@@ -1,5 +1,5 @@
-//var BaseUrl="https://assetnestapi.herokuapp.com/api/"
-var  BaseUrl ="http://localhost:3000/api/"
+var BaseUrl="https://assetnestapi.herokuapp.com/api/"
+//var  BaseUrl ="http://localhost:3000/api/"
 var version ="1.1"
 export const APIURL = {
     BaseUrl: BaseUrl,
@@ -15,6 +15,13 @@ export const APIURL = {
     SaveUsersData: BaseUrl + "CreateMaster/SaveUSersList",
     GetUSersList: BaseUrl + "CreateMaster/GetUSersList",
     ActiveInactiveUser: BaseUrl + "CreateMaster/InActiveDelete",
+
+    ChangeAPIKeyStatus: BaseUrl + "APIKey/ChangeAPIKeyStatus",
+    GenerateNewFullAccessAPIKey: BaseUrl + "APIKey/GenerateNewFullAccessAPIKey",
+    ChangeFullAccesKeyStatus: BaseUrl + "APIKey/ChangeFullAccesKeyStatus",
+    GenerateNewAPIKey: BaseUrl + "APIKey/GenerateNewAPIKey",
+    GetAllAPIkeyData: BaseUrl + "APIKey/GetAllAPIkeyData",
+    GetALLMenus:BaseUrl+"Menus/getMenus",
     GetParentData: BaseUrl + "CreateMaster/getParentData",
     CategoryMastersList: BaseUrl + "CreateMaster/GetCategoryMastersList",
     getSingleIntegrations: BaseUrl + "CreateMaster/getSingleIntegrations",

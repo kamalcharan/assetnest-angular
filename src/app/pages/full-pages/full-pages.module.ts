@@ -26,7 +26,8 @@ import { CatlogCatagoriesComponent } from '../../catlog-catagories/catlog-catago
 import { RegionCreationComponent } from '../../region-creation/region-creation.component';
 
 
-
+import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
+import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -47,6 +48,8 @@ import { RegionCreationComponent } from '../../region-creation/region-creation.c
         OminichaneelsComponent,
         CreateBrandsComponent,
         ConfigureUsersComponent,
+        ViewApikeysComponent,
+        CreateApikeyComponent,
         CategorieslistComponent,
         SingleIntegrationsComponent,
         ManageIntegrationsComponent,

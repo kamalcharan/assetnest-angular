@@ -20,6 +20,9 @@ import {HomeComponent} from "../../home/home/home.component";
   import { RegionCreationComponent } from '../../region-creation/region-creation.component';
 
 
+
+  import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
+  import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
 const routes: Routes = [
   {
     path: '',
@@ -137,6 +140,22 @@ const routes: Routes = [
           title: 'User Profile Page'
         }
       }  ,
+      {
+        path: 'ViewAPIKeys',
+        component: ViewApikeysComponent,
+        data: {
+          title: 'View API Keys'
+        }
+      } ,
+      {
+        path: 'CreateAPIKey',
+        component:CreateApikeyComponent ,
+        data: {
+          title: 'Create API Key'
+        }
+      }  
+     
+      
      
     ]
   }

@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.PreloginBackGroundColor{
+  background-color: #DEDCF0 !important;
+}
+.btn-outline-secondary {
+    color : #604E98;
+    background-color : transparent;
+    background-image : none;
+    border-color : #604E98;
+  }
+  .btn-outline-secondary:hover {
+     color : #604E98;
+     background-color :transparent; 
+     border-color : #604E98; 
+  }
+  .btn-outline-secondary:focus, .btn-outline-secondary.focus {
+    -webkit-box-shadow : 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+            box-shadow : 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+  }
+  .btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
+    color : #604E98;
+    background-color : transparent;
+  }
+  .btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle {
+    color :#604E98;
+   
+    border-color :#604E98;
+  }
+  .btn-outline-secondary:not(:disabled):not(.disabled):active:focus, .btn-outline-secondary:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-secondary.dropdown-toggle:focus {
+    -webkit-box-shadow : 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+            box-shadow : 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+  }
+  
