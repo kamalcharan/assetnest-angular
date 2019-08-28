@@ -28,6 +28,7 @@ import { RegionCreationComponent } from '../../region-creation/region-creation.c
 
 import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
+import { CompanySetupComponent } from '../../company-setup/company-setup.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -55,7 +56,8 @@ import { CreateApikeyComponent } from '../../create-apikey/create-apikey.compone
         ManageIntegrationsComponent,
         ManageTextEditorComponent,
         CatlogCatagoriesComponent,
-        RegionCreationComponent
+        RegionCreationComponent,
+        CompanySetupComponent
     ]
 })
 export class FullPagesModule { }

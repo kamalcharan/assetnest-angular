@@ -39,5 +39,6 @@ export const APIURL = {
     DeleteCategory: BaseUrl + "CreateMaster/DeleteCategory",
     InsertRegions: BaseUrl + "CreateMaster/InsertRegions",
     GetRegionDetails: BaseUrl + "CreateMaster/GetRegionDetails",
-    DeleteRegionUpdate: BaseUrl + "CreateMaster/DeleteRegionUpdate"
+    DeleteRegionUpdate: BaseUrl + "CreateMaster/DeleteRegionUpdate",
+    GetCompanyDetails: BaseUrl + "users/CompanyDetails",
   }

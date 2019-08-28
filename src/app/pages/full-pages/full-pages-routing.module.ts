@@ -18,11 +18,9 @@ import {HomeComponent} from "../../home/home/home.component";
   import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
   import { CatlogCatagoriesComponent } from '../../catlog-catagories/catlog-catagories.component';
   import { RegionCreationComponent } from '../../region-creation/region-creation.component';
-
-
-
   import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
   import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
+  import { CompanySetupComponent } from '../../company-setup/company-setup.component';
 const routes: Routes = [
   {
     path: '',
@@ -153,7 +151,14 @@ const routes: Routes = [
         data: {
           title: 'Create API Key'
         }
-      }  
+      } ,
+      {
+        path: 'CompanySetup',
+        component:CompanySetupComponent ,
+        data: {
+          title: 'Company Setup'
+        }
+      }   
      
       
      
