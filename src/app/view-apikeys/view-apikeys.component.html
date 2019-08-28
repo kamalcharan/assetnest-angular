@@ -17,27 +17,27 @@
 	  </div>
 	  <div class="row">
       
-        <div class="col-12" *ngFor="let item of ALLAPIkeys" style="margin-top: -29px;">
-            <div class="card" *ngIf="item.Status!='52'" style="padding:10px!important;display: table;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
-            border-radius: 8px!important;cursor: pointer;width:500px">
+        <div class="col-9" *ngFor="let item of ALLAPIkeys" style="margin-top: -29px;">
+            <div class="card" *ngIf="item.Status!='52'" style="padding:10px!important;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+            border-radius: 8px!important;cursor: pointer;">
             <div class="row" >
               <div class="col-4">
 				<p class="content-sub-header" style="text-transform: capitalize;">{{item.APIName}}</p>
 				<!-- <span class="font-medium-2 text-uppercase">{{item.Name}}</span> -->
               </div>
               <div class="col-4">
-				<a  class="btn btn-outline-primary">{{item.Name}}</a>
+				<a  class="btn btn-raised  btn-outline-secondary">{{item.Name}}</a>
 
                 </div>
                 <div class="col-4" style="padding-left: 90px;">
-                    <button class="btn btn-flat btn-text btn-pink" title="Active"  style="padding:2px 5px !important" >
+                    <button  *ngIf="item.TokenStatus==41" class="btn btn-flat btn-text btn-pink" title="Active"  style="padding:2px 5px !important" >
                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                     </button>
-                    <button class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
+                    <button *ngIf="item.TokenStatus==40" class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
                         <i class="fa fa-thumbs-down"  aria-hidden="true"></i>
                     </button>
-                    <button class="btn btn-flat btn-text btn-pink" title="Delete" style="padding:2px 5px !important" >
-                        <i class="fa fa-lg fa-trash"></i>
+					<button *ngIf="item.TokenStatus!=42" class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
+                        <i class="fa fa-lg fa-trash"  aria-hidden="true"></i>
                     </button>
                   </div>
             </div>
@@ -46,7 +46,7 @@
 					<p>{{item.Token}}</p>
 				</div>
 				<div class="col-1">
-						<button class="btn btn-flat btn-text btn-pink" title="Copy To Clipboard" style="padding:2px 5px !important" >
+						<button class="btn btn-flat btn-text btn-pink"  (click)="copyMessage(item.Token)" title="Copy To Clipboard" style="padding:2px 5px !important" >
 								<i class="far fa-clipboard" style="font-size:16px;"></i>
 							</button>
 					</div>
