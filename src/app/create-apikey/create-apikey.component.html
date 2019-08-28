@@ -8,7 +8,7 @@
 
               <label (click)="popupName(content,37)">
                   <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
-                  <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                  <div style="margin-bottom: 0px;"  class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
                   <p class="red " >
                       Publishable Key
 
@@ -22,7 +22,7 @@
                   </label>
                 <label class="mt-3" (click)="popupName(content,36)">
                   <input type="radio" name="demo" class="card-input-element d-none" value="demo2">
-                  <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                  <div  style="margin-bottom: 0px;" class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
                       <p class="red" >
                           Full Access Key
 
@@ -38,7 +38,7 @@
                   </label>
                   <label class="mt-3"  (click)="popupName(content,38)" >
                       <input type="radio" name="demo" class="card-input-element d-none" value="demo2">
-                      <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                      <div  style="margin-bottom: 0px;" class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
                           <p class="red" >
                               Read Only Key
 
@@ -55,7 +55,15 @@
                       </div>
                       </label>
           </div>
-          <div class="col-3"></div>
+          <div class="col-3">
+
+
+            <div class="col-md-12" style="margin-top: 100px;">
+              <button type="button" (click)="popupName2(content)" class="btn btn-pink btn-block btn-raised">Create Key</button>
+
+              <button type="button" class="btn btn-raised btn-block  btn-outline-secondary ">Cancel</button>
+          </div>
+          </div>
         </div>
          
       </div>
