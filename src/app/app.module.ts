@@ -29,7 +29,7 @@ import { CKEditorModule } from 'ngx-ckeditor';
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        ContentLayoutComponent        
+        ContentLayoutComponent
       ],
     imports: [
         HttpClientModule,

@@ -24,5 +24,12 @@ export const APIURL = {
     DisConnecdData: BaseUrl + "CreateMaster/DisConnecdData",
     UpdateTblCompany: BaseUrl + "CreateMaster/UpdateTblCompany",
     UpdateDefaultText: BaseUrl + "CreateMaster/UpdateDefaultText",
-    getSingleManageIntegrate: BaseUrl + "CreateMaster/getSingleManageIntegrate"
+    getSingleManageIntegrate: BaseUrl + "CreateMaster/getSingleManageIntegrate",
+    GetproductCategoories: BaseUrl + "CreateMaster/GetproductCategories",
+    InsertCategories: BaseUrl + "CreateMaster/InsertProductCategories",
+    GetcategoryList: BaseUrl + "CreateMaster/GetcategoryList",
+    GetSubCategories: BaseUrl + "CreateMaster/GetSubCategories",
+    DeleteCategory: BaseUrl + "CreateMaster/DeleteCategory",
+    InsertRegions: BaseUrl + "CreateMaster/InsertRegions",
+    GetRegionDetails: BaseUrl + "CreateMaster/GetRegionDetails"
   }

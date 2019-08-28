@@ -1,0 +1,188 @@
+<section id="calendar">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="content-header">Catlog</div>
+            <p class="content-sub-header">This is the most basic example having navigation button to navigate next and
+                previous months and today button. This basic
+                example lists all the events on the calendar.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-9">
+            
+        </div>
+        <div class="col-3" text-center>
+            <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" (click)="Cretecategory(content)" style="width:100px;">+ Category</button>
+          </div>
+    </div>
+    <div class="row" style="margin-top:30px">
+        <div class="col-sm-12">
+            <div class="card text-center" *ngFor="let item of CategorySavedList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+                border-radius: 8px!important;cursor: pointer;width: 430px;">
+                <div class="row">
+                    <div class="col-2" (click)="DownData(item)">
+                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                            <!-- <img [src]="item.Icon" alt="Random third slide" style="width:36px"> -->
+
+                    </div>
+                    <div class="col-4" style="margin-left: -34px;">
+                            <p class="content-sub-header" style="text-transform:capitalize;float:left"><b>{{item.CategoryName}}</b></p>
+
+                    </div>
+                    <div class="col-6" >
+                        <!-- <button class="btn btn-flat btn-text btn-pink" title="Edit" style="padding:2px 5px !important">
+                            <i class="fa fa-edit" aria-hidden="true"></i>
+                        </button> -->
+                        <button class="btn btn-flat btn-text btn-pink" title="Delete" (click)="deleteList(item)" style="padding:2px 5px !important">
+                            <i class="fa fa-lg fa-trash"></i>
+                        </button>  
+                        <button class="btn btn-flat btn-text btn-pink" title="Add Subcategory" style="padding:2px 5px !important" (click)="AddSubCategory(item,Subcontent)">
+                            <i class="fa fa-plus"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <div *ngIf="item.existData">
+                    <div class="row" *ngFor="let pd of item.SubCategoryList">
+                        <div class="col-2">                       
+    
+                        </div>
+                        <div class="col-4">
+                                <p class="content-sub-header" style="text-transform:capitalize">{{pd.SubcategoryName}}</p>
+    
+                        </div>
+                        <div class="col-6" >
+                            <!-- <button class="btn btn-flat btn-text btn-pink" title="Edit" style="padding:2px 5px !important">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </button> -->
+                            <button class="btn btn-flat btn-text btn-pink" title="Delete" style="padding:2px 5px !important">
+                                <i class="fa fa-lg fa-trash" (click)="DeleteSubList(item,pd)"></i>
+                            </button>                       
+    
+                        </div>
+                    </div>
+                </div>
+                
+                
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" >Category</h4>     
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm"> 
+          <div class="row">
+              <div class="col-4">
+                  <fieldset class="form-group" style="margin-top: -16px;">
+                      <label for="basicInput">Category Name</label>
+                      <input type="text" class="form-control" name="Name" id="Name" [(ngModel)]="paylaod.categoryName" required  style="height: 33px;width:230px">
+                    </fieldset>
+              </div>
+              <div class="col-2">
+                  <button type="button" style="height: 34px;
+                  margin-top: 16px;
+                  width: 50px;
+                  float: right;
+                  margin-right: 179px;" 
+                  class="btn btn-pink btn-block btn-raised" (click)="GetParentsCategories()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                      
+              </div>
+              <div class="col-6" *ngIf="categoryList.length"  style="height: 400px;
+              overflow-y: auto;">
+                  <table>
+                      <tr>
+                        <th>CategoryName</th>                        
+                      </tr>
+                      <tr *ngFor="let item of categoryList" style="cursor: pointer;">
+                          <td (click)="clickCategory(item)">{{item.Name}}</td>                        
+                        </tr>
+                      </table>
+                      
+              </div>
+          </div>
+          <!-- <div class="row">
+              
+                <div class="col-6" style="height: 232px;
+                overflow-y: auto;">
+                    <div class="card text-center" *ngFor="let item of categoryList" style="padding:10px!important;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+                    border-radius: 8px!important;cursor: pointer;" (click)="clickCategory(item)">
+                                      <span class="font-medium-2" style="text-transform: capitalize">{{item.Name}}</span>
+                       
+                      </div>
+                  </div>
+            </div> -->
+            
+          <div class="row"> 
+
+              <button type="button" style="height: 39px;
+              margin-top: 7px;width: 127px;float:right;margin-left: 300px;" class="btn btn-pink btn-block btn-raised" (click)="c(AddCategoryData())">Add Category</button>
+              
+          </div>     
+          
+          
+        </form>           
+             
+</div>
+   
+ 
+  </ng-template>
+
+
+  <ng-template #Subcontent let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" >SubCategory</h4>     
+      </div>
+      <div class="modal-body">
+          <form #f="ngForm"> 
+            <div class="row">
+                <div class="col-4">
+                    <fieldset class="form-group" style="margin-top: -16px;">
+                        <label for="basicInput">SubCategory Name</label>
+                        <input type="text" class="form-control" name="Name" id="Name" [(ngModel)]="paylaod.SubcategoryName" required  style="height: 33px;width:230px">
+                      </fieldset>
+                </div>
+                <div class="col-2">
+                    <button type="button" style="height: 34px;
+                    margin-top: 16px;
+                    width: 50px;
+                    float: right;
+                    margin-right: 179px;" 
+                    class="btn btn-pink btn-block btn-raised" (click)="GetSubCategories()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        
+                </div>
+                <div class="col-6" *ngIf="SubCategoryList.length"  style="height: 400px;
+                overflow-y: auto;">
+                    <table>
+                        <tr>
+                          <th>SubCategoryName</th>                        
+                        </tr>
+                        <tr *ngFor="let item of SubCategoryList" style="cursor: pointer;">
+                            <td (click)="clickSubCategory(item)">{{item.Name}}</td>                        
+                          </tr>
+                        </table>
+                        
+                </div>
+            </div>
+           
+              
+            <div class="row"> 
+  
+                <button type="button" style="height: 39px;
+                margin-top: 7px;width: 158px;float:right;margin-left: 300px;" class="btn btn-pink btn-block btn-raised" (click)="c(AddSubCategoryData())">Add SubCategory</button>
+                
+            </div>     
+            
+            
+          </form>           
+               
+  </div>
+     
+   
+    </ng-template>
