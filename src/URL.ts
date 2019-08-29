@@ -1,5 +1,5 @@
-//var BaseUrl="https://assetnestapi.herokuapp.com/api/"
-var  BaseUrl ="http://localhost:3000/api/"
+var BaseUrl="https://assetnestapi.herokuapp.com/api/"
+//var  BaseUrl ="http://localhost:3000/api/"
 var version ="1.1"
 export const APIURL = {
     BaseUrl: BaseUrl,
@@ -41,4 +41,5 @@ export const APIURL = {
     GetRegionDetails: BaseUrl + "CreateMaster/GetRegionDetails",
     DeleteRegionUpdate: BaseUrl + "CreateMaster/DeleteRegionUpdate",
     GetCompanyDetails: BaseUrl + "users/CompanyDetails",
+    GetCompanyUpdate: BaseUrl + "users/UpdateCompany",
   }
