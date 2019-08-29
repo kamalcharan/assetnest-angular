@@ -42,7 +42,7 @@ export class ViewApikeysComponent {
   {
     this.ALLAPIkeys=[];
     var payload={
-      CompanyID:this.UserData._id,
+      CompanyID:this.UserData.Company._id,
       IsLive:this.UserData.IsLive
     }
     this.service.PostMethod(APIURL.GetAllAPIkeyData,payload,this.UserData.Token).subscribe(data => {
