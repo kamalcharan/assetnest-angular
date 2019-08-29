@@ -36,7 +36,7 @@
                     <button  (click)="ChangesStatusLabel(content,item,41)" *ngIf="item.TokenStatus==40" class="btn btn-flat btn-text btn-pink" title="Disable"  style="padding:2px 5px !important" >
                         <i class="fa fa-thumbs-down"  aria-hidden="true"></i>
                     </button>
-					<button *ngIf="item.TokenStatus!=42"  (click)="ChangesStatusLabel(content,item,42)"class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
+					<button *ngIf="item.TokenStatus!=42&&itemTokenType!=36"  (click)="ChangesStatusLabel(content,item,42)"class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
                         <i class="fa fa-lg fa-trash"  aria-hidden="true"></i>
                     </button>
                   </div>
@@ -79,14 +79,16 @@
 			  
 		  </div>     
 		  <div class="row">
-			  <div class="col-6">
-				  <button type="button"   class="btn btn-pink btn-block btn-raised" style="height: 39px;
+					<div class="col-6"> 
+							
+						</div>
+			  <div class="col-6" style="text-align: right;">
+						<button class="btn btn-raised  btn-outline-secondary " style="height: 39px;
+						margin-top: 7px;"  (click)="c('Close click')">Cancel</button>
+				  <button type="button"   class="btn btn-pink  btn-raised" style="height: 39px;
 				  margin-top: 7px;"  (click)="c(ChangeAPIStatus(SelectedKey))" data-dismiss="modal">{{StatusChangeLabel}}</button>
 			  </div>
-			<div class="col-6"> 
-			  <button class="btn btn-pink btn-block btn-raised" style="height: 39px;
-			  margin-top: 7px;"  (click)="c('Close click')">Cancel</button>
-			</div>
+			
 		  
 
 

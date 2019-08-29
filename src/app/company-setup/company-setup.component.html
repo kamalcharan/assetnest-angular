@@ -15,103 +15,140 @@
                     <form class="form" #f="ngForm">
                         <div class="form-body">
                             <h4 class="form-section"> Company Setup</h4>
-                  <div class="row">
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label for="projectinput1">Name
 
-                                <span class="required">*</span>
-                            </label>
-                            <input type="text" id="projectinput1" [(ngModel)]="payload.Name" required class="form-control"
-                              name="fname">
-                          </div>
-                          <div class="form-group">
-                              <label for="Country">Country
-                                  <span class="required">*</span>
-                              </label>
-                              <input type="text" id="Country" required [(ngModel)]="payload.Country" class="form-control"
-                                name="Country">
-                            </div>
-                            <div class="form-group">
-                                <label for="State">State
-                                    <span class="required">*</span>
-                                </label>
-                                <input type="text" id="State" class="form-control" required [(ngModel)]="payload.State"
-                                  name="State">
-                              </div>
-                            
-                         
-
-                           
-                    </div>
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label for="projectinput2">Alias Name
-                                <span class="required">*</span>
-                            </label>
-                            <input type="text" id="projectinput2" class="form-control" required
-                              [(ngModel)]="payload.Alias_Name" name="lname">
-                          </div>
-                          <div class="form-group">
-                              <label for="City">City
-                                  <span class="required">*</span>
-                              </label>
-                              <input type="text" id="City" class="form-control" required [(ngModel)]="payload.City"
-                                name="City">
-                            </div>
-                            
-                              <div class="form-group">
-                                <label for="Address">Address
-                                    <span class="required">*</span>
-                                </label>
-                                <textarea type="text" rows=5 id="Address" required [(ngModel)]="payload.Address" class="form-control"
-                                  name="Address"></textarea>
-                              </div>
-                            
-                        
-                              <div class="form-group">
-                                <label for="Pincode">Pincode
-                                    <span class="required">*</span>
-                                </label>
-                                <input type="text" id="Pincode" class="form-control" required [(ngModel)]="payload.Pincode"
-                                  name="Pincode">
-                              </div>
-                          
-                          
-          
-                      </div>
-                      <div class="col-4">
-                          <div  class="row">
-
-                              <div class="col-12">
-                                  <div class="form-group">
-                                    <label>Company Type
-                                        <span class="required">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                      <label class="display-inline-block custom-control custom-radio ml-1">
-                                        <input type="radio" name="CompanyType" class="custom-control-input"
-                                          [(ngModel)]="payload.CompanyType" value="47">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description ml-0">OEM</span>
-                                      </label>
-                                      <label class="display-inline-block custom-control custom-radio">
-                                        <input type="radio" name="CompanyType" [(ngModel)]="payload.CompanyType" value="48"
-                                          class="custom-control-input">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description ml-0">Agency Partner</span>
-                                      </label>
+                            <div class="row">
+                              <div class="col-8" >
+                                  <div class="row">
+                                      <div class="col-6">
+                                        <div class="form-group">
+                                          <label for="projectinput1">Name
+              
+                                              <span class="required">*</span>
+                                          </label>
+                                          <input autocomplete="off" type="text" id="projectinput1" [(ngModel)]="payload.Company.Name" required class="form-control"
+                                            name="fname">
+                                        </div>
+                                        
+                                      </div>
+                                      <div class="col-6"><div class="form-group">
+                                        <label for="projectinput2">Alias Name
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input autocomplete="off" type="text" id="projectinput2" class="form-control" required
+                                          [(ngModel)]="payload.Company.Alias_Name" name="lname">
+                                      </div></div>
+                                     
                                     </div>
+                                    <div class="row">
+                                      <div class="col-6">
+                                        <div class="form-group">
+                                          <label for="Country">Country
+                                              <span class="required">*</span>
+                                          </label>
+                                          <input  autocomplete="off" type="text" id="Country" required [(ngModel)]="payload.Company.Country" class="form-control"
+                                            name="Country">
+                                        </div>
+                                      </div>
+                                      <div class="col-6">
+        
+                                        <div class="form-group">
+                                          <label for="State">State
+                                              <span class="required">*</span>
+                                          </label>
+                                          <input autocomplete="off" type="text" id="State" class="form-control" required [(ngModel)]="payload.Company.State"
+                                            name="State">
+                                        </div>
+                                      
+                                      </div>
+                                     
+                                    </div>
+        
+                                    <div class="row">
+                                      <div class="col-6">
+                                        <div class="form-group">
+                                          <label for="City">City
+                                              <span class="required">*</span>
+                                          </label>
+                                          <input autocomplete="off"  type="text" id="City" class="form-control" required [(ngModel)]="payload.Company.City"
+                                            name="City">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Pincode">Pincode
+                                                <span class="required">*</span>
+                                            </label>
+                                            <input autocomplete="off" type="text" id="Pincode" class="form-control" required [(ngModel)]="payload.Company.Pincode"
+                                              name="Pincode">
+                                          </div>
+                                      </div>
+                                      <div class="col-6">
+                                          <div class="form-group">
+                                              <label for="Address">Address
+                                                  <span class="required">*</span>
+                                              </label>
+                                              <textarea autocomplete="off" type="text" rows=5 id="Address" required [(ngModel)]="payload.Company.Address" class="form-control"
+                                                name="Address"></textarea>
+                                            </div>
+                                          
+                                       
+                                      </div>
+                                     
                                   </div>
-                                </div>
-                          </div>
-                          
-                            <div class="form-group">
-                                <label>Company Logo</label>
-                                <input type="file" class="form-control-file" id="projectinput8">
+        
+                                  <div class="row">
+                                    <div class="col-6">
+                                        
+                                    </div>
+                                    <div class="col-6"></div>
+                                  
+                                  </div>
+
                               </div>
-                        </div>
-                  </div>
+                              <div class="col-4">
+                                  <div  class="row">
+
+                                      <div class="col-12">
+                                          <div class="form-group">
+                                            <label>Company Type
+                                                <span class="required">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                              <label class="display-inline-block custom-control custom-radio ml-1">
+                                                <input type="radio" name="CompanyType" class="custom-control-input"
+                                                  [(ngModel)]="payload.Company.CompanyType" value="47">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description ml-0">OEM</span>
+                                              </label>
+                                              <label class="display-inline-block custom-control custom-radio">
+                                                <input type="radio" name="CompanyType" [(ngModel)]="payload.Company.CompanyType" value="48"
+                                                  class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description ml-0">Agency Partner</span>
+                                              </label>
+                                            </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <img id="imageDialog" style="height:150px;width:200px;"  NoImage alt="No Image"
+                                      src="{{CompanyTempImage}}" 
+                                       alt="Company Logo">
+
+                                  </div>
+                                  <!-- <div class="form-group">
+                                      <label>Company Logo</label>
+                                      <input type="file" class="form-control-file" id="projectinput8">
+                                    </div> -->
+                                    <div class="form-group text-center"  >
+                                            
+                                        <div type="submit" #filectrl (change)="fileChangeEvent($event)" class="btn btn-sm ink-reaction btn-floating-action btn-danger float-left">
+                                            <span><i class="fa fa-lg fa-camera "></i></span>
+                                            <input type="file">
+                                        </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+            
 
                   <div class="row">
                     <div class="col-9">
@@ -122,7 +159,7 @@
                           <button type="button" class="btn btn-raised   btn-outline-secondary ">
                               Cancel
                             </button>
-                          <button type="button" [disabled]="!f.valid" class="btn btn-pink  btn-raised">
+                          <button type="button"  (click)="UpdateCompanyData()" [disabled]="!f.valid" class="btn btn-pink  btn-raised">
                               Update
                             </button>
                         </div>
@@ -138,121 +175,6 @@
       </div>
       
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <!-- <div class="card-header">
-                <h4 class="card-title" id="basic-layout-form">Company Setup</h4>
-                <p class="mb-0">This is the most basic and default form having form sections. To add form section use <code>.form-section</code> class with any heading tags. This form has the buttons on the bottom left corner which is the default position.</p>
-              </div> -->
-        <div class="card-body">
-          <div class="px-3">
-            <form class="form" #f="ngForm">
-              <div class="form-body">
-                <h4 class="form-section"> Company Setup</h4>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="projectinput1">Name</label>
-                      <input type="text" id="projectinput1" [(ngModel)]="payload.Name" required class="form-control"
-                        name="fname">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="projectinput2">Alias Name</label>
-                      <input type="text" id="projectinput2" class="form-control" required
-                        [(ngModel)]="payload.Alias_Name" name="lname">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label>Company Type</label>
-                      <div class="input-group">
-                        <label class="display-inline-block custom-control custom-radio ml-1">
-                          <input type="radio" name="CompanyType" class="custom-control-input"
-                            [(ngModel)]="payload.CompanyType" value="47">
-                          <span class="custom-control-indicator"></span>
-                          <span class="custom-control-description ml-0">OEM</span>
-                        </label>
-                        <label class="display-inline-block custom-control custom-radio">
-                          <input type="radio" name="CompanyType" [(ngModel)]="payload.CompanyType" value="48"
-                            class="custom-control-input">
-                          <span class="custom-control-indicator"></span>
-                          <span class="custom-control-description ml-0">Agency Partner</span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <h4 class="form-section"><i class="ft-file-text"></i> Company Address</h4>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="companyName">Country</label>
-                      <input type="text" id="companyName" required [(ngModel)]="payload.Country" class="form-control"
-                        name="Country">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="projectinput2">State</label>
-                      <input type="text" id="projectinput2" class="form-control" required [(ngModel)]="payload.State"
-                        name="State">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="companyName">Address</label>
-                      <input type="text" id="companyName" required [(ngModel)]="payload.Address" class="form-control"
-                        name="Address">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="projectinput2">Pincode</label>
-                      <input type="text" id="projectinput2" class="form-control" required [(ngModel)]="payload.Pincode"
-                        name="Pincode">
-                    </div>
-                  </div>
-                </div>
-
-
-
-                <div class="form-group">
-                  <label>Select File</label>
-                  <input type="file" class="form-control-file" id="projectinput8">
-                </div>
-
-
-
-                <div class="form-actions">
-                  <button type="button" class="btn btn-raised btn-block  btn-outline-secondary ">
-                    Cancel
-                  </button>
-                  <button type="button" [disabled]="!f.valid" class="btn btn-pink btn-block btn-raised">
-                    Update
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      
-    </div>
-
-
-  </div>
+  
 
 </section>

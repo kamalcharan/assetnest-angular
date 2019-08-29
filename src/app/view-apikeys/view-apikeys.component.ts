@@ -29,7 +29,7 @@ export class ViewApikeysComponent {
   constructor(private modalService: NgbModal,private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,vcr: ViewContainerRef,public toastr: ToastsManager) {
 
-
+      this.toastr.setRootViewContainerRef(vcr);
       this.UserData= JSON.parse(this.UserService.getData());
       this.payload.CompanyID=this.UserData.Company._id;
      }
