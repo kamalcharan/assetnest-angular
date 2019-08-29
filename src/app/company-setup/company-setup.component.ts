@@ -78,7 +78,7 @@ Company:
               this.payload.Company.State = ResponseCompanyData.State
               this.payload.Company.City = ResponseCompanyData.City
               this.payload.Company.Address = ResponseCompanyData.Address
-              this.payload.Company.Pincode = ResponseCompanyData.CompanyID
+              this.payload.Company.Pincode = ResponseCompanyData.Pincode
               this.payload.Company.CompanyType = ResponseCompanyData.CompanyType+"";
               this.payload.Company.BusinessModelStatus = ResponseCompanyData.BusinessModelStatus
               this.CompanyTempImage = APIURL.Image_Path + this.payload.Company.LogoURL
@@ -239,7 +239,7 @@ Company:
 
         formData.append("CompanyID", this.Userdata.Company._id);
         //https://assetnestapi.herokuapp.com/api/
-        this.service.UploadPostMethod("http://localhost:3000/api/" + "FileUploadDrive", formData)
+        this.service.UploadPostMethod(APIURL.BaseUrl + "FileUploadDrive", formData)
           .subscribe(results => {
             //results= JSON.parse(results);
             if (results.Response == 1) {
