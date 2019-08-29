@@ -47,75 +47,92 @@ export class LoginPageComponent {
         this.router.navigate(['register'], { relativeTo: this.route.parent });
     }
     login() {
-       
-        var FarePayload = this.payload;
-        var pwd = CryptoJS.HmacMD5(FarePayload.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
-        FarePayload.Password = pwd;
-        this.service.PostMethod(APIURL.ValidateLogin, FarePayload, this.adminToken)
-            .subscribe((data: any)=> {
 
-
-
-                console.log(data);
-                if (data) {
-
-                    if (data.Response) {
-                        if (data.Response == 1) {
-
-                            var Responsedata = data.Data;
-                            var userObject = {
-                                "_id": data.Data._id,
-                                "Name": data.Data.Name,
-                                "EmailID": data.Data.EmailID,
-                                "Token":data.TokenData.Token,
-                                "IsLive":null,
-                                "Company": {
-                                    "CompanyID": data.Data.CompanyID.CompanyID,
-                                    "Name": data.Data.CompanyID.Name,
-                                    "Alias_Name": data.Data.CompanyID.Alias_Name,
-                                    "LogoURL": data.Data.CompanyID.LogoURL,
-                                    "Country": data.Data.CompanyID.Country,
-                                    "State": data.Data.CompanyID.State,
-                                    "City": data.Data.CompanyID.City,
-                                    "Address": data.Data.CompanyID.Address,
-                                    "Pincode": data.Data.CompanyID.Pincode,
-                                    "CompanyType": data.Data.CompanyID.CompanyType,
-                                    "BusinessModelStatus": data.Data.CompanyID.BusinessModelStatus,
-                                    "Status": data.Data.CompanyID.Status,
-                                    "_id": data.Data.CompanyID._id
-                                },
-                                "Status": data.Data.Status
+        if(this.payload.Email&&this.payload.Password)
+        {
+            var FarePayload = this.payload;
+            var pwd = CryptoJS.HmacMD5(FarePayload.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
+            FarePayload.Password = pwd;
+            this.service.PostMethod(APIURL.ValidateLogin, FarePayload, this.adminToken)
+                .subscribe((data: any)=> {
+    
+    
+    
+                    console.log(data);
+                    if (data) {
+    
+                        if (data.Response) {
+                            if (data.Response == 1) {
+    
+                                var Responsedata = data.Data;
+                                var userObject = {
+                                    "_id": data.Data._id,
+                                    "Name": data.Data.Name,
+                                    "EmailID": data.Data.EmailID,
+                                    "Token":data.TokenData.Token,
+                                    "IsLive":null,
+                                    "Company": {
+                                        "CompanyID": data.Data.CompanyID.CompanyID,
+                                        "Name": data.Data.CompanyID.Name,
+                                        "Alias_Name": data.Data.CompanyID.Alias_Name,
+                                        "LogoURL": data.Data.CompanyID.LogoURL,
+                                        "Country": data.Data.CompanyID.Country,
+                                        "State": data.Data.CompanyID.State,
+                                        "City": data.Data.CompanyID.City,
+                                        "Address": data.Data.CompanyID.Address,
+                                        "Pincode": data.Data.CompanyID.Pincode,
+                                        "CompanyType": data.Data.CompanyID.CompanyType,
+                                        "BusinessModelStatus": data.Data.CompanyID.BusinessModelStatus,
+                                        "Status": data.Data.CompanyID.Status,
+                                        "_id": data.Data.CompanyID._id
+                                    },
+                                    "Status": data.Data.Status
+                                }
+    
+                                this.UserService.logoutUser();
+                                this.UserService.setData(userObject);
+    
+                                this.toastr.success(data.Message);;
+    
+                                setTimeout(()=>{
+                                    this.router.navigateByUrl("/pages/Environment")
+                                },2000)
+                               
+    
+                               // this.router.navigateByUrl("/dashboard/dashboard1");
+    
                             }
-
-                            this.UserService.logoutUser();
-                            this.UserService.setData(userObject);
-
-                            this.toastr.success(data.Message);;
-
-                            setTimeout(()=>{
-                                this.router.navigateByUrl("/pages/Environment")
-                            },2000)
-                           
-
-                           // this.router.navigateByUrl("/dashboard/dashboard1");
-
+                            else {
+                                this.toastr.error(data.Message);;
+                            }
+    
                         }
                         else {
-                            this.toastr.error(data.Message);;
+                            this.toastr.error(data);;
                         }
-
+    
+    
                     }
-                    else {
-                        this.toastr.error(data);;
-                    }
-
-
                 }
+                ,
+                error=>{
+                    console.log(error);
+                });
+        }
+        else
+        {
+
+            if(!this.payload.Email)
+            {
+                this.toastr.error("Enter Email ID");
             }
-            ,
-            error=>{
-                console.log(error);
-            });
+            if(!this.payload.Password)
+            {
+                this.toastr.error("Enter password");
+            }
+        }
+       
+       
     }
 
     GetAdminToken() {

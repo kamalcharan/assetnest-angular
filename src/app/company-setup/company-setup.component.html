@@ -128,7 +128,7 @@
                                           </div>
                                         </div>
                                   </div>
-                                  <div class="form-group">
+                                  <div class="form-group" *ngIf="payload.Company.LogoURL" >
                                       <img id="imageDialog" style="height:150px;width:200px;"  NoImage alt="No Image"
                                       src="{{CompanyTempImage}}" 
                                        alt="Company Logo">

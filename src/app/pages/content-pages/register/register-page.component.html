@@ -19,10 +19,10 @@ id="regestration">
                                 <div class="card-block mx-auto">
                                     <form  style="padding-top:20px;"  (ngSubmit)="Signup()" #f="ngForm">
                                             <fieldset class="form-group" style="margin-top: -16px;">
-                                                    <label for="basicInput">What is your company name
+                                                    <label for="basicInput">What is your  name
                                                         </label>
                                                    
-                                                    <input type="text" required class="form-control" name="Name" id="fname" placeholder="Name"   style="height: 33px"  [(ngModel)]="payload.User.Name" />
+                                                    <input type="text" required class="form-control" name="Name" id="fname"    style="height: 33px"  [(ngModel)]="payload.User.Name" />
                                                   </fieldset>
                                                   <fieldset class="form-group" style="margin-top: -16px;">
                                                         <label for="basicInput">What is your Email adrress
@@ -31,13 +31,13 @@ id="regestration">
                                                         <input type="text" class="form-control" 
                                                         
                                                         
-                                                        name="EmailID" required id="inputEmail" placeholder="Email" [(ngModel)]="payload.User.EmailID"   style="height: 33px"  />
+                                                        name="EmailID" required id="inputEmail"  [(ngModel)]="payload.User.EmailID"   style="height: 33px"  />
                                                       </fieldset>
                                                       <fieldset class="form-group" style="margin-top: -16px;">
                                                             <label for="basicInput">Password
                                                                 </label>
                                                            
-                                                            <input type="password" required class="form-control" name="inputPass" id="inputPass" placeholder="Password" [(ngModel)]="payload.User.Password"   style="height: 33px"  />
+                                                            <input type="password" required class="form-control" name="inputPass" id="inputPass"  [(ngModel)]="payload.User.Password"   style="height: 33px"  />
                                                           </fieldset>
                                         
                                         <div class="form-group col-sm-offset-1">
@@ -48,7 +48,7 @@ id="regestration">
                                             </label>
                                         </div>
                                         <div class="form-group text-center">
-                                            <button type="button" (click)="Signup()" class="btn btn-pink btn-block btn-raised" [disabled]="!f.valid">Complete Setup</button>
+                                            <button type="button" (click)="Signup()" class="btn btn-pink btn-block btn-raised" >Complete Setup</button>
                                             <button type="button" class="btn btn-raised btn-block  btn-outline-secondary ">Cancel</button>
                                         </div>
 

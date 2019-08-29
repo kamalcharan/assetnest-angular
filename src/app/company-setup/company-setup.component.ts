@@ -41,7 +41,11 @@ Company:
   @ViewChild('filectrl') fileInputVariable: any;
   constructor(private modalService: NgbModal, private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,
-    vcr: ViewContainerRef, public toastr: ToastsManager) { }
+    vcr: ViewContainerRef, public toastr: ToastsManager) {
+
+      this.toastr.setRootViewContainerRef(vcr);
+
+     }
 
   ngOnInit() {
 

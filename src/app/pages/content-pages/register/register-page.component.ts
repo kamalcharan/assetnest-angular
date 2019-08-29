@@ -59,6 +59,15 @@ export class RegisterPageComponent {
         {
             if(data.Response==1)
             {
+             this.payload={
+                "User":{
+                    "Name":null,
+                  
+                 "EmailID":null,
+                 "Password":null
+               }
+            }
+              
               this.toastr.success(data.Message);;
 
               setTimeout(()=>{

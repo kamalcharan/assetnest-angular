@@ -75,6 +75,18 @@ export class ViewApikeysComponent {
 
                 x.Name="Read Only  Access"
               }
+
+              x.NewToken=""
+              if(x.Token)
+              {
+                if(x.Token.length>70)
+                {
+                  x.NewToken=x.Token.substring(0, 70)+"...";
+                }
+                else{
+                  x.NewToken=x.Token 
+                }
+              }
             })
           }
         }

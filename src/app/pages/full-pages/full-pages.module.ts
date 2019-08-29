@@ -29,6 +29,7 @@ import { RegionCreationComponent } from '../../region-creation/region-creation.c
 import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
 import { CompanySetupComponent } from '../../company-setup/company-setup.component';
+import { CustomersComponent } from '../../customers/customers.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -57,7 +58,8 @@ import { CompanySetupComponent } from '../../company-setup/company-setup.compone
         ManageTextEditorComponent,
         CatlogCatagoriesComponent,
         RegionCreationComponent,
-        CompanySetupComponent
+        CompanySetupComponent,
+        CustomersComponent
     ]
 })
 export class FullPagesModule { }
