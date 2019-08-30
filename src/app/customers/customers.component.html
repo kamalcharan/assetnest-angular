@@ -70,7 +70,7 @@
                 </p>
       
       <ngx-datatable style="border:solid 1px black;padding:4px;"  #table class="bootstrap" [columns]="columns" [rows]="rows" [loadingIndicator]="loadingIndicator"  [columnMode]="'force'"
-          [headerHeight]="50" [limit]="10"  (sort)="onSort($event)" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
+          [headerHeight]="50" [limit]="10"   [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
 
           <ng-template #buttonsTemplate let-row="row" let-value="value">
               <!-- <button class="btn btn-transparent" (click)="OnbuttonClick(row)" >Button
