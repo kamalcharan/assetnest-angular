@@ -134,6 +134,10 @@ export class CreateApikeyComponent  {
                 this.payload.UserID=this.Userdata._id;
                 this.payload.IsLive=this.Userdata.IsLive;
                 this.toastr.success(data.Message);
+                setTimeout(()=>{
+                  this.router.navigateByUrl("/pages/ViewAPIKeys");
+              },2000)
+                
               }
               else
   
@@ -196,6 +200,12 @@ export class CreateApikeyComponent  {
 
               }
           });
+  }
+
+  Cancel()
+  {
+    this.router.navigateByUrl("/pages/ViewAPIKeys");
+
   }
     SetKeyType(Type)
     {

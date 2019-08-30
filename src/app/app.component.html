@@ -1,1 +1,31 @@
+<style>
+        .popup{
+        width: 100%;
+        float: left;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        background: rgba(0,0,0,.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+        .img{
+        display:block;
+        /* z-index: 10001; */
+    }
+    
+    .fade{
+        height: 1500px !important;
+    }
+    </style>
+    
+    <div class="popup" *ngIf="status">
+            <!-- <input type="text" style="display:none;">
+            <input type="password" style="display:none;"> -->
+        <div class="img" >
+        <img src="/assets/ajax-loader.gif"/>
+        </div>
+        </div>
+
 <router-outlet></router-outlet>

@@ -19,7 +19,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import * as $ from 'jquery';
 import { CKEditorModule } from 'ngx-ckeditor';
-
+import { TitleCasePipe } from '@angular/common';
 
 
 
@@ -52,6 +52,7 @@ import { CKEditorModule } from 'ngx-ckeditor';
     ],
     providers: [
         //Toastr providers
+        TitleCasePipe,
         UserDataServiceService,
         CommonserviceService,
         UserDataServiceService,

@@ -7,6 +7,7 @@ import { UserDataServiceService } from '../shared/user-data-service.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { DatatableComponent } from "@swimlane/ngx-datatable/release";
+import { TitleCasePipe } from '@angular/common';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -51,6 +52,7 @@ export class CustomersComponent implements OnInit {
   sorts="[ {prop: 'ID', dir: 'asc'},{prop: 'Name', dir: 'asc'},{prop: 'Country', dir: 'asc'} ,{prop: 'State', dir: 'asc'},{prop: 'City', dir: 'asc'},{prop: 'Pincode', dir: 'asc'},{prop: 'CompanyCategory', dir: 'asc'},{prop: 'BusinessPlan', dir: 'asc'}]" 
   constructor(private modalService: NgbModal, private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,
+    private titlecasePipe:TitleCasePipe,
     vcr: ViewContainerRef, public toastr: ToastsManager) { 
 
 
@@ -79,24 +81,20 @@ export class CustomersComponent implements OnInit {
   }
   parameterChange()
   {
-    if(!this.SearchType)
-    {
-      
-      this.payload={
-        _id :null, 
-        CompanyID : null, 
-        Name : null, 
-        Alias_Name: null, 
-        LogoURL : null, 
-        Country : null, 
-        State : null, 
-        City : null, 
-        Address : null, 
-        Pincode : null, 
-        CompanyType :null, 
-        BusinessModelStatus: null
-     
-      }
+    this.payload={
+      _id :null, 
+      CompanyID : null, 
+      Name : null, 
+      Alias_Name: null, 
+      LogoURL : null, 
+      Country : null, 
+      State : null, 
+      City : null, 
+      Address : null, 
+      Pincode : null, 
+      CompanyType :null, 
+      BusinessModelStatus: null
+   
     }
   }
   Search()
@@ -140,6 +138,13 @@ export class CustomersComponent implements OnInit {
 
               this.CompanyData=data.Data;
               this.CompanyData.forEach((x,index)=>{
+              x.Name=this.titlecasePipe.transform(x.Name)
+               
+               x.Country=this.titlecasePipe.transform(x.Country)
+              x.State=this.titlecasePipe.transform(x.State)
+               x.City=this.titlecasePipe.transform(x.City)
+
+                //;
                 x.SLID=index+1;
                
                 x.BusinessPlan=""
