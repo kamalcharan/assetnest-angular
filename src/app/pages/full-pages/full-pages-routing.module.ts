@@ -171,7 +171,7 @@ const routes: Routes = [
       ,
       {
         path: 'Customers',
-        component:CompanySetupComponent ,
+        component:CustomersComponent ,
         data: {
           title: 'Customers'
         }

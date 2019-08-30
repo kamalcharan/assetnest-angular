@@ -13,6 +13,8 @@ declare var $: any;
 })
 
 export class SidebarComponent implements OnInit {
+
+    logoUrl= APIURL.Image_Path+ "1gn0sWfrFhRSQkdNDzOjBBfuYtZ0co3S8";
     public menuItems: any[];
 
     newMenuItems=[];

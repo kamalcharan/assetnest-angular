@@ -59,7 +59,17 @@
 
 
 <section class="PreloginBackGroundColor" id="regestration">
+
+        <div class="row"  style="width:60px">
+                <div class="col-12">
+                      <img alt="logo" src="{{logoUrl}}" style="height:60px;width:60px" >
+               </div>
+              </div>
+   
+
+   
     <div class="container">
+           
         <div class="row full-height-vh">
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="card">
@@ -68,7 +78,7 @@
                             <div class="col-12 col-sm-12 col-md-6 gradient-deep-orange-orange">
                                 <div class="card-block">
                                     <div class="card-img overlap">  
-                                        <img alt="Card image cap" src="assets/img/elements/13.png" width="350" class="mx-auto d-block">
+                                        <img alt="Card image cap" src="{{logoUrlBig}}" width="350" class="mx-auto d-block">
                                     </div>
                                     <h2 class="card-title font-large-1 text-center white mt-3">Login</h2>
                                 </div>
@@ -101,8 +111,11 @@
                                     <div class="card-footer" style="padding-left: 0px;
                                     padding-right: 0px;">
                                         <div class="float-left"><a (click)="onForgotPassword()">Recover Password</a></div>
-                                        <div class="float-right"><a (click)="onRegister()">Signup</a></div>
+                                        <div class="float-right">
+                                                <button type="button" style="background:#F05931"  (click)="onRegister()" class="btn  btn-raised">Signup</button>
+                                            </div>
                                     </div>
+                                    
                                 </div>
 
                             </div>

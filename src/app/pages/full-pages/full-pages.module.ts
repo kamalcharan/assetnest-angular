@@ -30,6 +30,7 @@ import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component'
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
 import { CompanySetupComponent } from '../../company-setup/company-setup.component';
 import { CustomersComponent } from '../../customers/customers.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 @NgModule({
     imports: [
         CommonModule,
@@ -37,7 +38,8 @@ import { CustomersComponent } from '../../customers/customers.component';
         FormsModule,
         ChartistModule,
         AgmCoreModule,
-        CKEditorModule
+        CKEditorModule,
+        NgxDatatableModule
     ],
     declarations: [       
         GalleryPageComponent,

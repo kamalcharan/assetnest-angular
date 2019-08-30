@@ -14,6 +14,9 @@ import * as CryptoJS from 'crypto-js';
 })
 
 export class RegisterPageComponent {
+
+  logoUrl=APIURL.Image_Path+"1t9Nyb68eNbvi3iNTZbjHfWZDK7suCpWz";
+  logoUrlBig=APIURL.Image_Path+"18pqfKpUzYIlkX-w6QEhdRPBfAgJ-VQZn";
     adminToken = null;
     terms=false;
     payload={

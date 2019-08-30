@@ -14,6 +14,8 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 export class LoginPageComponent {
    
+    logoUrl=APIURL.Image_Path+"1t9Nyb68eNbvi3iNTZbjHfWZDK7suCpWz";
+    logoUrlBig=APIURL.Image_Path+"18pqfKpUzYIlkX-w6QEhdRPBfAgJ-VQZn";
     payload = {
         Email: null,
         Password: null
