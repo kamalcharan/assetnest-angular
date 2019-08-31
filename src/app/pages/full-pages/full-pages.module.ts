@@ -31,14 +31,11 @@ import { MobilepanelageComponent } from '../../mobilepanelage/mobilepanelage.com
 
 import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
-<<<<<<< HEAD
 import { ArchwizardModule } from 'ng2-archwizard';
 
-=======
 import { CompanySetupComponent } from '../../company-setup/company-setup.component';
 import { CustomersComponent } from '../../customers/customers.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
->>>>>>> 470aa614cd63c713c3f9d046f09a5c5faa6af88f
 @NgModule({
     imports: [
         CommonModule,
@@ -47,11 +44,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         ChartistModule,
         AgmCoreModule,
         CKEditorModule,
-<<<<<<< HEAD
-        ArchwizardModule
-=======
+        ArchwizardModule,
         NgxDatatableModule
->>>>>>> 470aa614cd63c713c3f9d046f09a5c5faa6af88f
     ],
     declarations: [       
         GalleryPageComponent,
@@ -72,13 +66,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         ManageTextEditorComponent,
         CatlogCatagoriesComponent,
         RegionCreationComponent,
-<<<<<<< HEAD
         SingleOminiChannalsComponent,
-        MobilepanelageComponent
-=======
+        MobilepanelageComponent,
         CompanySetupComponent,
         CustomersComponent
->>>>>>> 470aa614cd63c713c3f9d046f09a5c5faa6af88f
     ]
 })
 export class FullPagesModule { }
