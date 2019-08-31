@@ -3,8 +3,8 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="content-header">API and Webhooks</div>
-			<p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
-				example lists all the events on the calendar.</p>
+			<!-- <p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
+				example lists all the events on the calendar.</p> -->
 		</div>
 	</div>
 	<div class="row">
@@ -12,7 +12,7 @@
 	 
 		</div>
 		<div class="col-6" text-center>
-			<button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" style="width:100px;">+ API Key</button>
+			<button type="button"  (click)="NavigateToAdd()" class="btn btn-sm  btn-pink btn-block btn-raised" style="width:100px;">+ API Key</button>
 		  </div>
 	  </div>
 	  <div class="row">
@@ -30,24 +30,24 @@
 
                 </div>
                 <div class="col-4" style="padding-left: 90px;">
-                    <button  *ngIf="item.TokenStatus==41" class="btn btn-flat btn-text btn-pink" title="Active"  style="padding:2px 5px !important" >
+                    <button  (click)="ChangesStatusLabel(content,item,40)"  *ngIf="item.TokenStatus==41" class="btn btn-flat btn-text btn-pink" title="Enable"  style="padding:2px 5px !important" >
                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                     </button>
-                    <button *ngIf="item.TokenStatus==40" class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
+                    <button  (click)="ChangesStatusLabel(content,item,41)" *ngIf="item.TokenStatus==40" class="btn btn-flat btn-text btn-pink" title="Disable"  style="padding:2px 5px !important" >
                         <i class="fa fa-thumbs-down"  aria-hidden="true"></i>
                     </button>
-					<button *ngIf="item.TokenStatus!=42" class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
+					<button *ngIf="item.TokenStatus!=42&&itemTokenType!=36"  (click)="ChangesStatusLabel(content,item,42)"class="btn btn-flat btn-text btn-pink" title="InActive"  style="padding:2px 5px !important" >
                         <i class="fa fa-lg fa-trash"  aria-hidden="true"></i>
                     </button>
                   </div>
             </div>
 			<div class="row" >
 				<div class="col-11">
-					<p>{{item.Token}}</p>
+					<p>{{item.NewToken}}</p>
 				</div>
 				<div class="col-1">
 						<button class="btn btn-flat btn-text btn-pink"  (click)="copyMessage(item.Token)" title="Copy To Clipboard" style="padding:2px 5px !important" >
-								<i class="far fa-clipboard" style="font-size:16px;"></i>
+								<i class="fa fa-clipboard" aria-hidden="true" style="font-size:16px;"></i>
 							</button>
 					</div>
 			</div>
@@ -57,4 +57,54 @@
           </div>
     </div>
 </section>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+	  <h4 class="modal-title" id="modal-basic-title">{{StatusChangeLabel}} API Key</h4>
+	  <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	  </button> -->
+	</div>
+	<div class="modal-body">
+		<form #f="ngForm">  
+		  
+		  <div class="row">
+			  <div class="col-lg-12 col-md-12" style="margin-top: -16px;">
+				<p>
+					{{StatusContent}}
+				</p>
+			  </div>
+
+			  
+		  </div>     
+		  <div class="row">
+					<div class="col-6"> 
+							
+						</div>
+			  <div class="col-6" style="text-align: right;">
+						<button class="btn btn-raised  btn-outline-secondary " style="height: 39px;
+						margin-top: 7px;"  (click)="c('Close click')">Cancel</button>
+				  <button type="button"   class="btn btn-pink  btn-raised" style="height: 39px;
+				  margin-top: 7px;"  (click)="c(ChangeAPIStatus(SelectedKey))" data-dismiss="modal">{{StatusChangeLabel}}</button>
+			  </div>
+			
+		  
+
+
+		  </div>                               
+		   
+			  
+				
+		  
+		  
+		</form>           
+			 
+
+   
+	</div>
+	<div class="modal-footer">
+	  <!-- <button type="button" class="btn btn-outline-dark"  (click)="Submit()">Save</button> -->
+	</div>
+  </ng-template>
 <!--Calendar Ends-->

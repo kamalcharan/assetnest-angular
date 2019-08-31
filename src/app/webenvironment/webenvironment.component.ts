@@ -15,6 +15,8 @@ export class WebenvironmentComponent  {
   CompanyName=null;
   UserData:any;
   LogoURL=null;
+  logoUrl=APIURL.Image_Path+"1t9Nyb68eNbvi3iNTZbjHfWZDK7suCpWz";
+  logoUrlBig=APIURL.Image_Path+"18pqfKpUzYIlkX-w6QEhdRPBfAgJ-VQZn";
   constructor(private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService) { 
 
@@ -23,11 +25,11 @@ export class WebenvironmentComponent  {
 
       console.log("this.UserData",this.UserData);
       this.CompanyName= this.UserData.Company.Name;
-      this.LogoURL=this.UserData.Company.LogoURL;
+      this.LogoURL=APIURL.Image_Path+this.UserData.Company.LogoURL;
     }
 
   ngOnInit() {
-
+    window.scrollTo(0, 0);
   }
   Select(value)
   {

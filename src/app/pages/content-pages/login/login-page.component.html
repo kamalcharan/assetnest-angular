@@ -59,7 +59,21 @@
 
 
 <section class="PreloginBackGroundColor" id="regestration">
+
+        <div class="row"  style="width:60px">
+                <div class="col-12">
+                    <div style="height:60px;width:100px;background: white;margin-top:10px;margin-left:10px;">
+                            <img alt="logo" src="{{logoUrl}}" style="height:60px;width:100px" >
+                    </div>
+                    
+               </div>
+              </div>
+    
+   
+
+   
     <div class="container">
+           
         <div class="row full-height-vh">
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="card">
@@ -67,8 +81,8 @@
                         <div class="row d-flex">
                             <div class="col-12 col-sm-12 col-md-6 gradient-deep-orange-orange">
                                 <div class="card-block">
-                                    <div class="card-img overlap">  
-                                        <img alt="Card image cap" src="assets/img/elements/13.png" width="350" class="mx-auto d-block">
+                                    <div class="card-img overlap" style="background: white;">  
+                                        <img alt="Card image cap" style="padding: 25px;" src="{{logoUrlBig}}" width="350" class="mx-auto d-block">
                                     </div>
                                     <h2 class="card-title font-large-1 text-center white mt-3">Login</h2>
                                 </div>
@@ -81,13 +95,13 @@
                                             <span class="input-group-addon">
                                                 <i class="ft-mail"></i>
                                             </span>
-                                            <input type="email" class="form-control" name="Email" id="inputEmail" placeholder="Email" [(ngModel)]="payload.Email" required email >
+                                            <input type="email" class="form-control" name="Email" id="inputEmail"  [(ngModel)]="payload.Email" required email >
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-addon">
                                                 <i class="ft-lock"></i>
                                             </span>
-                                            <input type="password" class="form-control" name="Password" id="inputPass" placeholder="Password" [(ngModel)]="payload.Password" required >
+                                            <input type="password" class="form-control" name="Password" id="inputPass"  [(ngModel)]="payload.Password" required >
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -101,8 +115,11 @@
                                     <div class="card-footer" style="padding-left: 0px;
                                     padding-right: 0px;">
                                         <div class="float-left"><a (click)="onForgotPassword()">Recover Password</a></div>
-                                        <div class="float-right"><a (click)="onRegister()">Signup</a></div>
+                                        <div class="float-right">
+                                                <button type="button" style="background:#F05931"  (click)="onRegister()" class="btn  btn-raised">Signup</button>
+                                            </div>
                                     </div>
+                                    
                                 </div>
 
                             </div>

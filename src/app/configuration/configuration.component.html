@@ -49,7 +49,7 @@
             Api And WebHooks--🡪
           </div>
           <div class="col-6">
-              <div class="card text-center" *ngFor="let item of getApiHooksList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+              <div class="card text-center" (click)="AdminNavigate(item)" *ngFor="let item of getApiHooksList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
               border-radius: 8px!important;cursor: pointer;">
                   <div class="card-body">
                       <span class="font-medium-2 text-uppercase">{{item.Name}}</span>

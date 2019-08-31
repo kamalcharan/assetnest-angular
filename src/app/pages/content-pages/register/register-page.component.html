@@ -1,6 +1,16 @@
 <!--Registration Page Starts-->
 <section class="PreloginBackGroundColor"
 id="regestration">
+
+<div class="row"  style="width:60px">
+        <div class="col-12">
+            <div style="height:60px;width:100px;background: white;margin-top:10px;margin-left:10px;">
+                    <img alt="logo" src="{{logoUrl}}" style="height:60px;width:100px" >
+            </div>
+            
+       </div>
+      </div>
+
     <div class="container">
         <div class="row full-height-vh">
             <div class="col-12 d-flex align-items-center justify-content-center">
@@ -9,8 +19,8 @@ id="regestration">
                         <div class="row d-flex">
                             <div class="col-12 col-sm-12 col-md-6 gradient-deep-orange-orange">
                                 <div class="card-block">
-                                    <div class="card-img overlap">  
-                                        <img alt="Card image cap" src="assets/img/elements/13.png" width="350" class="mx-auto d-block">
+                                    <div class="card-img overlap" style="background:white;">  
+                                        <img alt="Card image cap" style="padding: 25px;" src="{{logoUrlBig}}" width="350" class="mx-auto d-block">
                                     </div>
                                     <h2 class="card-title font-large-1 text-center white mt-3">Registration</h2>
                                 </div>
@@ -19,10 +29,10 @@ id="regestration">
                                 <div class="card-block mx-auto">
                                     <form  style="padding-top:20px;"  (ngSubmit)="Signup()" #f="ngForm">
                                             <fieldset class="form-group" style="margin-top: -16px;">
-                                                    <label for="basicInput">What is your company name
+                                                    <label for="basicInput">What is your  name
                                                         </label>
                                                    
-                                                    <input type="text" required class="form-control" name="Name" id="fname" placeholder="Name"   style="height: 33px"  [(ngModel)]="payload.User.Name" />
+                                                    <input type="text" required class="form-control" name="Name" id="fname"    style="height: 33px"  [(ngModel)]="payload.User.Name" />
                                                   </fieldset>
                                                   <fieldset class="form-group" style="margin-top: -16px;">
                                                         <label for="basicInput">What is your Email adrress
@@ -31,13 +41,13 @@ id="regestration">
                                                         <input type="text" class="form-control" 
                                                         
                                                         
-                                                        name="EmailID" required id="inputEmail" placeholder="Email" [(ngModel)]="payload.User.EmailID"   style="height: 33px"  />
+                                                        name="EmailID" required id="inputEmail"  [(ngModel)]="payload.User.EmailID"   style="height: 33px"  />
                                                       </fieldset>
                                                       <fieldset class="form-group" style="margin-top: -16px;">
                                                             <label for="basicInput">Password
                                                                 </label>
                                                            
-                                                            <input type="password" required class="form-control" name="inputPass" id="inputPass" placeholder="Password" [(ngModel)]="payload.User.Password"   style="height: 33px"  />
+                                                            <input type="password" required class="form-control" name="inputPass" id="inputPass"  [(ngModel)]="payload.User.Password"   style="height: 33px"  />
                                                           </fieldset>
                                         
                                         <div class="form-group col-sm-offset-1">
@@ -48,18 +58,18 @@ id="regestration">
                                             </label>
                                         </div>
                                         <div class="form-group text-center">
-                                            <button type="button" (click)="Signup()" class="btn btn-pink btn-block btn-raised" [disabled]="!f.valid">Complete Setup</button>
+                                            <button type="button" (click)="Signup()" class="btn btn-pink btn-block btn-raised" >Complete Setup</button>
                                             <button type="button" class="btn btn-raised btn-block  btn-outline-secondary ">Cancel</button>
                                         </div>
 
-                                        <div class="form-group text-center"  >
+                                        <!-- <div class="form-group text-center"  style="display:none" >
                                             
                                                 <div type="submit" #filectrl (change)="fileChangeEvent($event)" class="btn btn-sm ink-reaction btn-floating-action btn-danger float-left">
                                                     <span><i class="fa fa-lg fa-camera "></i></span>
                                                     <input type="file">
                                                 </div>
                                           
-                                        </div>
+                                        </div> -->
                                     </form>
                                 </div>
                             </div>

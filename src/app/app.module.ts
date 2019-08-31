@@ -20,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import * as $ from 'jquery';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { ArchwizardModule } from 'ng2-archwizard';
+import { TitleCasePipe } from '@angular/common';
+
 
 
 
@@ -32,9 +34,8 @@ import { ArchwizardModule } from 'ng2-archwizard';
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        ContentLayoutComponent
-        
-      ],
+        ContentLayoutComponent   
+     ],
     imports: [
         HttpClientModule,
         HttpModule,
@@ -51,6 +52,7 @@ import { ArchwizardModule } from 'ng2-archwizard';
     ],
     providers: [
         //Toastr providers
+        TitleCasePipe,
         UserDataServiceService,
         CommonserviceService,
         UserDataServiceService,

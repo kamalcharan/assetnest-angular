@@ -66,6 +66,12 @@ userData={
     myItem.IsLive= value;
     localStorage.setItem("UserData", JSON.stringify(myItem));
   }
+  SetToken(value)
+  {
+    let myItem = JSON.parse(localStorage.getItem("UserData")) ;
+    myItem.Token= value;
+    localStorage.setItem("UserData", JSON.stringify(myItem));
+  }
   logoutUser()
   {
     localStorage.clear();

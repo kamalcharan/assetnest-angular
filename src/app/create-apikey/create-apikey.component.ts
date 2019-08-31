@@ -19,18 +19,24 @@ export class CreateApikeyComponent  {
     TokenType:null,
     CompanyID:null,
     UserID:null,
-    IsLive:null
+    IsLive:null,
+  
   }
   Userdata:any;
+  adminToken=null;
   constructor(private modalService: NgbModal,private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,
-    vcr: ViewContainerRef,public toastr: ToastsManager) { }
+    vcr: ViewContainerRef,public toastr: ToastsManager) {
+      this.toastr.setRootViewContainerRef(vcr);
+      this.GetAdminToken();
+     }
 
   ngOnInit() {
 
     this.Userdata= JSON.parse(this.UserService.getData());
     this.payload.IsLive=this.Userdata.IsLive;
     this.payload.CompanyID=this.Userdata.Company._id;
+    this.payload.UserID=this.Userdata._id;
 
   }
   modelpop: any;
@@ -38,20 +44,36 @@ export class CreateApikeyComponent  {
   popupName(content,Type){
     this.payload.TokenType=Number(Type);
 
-    // console.log("val",val);
-    // if(val){
-    // this.editActive=true
-    // this.CreateCompanyBrandMapping.Name=val.Name;
-    // this.CreateCompanyBrandMapping.DisplayName=val.DisplayName;
-    // }
-    this.modelpop=this.modalService.open(content, {}).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-    
     
     }
+    popupName2(content){
+     
+      if(this.payload.TokenType)
+      {
+        this.modelpop=this.modalService.open(content, {}).result.then((result) => {
+          this.closeResult = `Closed with: ${result}`;
+          }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          });
+      
+      }
+      else
+
+      {
+        this.toastr.error("Select API key type")
+      }
+  
+
+      // console.log("val",val);
+      // if(val){
+      // this.editActive=true
+      // this.CreateCompanyBrandMapping.Name=val.Name;
+      // this.CreateCompanyBrandMapping.DisplayName=val.DisplayName;
+      // }
+      
+      
+      
+      }
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
@@ -67,19 +89,23 @@ export class CreateApikeyComponent  {
         console.log(this.payload);
 
         var URL=""
+        var Token="";
   
         if(this.payload.TokenType==36)
         {
   
           URL= APIURL.GenerateNewFullAccessAPIKey;
+          Token=this.adminToken;
         }
         else
         {
           URL= APIURL.GenerateNewAPIKey;
+          Token=this.Userdata.Token
         }
   
   
-        this.service.PostMethod (URL, this.payload,this.Userdata.Token)
+
+        this.service.PostMethod (URL, this.payload,Token)
         .subscribe(data => {
   
           if(data)
@@ -91,15 +117,27 @@ export class CreateApikeyComponent  {
               if(data.Response==1)
               {
   
-               this. payload={
+
+                if(this.payload.TokenType==36)
+
+{
+
+  this.UserService.SetToken(data.Data.Token);
+}                this. payload={
                   APIName:null,
                   TokenType:null,
                   CompanyID:null,
                   UserID:null,
                   IsLive:null
                 }
+                this.payload.CompanyID=this.Userdata.Company._id;
+                this.payload.UserID=this.Userdata._id;
                 this.payload.IsLive=this.Userdata.IsLive;
                 this.toastr.success(data.Message);
+                setTimeout(()=>{
+                  this.router.navigateByUrl("/pages/ViewAPIKeys");
+              },2000)
+                
               }
               else
   
@@ -137,7 +175,38 @@ export class CreateApikeyComponent  {
       //   x.Name="Read Only  Access"
       // }
     }
+    GetAdminToken() {
 
+      this.service.getMethodWithoutToken(APIURL.GetAdminToken)
+          .subscribe(data => {
+              console.log(data);
+              if (data) {
+
+                  if (data.Response) {
+                      if (data.Response == 1) {
+
+                          this.adminToken = data.Data.Token
+
+                      }
+                      else {
+
+                      }
+
+                  }
+                  else {
+
+                  }
+
+
+              }
+          });
+  }
+
+  Cancel()
+  {
+    this.router.navigateByUrl("/pages/ViewAPIKeys");
+
+  }
     SetKeyType(Type)
     {
      

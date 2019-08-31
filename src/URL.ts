@@ -43,5 +43,8 @@ export const APIURL = {
     GET_SINGLE_PANEL: BaseUrl + "CreateMaster/GetSinglePanel",
     SAVE_MOBILE_LIST: BaseUrl + "CreateMaster/SaveMobileAnelList",
     GET_PANAL_LIST: BaseUrl + "CreateMaster/GetPanelList",
-    GET_API_DATA: BaseUrl + "APIKey/GetAllAPIkeyData"
+    GET_API_DATA: BaseUrl + "APIKey/GetAllAPIkeyData",
+    GetCompanyDetails: BaseUrl + "users/CompanyDetails",
+    GetCompanyUpdate: BaseUrl + "users/UpdateCompany",
+    CompanySearch: BaseUrl + "users/CompanySearch",
   }

@@ -1,0 +1,86 @@
+<section id="calendar">
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+          <div class="px-3">
+              <form class="form" #f="ngForm">
+                  <div class="form-body">
+                     
+                    <div class="row">
+                      <div class="col-2">
+                          <div class="form-group ">
+                              <label for="projectinput7">Search By</label>
+                                <select id="projectinput7"  (change)="parameterChange()" [(ngModel)]="SearchType" name="Search" class="form-control">
+                                   
+                                    <option value="" >Select</option>
+                                  <option value="Name">Company Name</option>
+                                    <option value="Country">Country</option>
+                                    <option value="State">State</option>
+                                    <option value="City">City</option>
+                                    <option value="Pincode">Pincode</option>
+                                    <!-- <option value="CompanyType">Company Type</option> -->
+                                    <!-- <option value="BusinessModelStatus">BusinessModelStatus</option> -->
+
+                                   
+                                </select>
+                            </div>
+                      </div>
+                      <div class="col-2">
+                          <div class="form-group">
+                              <label for="projectinput2" > Search Text
+                                  
+                              </label>
+                              <input autocomplete="off" type="text" id="projectinput2" class="form-control" 
+                                [(ngModel)]="SearchKey" name="lname">
+                            </div>
+
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label  style="height: 55px;"> 
+                                </label>
+                                <button type="button" (click)="Search()" class="btn btn-pink btn-raised">Search</button>
+
+                              </div>
+                   
+                        </div>
+
+                    </div>
+                  </div>
+        
+                    </form>
+            </div>
+         
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <div class="card">
+          <div class="card-body">
+              <div class="px-3">
+                <p style="text-align:right;">
+                    <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='search grid' (keyup)='updateFilter($event)'
+                    />
+                </p>
+      
+      <ngx-datatable style="border:solid 1px black;padding:4px;"  #table class="bootstrap" [columns]="columns" [rows]="rows" [loadingIndicator]="loadingIndicator"  [columnMode]="'force'"
+          [headerHeight]="50" [limit]="10"   [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
+
+          <ng-template #buttonsTemplate let-row="row" let-value="value">
+              <!-- <button class="btn btn-transparent" (click)="OnbuttonClick(row)" >Button
+              </button> -->
+        </ng-template>`
+       
+      </ngx-datatable>
+      </div>
+      </div>
+      </div>
+  </div>
+</div>
+  </section>

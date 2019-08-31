@@ -91,5 +91,11 @@ console.log("item",item);
 if(item._id==8){
   this.router.navigateByUrl("/pages/Users"); 
 }
-} 
+if(item._id==44){
+  this.router.navigateByUrl("/pages/ViewAPIKeys"); 
+}
+if(item._id==6){
+  this.router.navigateByUrl("/pages/CompanySetup"); 
+}
+}
 }

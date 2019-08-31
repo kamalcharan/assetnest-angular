@@ -25,6 +25,8 @@ import {HomeComponent} from "../../home/home/home.component";
 
   import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
   import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
+  import { CompanySetupComponent } from '../../company-setup/company-setup.component';
+  import { CustomersComponent } from '../../customers/customers.component';
 const routes: Routes = [
   {
     path: '',
@@ -169,9 +171,30 @@ const routes: Routes = [
         data: {
           title: 'Create API Key'
         }
-      }  
-     
-      
+      } ,
+      {
+        path: 'CompanySetup',
+        component:CompanySetupComponent ,
+        data: {
+          title: 'Company Setup'
+        }
+      }   
+      ,
+      {
+        path: 'CompanySetup',
+        component:CompanySetupComponent ,
+        data: {
+          title: 'Company Setup'
+        }
+      }   
+      ,
+      {
+        path: 'Customers',
+        component:CustomersComponent ,
+        data: {
+          title: 'Customers'
+        }
+      }   
      
     ]
   }

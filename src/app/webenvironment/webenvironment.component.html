@@ -1,4 +1,4 @@
-<section id="calendar">
+<!-- <section id="calendar">
 
     <div class="container">
     <div class="row" style="margin-top: 20%;">
@@ -15,14 +15,7 @@ logo
 <div class="row" style="margin-top:20px;">
     <div class="col-2">
     </div>
-  <!-- <div class="col-3">
-    <div  (click)="Select(0)" class="card text-center"  style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
-    border-radius: 8px!important;cursor: pointer;">
-        <div class="card-body">
-            <span class="font-medium-2 text-uppercase">Sample</span>
-        </div>
-      </div>
-  </div> -->
+  
   <div class="col-10">
 
       <div   class="card text-center"  style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
@@ -30,7 +23,7 @@ logo
           <div class="card-body">
               <div class="row">
                   <div class="col-6">
-                     <p>Choose your site to enter
+                     <p  style="margin-top: 10px;">Choose your site to enter
                       </p>
                   </div>
                   <div class="col-3">
@@ -58,6 +51,76 @@ logo
         </div>
 
 </div>
+</div>
+</section> -->
+
+
+<section class="PreloginBackGroundColor" id="regestration">
+
+    <div class="row"  style="width:60px">
+            <div class="col-12">
+                <div style="height:60px;width:100px;background: white;margin-top:10px;margin-left:10px;">
+                        <img alt="logo" src="{{logoUrl}}" style="height:60px;width:100px" >
+                </div>
+                
+           </div>
+          </div>
+
+
+
+<div class="container">
+       
+    <div class="row full-height-vh">
+       
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            
+            <img alt="logo" src="{{LogoURL}}" style="height:50px;width:50px;margin-top: -300px;" >
+            <div   class="card text-center"  style="padding:10px!important;margin-top: -300px;
+            border-radius: 8px!important;cursor: pointer;width: 100%;margin-left: 10%">
+           
+                <div class="card-body">
+                    <!-- <p style="text-align:left;">
+                        <span></span>
+                        <span> </span>
+                      </p> -->
+                     
+                    <div class="row">
+
+                     
+                      <div class="col-4">
+                        <p style="margin-top: 10px;">  asadsadsadsadsad {{CompanyName}}</p>  
+                      </div>
+                        <div class="col-4">
+                           <p  style="margin-top: 10px;">Choose your site to enter
+                            </p>
+                        </div>
+                        <div class="col-2">
+                            <button  (click)="Select(0)"  style="width: 100px;"  type="button" class="btn btn-raised btn-secondary btn-min-width mr-1 mb-1">Test</button>
+                        </div>
+                        <div class="col-2">
+                            <button (click)="Select(1)" style="width: 100px;" type="button" class="btn btn-raised btn-success btn-min-width mr-1 mb-1">Live</button>
+                          </div>
+                      </div>
+                </div>
+              </div>
+                  
+                    
+                  
+                  
+                  <div class="row" style="margin-top:5%">
+                    <div class="col-9">
+                  
+                    </div>
+                   
+                        <div class="col-3 text-right">
+                            <button (click)="logout()"  style="margin-left:-75px;" type="button" class="btn btn-pink  btn-raised">Logout</button>
+                          </div>
+                  
+                  </div>
+              
+           
+        </div>
+    </div>
 </div>
 </section>
 
