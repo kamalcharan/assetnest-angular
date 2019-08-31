@@ -1,3 +1,24 @@
-<p>
-  ominichaneels works!
-</p>
+<section id="calendar">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="content-header">Omini Channels</div>
+        <p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
+          example lists all the events on the calendar.</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-6">
+          Customer Facing Essentials--🡪
+        </div>
+        <div class="col-6">
+            <div class="card text-center" *ngFor="let item of AllMobileList" (click)="ClickOmini(item)" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
+            border-radius: 8px!important;cursor: pointer;">
+                              <span class="font-medium-2 text-uppercase">{{item.Name}}</span>
+               
+              </div>
+          </div>
+    </div>
+    
+    
+  </section>

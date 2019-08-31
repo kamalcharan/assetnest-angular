@@ -1,0 +1,167 @@
+<section id="calendar">
+    <div class="row" style="background: #F2F0C4;margin-left: -32px;
+    margin-right: -32px;height:54px">
+        <div class="col-2" style="margin-top: 22px;">
+            <i class="fa fa-chevron-left btn-pink" aria-hidden="true" style="cursor: pointer;margin-top: -15px;font-size: 36px;"></i>
+
+        </div>
+        <div class="col-4" style="margin-left: -126px;">
+            <span class="content-header" *ngFor="let item of SignlePanelList">
+
+                <p style="font-weight: lighter">Omini Channels</p>
+                <p style=" margin-top: -15px;"><b>{{item.Name}}</b></p>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Form wizard with icon tabs</h4>
+            </div>
+            <div class="card-body">
+              <div class="card-block" *ngFor="let item of SignlePanelList">
+                  <wizard>
+                      <wizard-step stepTitle="Categories" [canExit]='true'>
+                          <div class="row">
+                              <div class="col-6">
+                                  <table>
+                                      <tr>
+                                        <th>CategoryName</th>                        
+                                      </tr>
+                                      <tbody>
+                                          <tr style="cursor: pointer;" *ngFor="let item of CategorySavedList" (click)="SelectedCategory(item)">
+                                              <td>{{item.CategoryName}}</td>                        
+                                            </tr>
+      
+                                      </tbody>
+                                   
+                                      </table>
+                                      
+                              </div>
+                              <div class="col-6" *ngIf="FinalSelectionList.length">
+                                  <table style="width: 250px">
+                                      <tr>
+                                        <th>CategoryName</th>                        
+                                      </tr>
+                                      <tr *ngFor="let item of FinalSelectionList" style="cursor: pointer;">
+                                          <td>{{item.CategoryName}}&nbsp;
+                                              <button type="button" class="close" aria-label="Close" (click)="DeleteBack(item)">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button></td>                        
+                                        </tr>
+                                      </table>
+                                      
+                              </div>
+                              
+                          </div>
+                        <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" style="width:100px;margin-top: 10px;" nextStep>Next</button>
+
+                      </wizard-step>
+                      <wizard-step stepTitle="Regions" awOptionalStep>
+                          <div class="row">
+                              <div class="col-6">
+                                  <table>
+                                      <tr>
+                                        <th>Region Name</th>                        
+                                      </tr>
+                                      <tr *ngFor="let item of regionList" style="cursor: pointer;" (click)="SelectedRegions(item)">
+                                          <td>{{item.Name}}</td>                        
+                                        </tr>
+                                      </table>
+                                      
+                              </div>
+                              <div class="col-6" *ngIf="FinalRegionList.length">
+                                <table style="width: 250px">
+                                    <tr>
+                                      <th>Region Name</th>                        
+                                    </tr>
+                                    <tr *ngFor="let item of FinalRegionList" style="cursor: pointer;">
+                                        <td>{{item.Name}}&nbsp;
+                                            <button type="button" class="close" aria-label="Close" (click)="DeleteRegionBack(item)">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button></td>                        
+                                      </tr>
+                                    </table>
+                                    
+                            </div>
+                          </div>
+                        <div class="row" style="margin-top:10px">
+                            <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" style="width: 120px;
+                            height: 32px;
+                            margin-top: 10px;" previousStep> Previous </button>
+                            <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" style="width:120px;margin-left:10px" nextStep>Next</button>
+                        </div>
+                       
+
+
+                      </wizard-step>
+                      <wizard-step stepTitle="{{item.Name}}">
+                          <div *ngIf="item._id=='1' || item._id=='2'">
+                                <div class="row" *ngFor="let fields of userArray; let i=index;let last = last">
+                                        <div class="col-6">
+                                          <div class="form-group">
+                                            <label for="MobileNo">Contact No</label>
+                                            <input type="Number" class="form-control" name="ContactNo" id="ContactNo" required  [(ngModel)]="userArray[i].ContactNo" style="height: 33px;width: 237px;">
+                                          </div>
+                                         
+                                        </div>
+                                        <div class="col-4" style="margin-left: -285px" (click)="AddFields(i+1)">
+                                              <button class="btn btn-flat btn-text btn-pink" *ngIf="last" title="Add ContactNo" style="padding:2px 5px !important;margin-top:36px" >
+                                                      <i class="fa fa-plus"></i>
+                                              </button>
+                                        </div>
+                                       
+                                      </div>
+                          </div>
+                          <div *ngIf="item._id=='8'">
+                                <div class="row">
+                                        <div class="col-6">
+                                                <fieldset class="form-group">
+                                                        <label for="basicInput">EmailID</label>
+                                                        <input type="email" class="form-control" name="EmailID" id="EmailID" [(ngModel)]="panelData.Email" style="height: 33px" required >
+                                                      </fieldset>
+                                         
+                                        </div>
+                                       
+                                       
+                                      </div>
+                          </div>
+                          <div *ngIf="item._id=='3'">
+                            <div class="row">
+                              <div class="col-4">
+                                <fieldset class="form-group">
+                                  <label for="basicInput">{{item.Name}} Name</label>
+                                  <input type="text" class="form-control" name="CompalintName" id="CompalintName" [(ngModel)]="panelData.CompalintName" 
+                                  style="height: 33px;width: 210px" required >
+                                </fieldset>
+                              </div>
+                              <div class="col-4">
+                                <fieldset class="form-group">
+                                  <label for="basicSelect">Select Api</label>
+                                  <select class="form-control" *ngFor="let pd of ApiList" id="basicSelect" (change)="SelectedApi(pd)" style="width: 210px">
+                                    <option>Select Api</option>
+                                    <option value="{{pd._id}}">{{pd.Token}}</option>
+                                    
+                                  </select>
+                              </fieldset> 
+                              </div>
+                            </div>
+                          </div>
+                        
+                            <div class="row" style="margin-top:10px">
+                                <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" style="width: 120px;
+                                height: 32px;
+                                margin-top: 10px;" previousStep>Previous</button>
+                                <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" (click)="ClickSave(item)" style="width:100px;margin-left:10px">Finish</button>
+                            </div>
+                        
+                      </wizard-step>
+                    </wizard>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>

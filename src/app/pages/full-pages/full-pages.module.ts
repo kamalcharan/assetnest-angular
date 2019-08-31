@@ -24,10 +24,15 @@ import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-
 import { CKEditorModule } from 'ngx-ckeditor';
 import { CatlogCatagoriesComponent } from '../../catlog-catagories/catlog-catagories.component';
 import { RegionCreationComponent } from '../../region-creation/region-creation.component';
+import { SingleOminiChannalsComponent } from '../../single-omini-channals/single-omini-channals.component';
+import { MobilepanelageComponent } from '../../mobilepanelage/mobilepanelage.component';
+
 
 
 import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
+import { ArchwizardModule } from 'ng2-archwizard';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -35,7 +40,8 @@ import { CreateApikeyComponent } from '../../create-apikey/create-apikey.compone
         FormsModule,
         ChartistModule,
         AgmCoreModule,
-        CKEditorModule
+        CKEditorModule,
+        ArchwizardModule
     ],
     declarations: [       
         GalleryPageComponent,
@@ -55,7 +61,9 @@ import { CreateApikeyComponent } from '../../create-apikey/create-apikey.compone
         ManageIntegrationsComponent,
         ManageTextEditorComponent,
         CatlogCatagoriesComponent,
-        RegionCreationComponent
+        RegionCreationComponent,
+        SingleOminiChannalsComponent,
+        MobilepanelageComponent
     ]
 })
 export class FullPagesModule { }

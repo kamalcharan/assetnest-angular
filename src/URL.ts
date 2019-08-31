@@ -15,7 +15,6 @@ export const APIURL = {
     SaveUsersData: BaseUrl + "CreateMaster/SaveUSersList",
     GetUSersList: BaseUrl + "CreateMaster/GetUSersList",
     ActiveInactiveUser: BaseUrl + "CreateMaster/InActiveDelete",
-
     ChangeAPIKeyStatus: BaseUrl + "APIKey/ChangeAPIKeyStatus",
     GenerateNewFullAccessAPIKey: BaseUrl + "APIKey/GenerateNewFullAccessAPIKey",
     ChangeFullAccesKeyStatus: BaseUrl + "APIKey/ChangeFullAccesKeyStatus",
@@ -39,5 +38,10 @@ export const APIURL = {
     DeleteCategory: BaseUrl + "CreateMaster/DeleteCategory",
     InsertRegions: BaseUrl + "CreateMaster/InsertRegions",
     GetRegionDetails: BaseUrl + "CreateMaster/GetRegionDetails",
-    DeleteRegionUpdate: BaseUrl + "CreateMaster/DeleteRegionUpdate"
+    DeleteRegionUpdate: BaseUrl + "CreateMaster/DeleteRegionUpdate",
+    GetMobileList:BaseUrl + "CreateMaster/GetMobileList",
+    GET_SINGLE_PANEL: BaseUrl + "CreateMaster/GetSinglePanel",
+    SAVE_MOBILE_LIST: BaseUrl + "CreateMaster/SaveMobileAnelList",
+    GET_PANAL_LIST: BaseUrl + "CreateMaster/GetPanelList",
+    GET_API_DATA: BaseUrl + "APIKey/GetAllAPIkeyData"
   }
