@@ -22,7 +22,7 @@
         <div class="nav-container">
             <ul class="navigation">
                 <!-- First level menu -->
-                 <li *ngFor="let menuItem of newMenuItems"  [ngClass]="[menuItem.class]" [routerLinkActive]="menuItem.SubMenus.length != 0 ? '' : 'active'"
+                 <li  style="font-size:14px;"  *ngFor="let menuItem of newMenuItems"  [ngClass]="[menuItem.class]" [routerLinkActive]="menuItem.SubMenus.length != 0 ? '' : 'active'"
                     [routerLinkActiveOptions]="{exact: true}">
                     <a [routerLink]="menuItem.class === '' ? [menuItem.Path] : null" >
                         <i [ngClass]="[menuItem.Icon]"></i>
@@ -32,7 +32,7 @@
    
                     <!-- Second level menu -->
                     <ul class="menu-content" *ngIf="menuItem.SubMenus.length > 0">
-                        <li *ngFor="let menuSubItem of menuItem.SubMenus" routerLinkActive="active" >
+                        <li style="font-size:14px;"  *ngFor="let menuSubItem of menuItem.SubMenus" routerLinkActive="active" >
                             <a [routerLink]="menuSubItem.Path">
                                 <i [ngClass]="[menuSubItem.Icon]"></i>
                                 <span class="menu-title">{{menuSubItem.SubMenuName}}</span>

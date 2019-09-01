@@ -118,7 +118,22 @@ if(this.QueryCompanyID)
 }
 BackNav()
   {
-    this.router.navigate(['/pages/OMNIChannel'])
+    
+    if(this.QueryCompanyID)
+    {
+    var  val={
+        
+        "CompanyID":this.QueryCompanyID
+      }
+      
+      this.router.navigate(["/pages/OMNIChannel"], { skipLocationChange: false, queryParams:val })
+
+    }
+    else
+    {
+      
+      this.router.navigate(['/pages/OMNIChannel'])
+    }
 
   }
 }

@@ -262,18 +262,41 @@ this.ApiList=list.Data;
   }
   BackNav(){
     var val;
-    if(this.finalID){
-      val={
-        "id":this.finalID
+   
+    if(this.QueryCompanyID)
+    {
+      if(this.finalID){
+        val={
+          "id":this.finalID,
+          "CompanyID":this.QueryCompanyID
+        }
+      }else{
+        val={
+          "id":this.id,
+          "CompanyID":this.QueryCompanyID
+        }
       }
-    }else{
-      val={
-        "id":this.id
+    
+      
+      this.router.navigate(['/pages/Panel'], { skipLocationChange: false, queryParams: val })
+
+    }
+    else
+    {
+      if(this.finalID){
+        val={
+          "id":this.finalID
+        }
+      }else{
+        val={
+          "id":this.id
+        }
       }
+      this.router.navigate(['/pages/Panel'], { skipLocationChange: false, queryParams: val })
     }
     
     // this.router.navigateByUrl("/pages/Panel");
-    this.router.navigate(['/pages/Panel'], { skipLocationChange: false, queryParams: val })
+ 
 
   }
   
