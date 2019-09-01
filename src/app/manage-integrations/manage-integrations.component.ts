@@ -15,17 +15,33 @@ export class ManageIntegrationsComponent implements OnInit {
   id: any;
   SignleData=[];
   closeResult: string;
+  QueryCompanyID=null
+
   constructor(private modalService: NgbModal,private user: UserDataServiceService, private commonServices: CommonserviceService, 
     vcr: ViewContainerRef, public toastr: ToastsManager, private router: Router, private route: ActivatedRoute) {
       this.toastr.setRootViewContainerRef(vcr);
       this.UserData=JSON.parse(this.user.getData());
+      // this.route.queryParams.subscribe(params => {
+      //   console.log("come to params", params);
+      //   this.id=params.id;
+        
+      // })
       this.route.queryParams.subscribe(params => {
         console.log("come to params", params);
-        this.id=params.id;
+        this.id = params.id;
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+          
+        }
       })
   }
 
   ngOnInit() {
+    if(this.QueryCompanyID)
+    {
+      this.UserData.Company._id= this.QueryCompanyID;
+    }
     this.singlepayloadData()
 
   }
@@ -49,7 +65,16 @@ export class ManageIntegrationsComponent implements OnInit {
  
    } 
    BackNav(){
-    this.router.navigate(['/pages/Settings2'], { skipLocationChange: false })
+    if(this.QueryCompanyID)
+    {
+      
+      this.router.navigate(["/pages/Settings2"], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+
+    }
+    else
+    {
+      this.router.navigate(['/pages/Settings2'], { skipLocationChange: false })
+    }
 
    }
    Connectarameters(item,content){

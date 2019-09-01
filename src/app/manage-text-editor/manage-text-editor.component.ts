@@ -18,7 +18,7 @@ import Counter from '../../app/components/extra/editor/counter';
   styleUrls: ['./manage-text-editor.component.scss']
 })
 export class ManageTextEditorComponent implements OnInit {
-
+  QueryCompanyID=null;
   UserData: any;
   id: any;
   SignleData=[];
@@ -51,6 +51,11 @@ export class ManageTextEditorComponent implements OnInit {
         this.users.Name=params.Name;
         this.users.type=params.Type;
         this.users.DisplayText=params.Display;
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+          
+        }
        
       })
   }
@@ -65,7 +70,16 @@ export class ManageTextEditorComponent implements OnInit {
       "id": this.users.id
     }
     this.router.navigate(['/pages/Integrations'], { skipLocationChange: false, queryParams: val })
+    if(this.QueryCompanyID)
+    {
+      
+      this.router.navigate(["/pages/Settings2"], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
 
+    }
+    else
+    {
+      this.router.navigate(['/pages/Settings2'], { skipLocationChange: false })
+    }
   }
   updateCkeditor(){
     this.commonServices.PostMethod(APIURL.UpdateDefaultText,this.users,this.UserData.Token).subscribe(data=>{

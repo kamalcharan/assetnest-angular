@@ -16,6 +16,7 @@ export class SingleIntegrationsComponent implements OnInit {
   SignleData = [];
   ManageData = [];
   editActive:Boolean=false;
+  QueryCompanyID=null;
   constructor(private user: UserDataServiceService, private commonServices: CommonserviceService,
     vcr: ViewContainerRef, public toastr: ToastsManager, private router: Router, private route: ActivatedRoute) {
 
@@ -24,10 +25,21 @@ export class SingleIntegrationsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log("come to params", params);
       this.id = params.id;
+      if(params.CompanyID)
+      {
+        this.QueryCompanyID=Number(params.CompanyID);
+        
+      }
     })
+   
+   
   }
 
   ngOnInit() {
+    if(this.QueryCompanyID)
+    {
+      this.UserData.Company._id= this.QueryCompanyID;
+    }
     this.singlepayloadData();
     this.SignleManageData();
 
@@ -73,7 +85,17 @@ export class SingleIntegrationsComponent implements OnInit {
     })
   }
   BackNav() {
-    this.router.navigate(['/pages/Settings2'], { skipLocationChange: false })
+   
+    if(this.QueryCompanyID)
+    {
+      
+      this.router.navigate(["/pages/Settings2"], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+
+    }
+    else
+    {
+      this.router.navigate(['/pages/Settings2'], { skipLocationChange: false })
+    }
 
   }
   clickHeader(valname, type) {
@@ -85,13 +107,29 @@ export class SingleIntegrationsComponent implements OnInit {
       textValue = valname.FooterText;
 
     }
-    var val = {
-      "Type": type,
-      "Name": valname.Name,
-      "id": valname._id,
-      "Display": textValue
+    var val =null
+    if(this.QueryCompanyID)
+    {
+      val  = {
+        "Type": type,
+        "Name": valname.Name,
+        "id": valname._id,
+        "Display": textValue,
+        "CompanyID":this.QueryCompanyID
+      }
+      this.router.navigate(['/pages/Editor'], { skipLocationChange: false, queryParams: val })
+
     }
-    this.router.navigate(['/pages/Editor'], { skipLocationChange: false, queryParams: val })
+    else{
+      val  = {
+        "Type": type,
+        "Name": valname.Name,
+        "id": valname._id,
+        "Display": textValue
+      }
+      this.router.navigate(['/pages/Editor'], { skipLocationChange: false, queryParams: val })
+    }
+   
 
   }
   UpdateConnect(item)

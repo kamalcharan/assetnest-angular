@@ -23,10 +23,22 @@ export class CategorieslistComponent implements OnInit {
   MarketingList=[];
   SalesForceList=[];
   AppConnectedList=[];
+  QueryCompanyID=null;
   constructor(private service :CommonserviceService,private router: Router,
     private route: ActivatedRoute,private UserService: UserDataServiceService) {
+      
       this.UserData= JSON.parse(UserService.getData()) ;
       console.log(" this.UserData", this.UserData);
+      this.route.queryParams.subscribe(params => {
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+        }
+      })
+      if(this.QueryCompanyID)
+    {
+      this.UserData.Company._id= this.QueryCompanyID;
+    }
      }
 
   ngOnInit() {
@@ -86,16 +98,41 @@ GetParentValueList(val){
  
 }
 ClickManage(list){
-console.log("sdsd",item);
-var item={
-  "id":list._id
-}
+
+var item=null
+ if(this.QueryCompanyID)
+ {
+   item={
+     "id":list._id,
+"CompanyID":this.QueryCompanyID
+   }
+  
+ }
+ else{
+  item={
+    "id":list._id,
+
+  }
+ }
+
 this.router.navigate(['/pages/Manage'], { skipLocationChange: false, queryParams: item })
 }
 SingleIntegrate(list){
  console.log("list",list);
- var item={
-   "id":list._id
+ var item=null
+ if(this.QueryCompanyID)
+ {
+   item={
+     "id":list._id,
+"CompanyID":this.QueryCompanyID
+   }
+  
+ }
+ else{
+  item={
+    "id":list._id,
+
+  }
  }
  this.router.navigate(['/pages/Integrations'], { skipLocationChange: false, queryParams: item })
 

@@ -63,17 +63,17 @@ export class CustomersComponent implements OnInit {
   ngOnInit() {
    this. columns = [
       
-      {prop:'SLID',name:'ID'},
-      { prop: 'Name' },
-      { prop: 'CompanyID' },
+      {prop:'SLID',name:'ID' ,'width':'50'},
+      { prop: 'Name','width':'120' },
+      { prop: 'CompanyID' ,'width':'120'},
       // { prop: 'Country' },
-      { prop: 'State' },
-      { prop: 'City' },
+      { prop: 'State','width':'150' },
+      { prop: 'City','width':'150' },
      
      
-      { prop: 'Category' },
-      { prop: 'BusinessPlan' },
-      {prop :'Actions', name: 'Actions', cellTemplate: this.buttonsTemplate,}
+      { prop: 'Category','width':'100' },
+      { prop: 'BusinessPlan' ,'width':'120'},
+      {prop :'Actions', name: 'Actions', cellTemplate: this.buttonsTemplate,'width':'200'}
       
 
   ];
@@ -245,5 +245,18 @@ OnbuttonClick(value)
   console.log(value);
 
   this.router.navigate(['pages/Settings'], { skipLocationChange: false, queryParams: { CompanyID: value._id} })
+}
+OnbuttonClicki(value)
+{
+  console.log(value);
+
+  this.router.navigate(['pages/Settings2'], { skipLocationChange: false, queryParams: { CompanyID: value._id} })
+}
+
+OnbuttonClicko(value)
+{
+  console.log(value);
+
+  this.router.navigate(['pages/OMNIChannel'], { skipLocationChange: false, queryParams: { CompanyID: value._id} })
 }
 }

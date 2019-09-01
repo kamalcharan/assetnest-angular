@@ -12,21 +12,50 @@ export class OminichaneelsComponent implements OnInit {
 
   UserData=null;
   AllMobileList=[];
+  QueryCompanyID=null;
   constructor(private service :CommonserviceService,private router: Router,
     private route: ActivatedRoute,private UserService: UserDataServiceService) {
       this.UserData= JSON.parse(UserService.getData()) ;
       console.log(" this.UserData", this.UserData);
+      this.route.queryParams.subscribe(params => {
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+          
+        }
+      })
      }
 
   ngOnInit() {
+    if(this.QueryCompanyID)
+    {
+      this.UserData.Company._id= this.QueryCompanyID;
+    }
   this.GetMobileList();
   }
   ClickOmini(item){
-    var val={
-      "id":item._id
-    }
+    var val=null
+    
     // this.router.navigateByUrl("/pages/Panel");
-    this.router.navigate(['/pages/Panel'], { skipLocationChange: false, queryParams: val })
+    if(this.QueryCompanyID)
+    {
+      
+      val={
+        "id":item._id,
+        "CompanyID":this.QueryCompanyID
+      }
+      this.router.navigate(['/pages/Panel'], { skipLocationChange: false, queryParams: val })
+
+    }
+    else
+    {
+     val= {
+        "id":item._id
+      }
+      this.router.navigate(['/pages/Panel'], { skipLocationChange: false, queryParams: val })
+    }
+
+   
 
 
   }
