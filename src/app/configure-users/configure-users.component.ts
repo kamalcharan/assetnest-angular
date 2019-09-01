@@ -5,7 +5,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {CommonserviceService} from "../shared/commonservice.service"
 import{ APIURL} from "../../URL"
 import * as CryptoJS from 'crypto-js';
-
+import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-configure-users',
   templateUrl: './configure-users.component.html',
@@ -24,9 +24,21 @@ Users={
 closeResult: string;
 UserData=null
 validation: boolean = true;
-constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr: ViewContainerRef,public toastr: ToastsManager,private UserService:UserDataServiceService) {
+QueryCompanyID=null
+constructor(private router: Router,
+  private route: ActivatedRoute,private modalService: NgbModal,public cms: CommonserviceService,vcr: ViewContainerRef,public toastr: ToastsManager,private UserService:UserDataServiceService) {
   this.toastr.setRootViewContainerRef(vcr);
   this.UserData= JSON.parse(UserService.getData()) ;
+  this.route.queryParams.subscribe(params => {
+    if(params.CompanyID)
+    {
+      this.QueryCompanyID=Number(params.CompanyID);
+    }
+  })
+  if(this.QueryCompanyID)
+  {
+    this.UserData.Company._id=this.QueryCompanyID;
+  }
 
  }
 

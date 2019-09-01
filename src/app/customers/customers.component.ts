@@ -49,6 +49,7 @@ export class CustomersComponent implements OnInit {
   SearchType="";
   SearchKey=null;
   UserData:any;
+  pageSize=10
   sorts="[ {prop: 'ID', dir: 'asc'},{prop: 'Name', dir: 'asc'},{prop: 'Country', dir: 'asc'} ,{prop: 'State', dir: 'asc'},{prop: 'City', dir: 'asc'},{prop: 'Pincode', dir: 'asc'},{prop: 'CompanyCategory', dir: 'asc'},{prop: 'BusinessPlan', dir: 'asc'}]" 
   constructor(private modalService: NgbModal, private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,
@@ -65,14 +66,14 @@ export class CustomersComponent implements OnInit {
       {prop:'SLID',name:'ID'},
       { prop: 'Name' },
       { prop: 'CompanyID' },
-      { prop: 'Country' },
+      // { prop: 'Country' },
       { prop: 'State' },
       { prop: 'City' },
      
      
       { prop: 'Category' },
       { prop: 'BusinessPlan' },
-      {prop :'Actions', name: 'Actions', cellTemplate: this.buttonsTemplate}
+      {prop :'Actions', name: 'Actions', cellTemplate: this.buttonsTemplate,}
       
 
   ];
@@ -242,5 +243,7 @@ console.log(error);
 OnbuttonClick(value)
 {
   console.log(value);
+
+  this.router.navigate(['pages/Settings'], { skipLocationChange: false, queryParams: { CompanyID: value._id} })
 }
 }

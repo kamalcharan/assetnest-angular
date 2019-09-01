@@ -71,5 +71,10 @@ var val={
 }
 this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
 
+  
+}
+BackNav()
+  {
+    
   }
 }
