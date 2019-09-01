@@ -18,6 +18,7 @@ export class MobilepanelageComponent implements OnInit {
   regionList=[];
   SignlePanelList=[];
   id: any;
+  _id: any;
   FinalSelectionList=[];
   ApiList=[];
   panelData={
@@ -26,8 +27,14 @@ export class MobilepanelageComponent implements OnInit {
     "ServiceName": null,
     "ApiName":null,
     "ApiID":null,
-    "CompalintName": null
+    "CompalintName": null,
+    "Token":null,
+    "AMCName":null,
+    "OthersName":null,
+    "BillingName":null,
+    "_id":null
   }
+  finalID:any;
   userArray=[];
   constructor(private service :CommonserviceService,vcr: ViewContainerRef,private router: Router,public toastr: ToastsManager,
     private route: ActivatedRoute,private UserService: UserDataServiceService) {
@@ -36,7 +43,12 @@ export class MobilepanelageComponent implements OnInit {
       console.log(" this.UserData", this.UserData);
       this.route.queryParams.subscribe(params => {
         console.log("come to params", params);
-        this.id = params.id;
+        if(params._id){
+          this._id = params._id;
+          this.SavedData()
+        }else{
+          this.id = params.id;
+        }
       })
      }
 
@@ -45,11 +57,7 @@ export class MobilepanelageComponent implements OnInit {
     this.getSavedroductCategories();
     this.getregionDeatils();
     this.singlePanel();
-    if(this.id==3){
-      this.ApiData()
-    }
-
-
+      this.ApiData();
   }
   count=0;
   AddFields(i) {
@@ -59,6 +67,41 @@ export class MobilepanelageComponent implements OnInit {
     this.userArray[i] = obj;
     this.count++;
 
+  }
+  SavedData(){
+    this.service.getMethod(APIURL.getSavedPanels+'/'+this._id,this.UserData.Token).subscribe(data=>{
+  console.log("hello alll",data);
+  this.finalID=data.Data[0].FK_ID;
+  this.FinalRegionList=data.Data[0].RegionList;
+  this.FinalSelectionList=data.Data[0].CategoriesList;
+  this.panelData.Email=data.Data[0].Data.Email;
+  this.panelData.AMCName=data.Data[0].Data.AMCName;
+  this.panelData.BillingName=data.Data[0].Data.BillingName;
+  this.panelData.ServiceName=data.Data[0].Data.ServiceName;
+  this.panelData.ApiID=data.Data[0].ApiID;
+  this.panelData.ApiName=data.Data[0].ApiName;
+  this.panelData.Token=data.Data[0].Token;
+  this.panelData.OthersName=data.Data[0].Data.OthersName;
+  if(this.finalID==1){
+    this.userArray=data.Data[0].Data.ContactList;
+
+  }else if(this.finalID==2){
+    this.userArray=data.Data[0].Data.EmergencyContactList;
+ 
+  }
+  this.panelData._id=data.Data[0]._id;
+
+
+  this.checkFinishList();
+    })
+
+  }
+  checkFinishList(){
+    this.service.getMethod(APIURL.GET_SINGLE_PANEL+'/'+ this.finalID, this.UserData.Token).subscribe(data=>{
+      console.log("check meee",data);
+      this.SignlePanelList=data.Data;
+
+    })
   }
   ApiData(){
     var payload={
@@ -71,7 +114,7 @@ this.ApiList=list.Data;
   }
   singlePanel(){
     this.service.getMethod(APIURL.GET_SINGLE_PANEL+'/'+ this.id, this.UserData.Token).subscribe(data=>{
-      console.log("check",data);
+      console.log("check meee",data);
       this.SignlePanelList=data.Data;
     })
   }
@@ -146,10 +189,30 @@ this.ApiList=list.Data;
         "Email":this.panelData.Email,
         "ComplaintsName":this.panelData.CompalintName
       }
+    }else if(item._id==4){
+      data={
+        "EmergencyContactList":this.userArray,
+        "Email":this.panelData.Email,
+        "ServiceName":this.panelData.ServiceName
+      }
+    }else if(item._id==5){
+      data={
+        "EmergencyContactList":this.userArray,
+        "Email":this.panelData.Email,
+        "AMCName":this.panelData.AMCName
+      }
+    }
+    else if(item._id==6){
+      data={
+        "EmergencyContactList":this.userArray,
+        "Email":this.panelData.Email,
+        "BillingName":this.panelData.BillingName
+      }
     }else{
       data={
         "ContactList":this.userArray,
-        "Email":this.panelData.Email
+        "Email":this.panelData.Email,
+        "OthersName":this.panelData.OthersName
       }
     }
     
@@ -163,7 +226,8 @@ this.ApiList=list.Data;
       "IsLive":this.UserData.IsLive,
       "CreatedBy":this.UserData._id,
       "ApiID":this.panelData.ApiID,
-      "ApiName":this.panelData.ApiName
+      "ApiName":this.panelData.ApiName,
+       "_id":this.panelData._id
     }
     this.service.PostMethod(APIURL.SAVE_MOBILE_LIST,payload,this.UserData.Token).subscribe(data=>{
       if(data.Response==1){
@@ -172,8 +236,15 @@ this.ApiList=list.Data;
     })
   }
   SelectedApi(val){
-    this.panelData.ApiName=val.Token;
-    this.panelData.ApiID=val._id
+    alert(val)
+    this.panelData.ApiID=val;
+    this.ApiList.forEach(x=>{
+      if(x._id==val){
+        this.panelData.Token=x.Token;
+        this.panelData.ApiName=x.APIName;
+      }
+    })
+   
 
   }
   

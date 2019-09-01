@@ -41,13 +41,17 @@ export class SingleOminiChannalsComponent implements OnInit {
     this.commonServices.PostMethod(APIURL.GET_PANAL_LIST,payload,this.UserData.Token).subscribe(list=>{
       console.log("check mjdn",list);
       this.ListOfMobileList=list.Data;
-
+      this.ListOfMobileList.forEach(x=>{
+        x.catLength=x.CategoriesList.length;
+      })
     })
   }
   singlePanel(){
     this.commonServices.getMethod(APIURL.GET_SINGLE_PANEL+'/'+ this.id, this.UserData.Token).subscribe(data=>{
       console.log("check",data);
       this.SignlePanelList=data.Data;
+      
+      //this.CategoriesList=data
     })
   }
 
@@ -58,5 +62,14 @@ export class SingleOminiChannalsComponent implements OnInit {
     }
     // this.router.navigateByUrl("/pages/Panel");
     this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
+  }
+  ClickPanelEdit(item){
+console.log("check",item);
+var val={
+  "_id":item._id,
+  "Type":"Edit"
+}
+this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
+
   }
 }

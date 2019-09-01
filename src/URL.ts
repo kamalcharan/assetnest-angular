@@ -47,4 +47,5 @@ export const APIURL = {
     GetCompanyDetails: BaseUrl + "users/CompanyDetails",
     GetCompanyUpdate: BaseUrl + "users/UpdateCompany",
     CompanySearch: BaseUrl + "users/CompanySearch",
+    getSavedPanels: BaseUrl + "CreateMaster/GetSavedPanelsList"
   }
