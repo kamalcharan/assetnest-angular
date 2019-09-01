@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center">
                                 <div class="card-block mx-auto">
-                                    <form   (ngSubmit)="login()" #f="ngForm">
+                                    <form   (ngSubmit)="onRegister()" action="#" #f="ngForm">
                                        
                                         <div class="input-group mb-3">
                                             <span class="input-group-addon">
@@ -116,7 +116,7 @@
                                     padding-right: 0px;">
                                         <div class="float-left"><a (click)="onForgotPassword()">Recover Password</a></div>
                                         <div class="float-right">
-                                                <button type="button" style="background:#F05931"  (click)="onRegister()" class="btn  btn-raised">Signup</button>
+                                                <button type="submit" style="background:#F05931"  (click)="onRegister()" class="btn  btn-raised">Signup</button>
                                             </div>
                                     </div>
                                     

@@ -211,4 +211,9 @@ export class CreateApikeyComponent  {
     {
      
     }
+    BackNav()
+    {
+      this.router.navigateByUrl("/pages/ViewAPIKeys");
+ 
+    }
 }

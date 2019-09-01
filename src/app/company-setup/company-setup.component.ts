@@ -294,4 +294,8 @@ Company:
     }
 
   }
+  BackNav()
+  {
+    this.router.navigateByUrl("pages/Settings");
+  }
 }

@@ -238,4 +238,8 @@ this.toastr.error(data);
     {
       this.router.navigateByUrl("/pages/CreateAPIKey");
     }
+    BackNav()
+    {
+      this.router.navigateByUrl("pages/Settings");
+    }
 }

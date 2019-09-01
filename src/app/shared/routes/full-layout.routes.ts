@@ -7,10 +7,7 @@ export const Full_ROUTES: Routes = [
     path: 'dashboard',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
-  {
-    path: 'calendar',
-    loadChildren: './calendar/calendar.module#CalendarsModule'
-  },
+ 
   {
     path: 'charts',
     loadChildren: './charts/charts.module#ChartsNg2Module'
@@ -19,10 +16,7 @@ export const Full_ROUTES: Routes = [
     path: 'forms',
     loadChildren: './forms/forms.module#FormModule'
   },
-  {
-    path: 'maps',
-    loadChildren: './maps/maps.module#MapsModule'
-  },
+
   {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule'
@@ -43,10 +37,7 @@ export const Full_ROUTES: Routes = [
     path: 'pages',
     loadChildren: './pages/full-pages/full-pages.module#FullPagesModule'
   },
-  {
-    path: 'cards',
-    loadChildren: './cards/cards.module#CardsModule'
-  },
+  
   {
     path: 'colorpalettes',
     loadChildren: './color-palette/color-palette.module#ColorPaletteModule'
