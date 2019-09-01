@@ -36,6 +36,7 @@ export class MobilepanelageComponent implements OnInit {
   }
   finalID:any;
   userArray=[];
+  QueryCompanyID=null;
   constructor(private service :CommonserviceService,vcr: ViewContainerRef,private router: Router,public toastr: ToastsManager,
     private route: ActivatedRoute,private UserService: UserDataServiceService) {
       this.UserData= JSON.parse(UserService.getData()) ;
@@ -49,10 +50,21 @@ export class MobilepanelageComponent implements OnInit {
         }else{
           this.id = params.id;
         }
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+          
+        }
       })
+     
+     
      }
 
   ngOnInit() {
+    if(this.QueryCompanyID)
+    {
+      this.UserData.Company._id= this.QueryCompanyID;
+    }
     this.AddFields(0);
     this.getSavedroductCategories();
     this.getregionDeatils();

@@ -106,13 +106,19 @@
 
             
       
-      <ngx-datatable style="border:solid 1px black;padding:4px;"  #table class="bootstrap" [columns]="columns" [rows]="rows" [loadingIndicator]="loadingIndicator"  [columnMode]="'force'"
+      <ngx-datatable style="border:solid 1px black;padding:4px;"  #table class="bootstrap" [columns]="columns" [rows]="rows" [loadingIndicator]="loadingIndicator"  [columnMode]="'standard'"
           [headerHeight]="50" [limit]="pageSize"   [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
 
           <ng-template #buttonsTemplate let-row="row" let-value="value">
-              <button class="btn btn-pink btn-raised" (click)="OnbuttonClick(row)" >
+              <button class="btn btn-pink btn-raised" title="Configuration" (click)="OnbuttonClick(row)" >
                 <i class="fa fa-th" ng-reflect-ng-class="fa fa-th"></i>
               </button>
+              <button class="btn btn-pink btn-raised" title="Integrations" (click)="OnbuttonClicki(row)" >
+                  <i class="fa fa-th" ng-reflect-ng-class="fa fa-th"></i>
+                </button>
+                <button class="btn btn-pink btn-raised" title="Omni Channel" (click)="OnbuttonClicko(row)" >
+                    <i class="fa fa-th" ng-reflect-ng-class="fa fa-th"></i>
+                  </button>
         </ng-template>`
        
       </ngx-datatable>

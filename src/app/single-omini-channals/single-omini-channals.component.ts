@@ -17,6 +17,7 @@ export class SingleOminiChannalsComponent implements OnInit {
   RegionsList=[];
   MobileNumberList=[];
   ListOfMobileList=[];
+  QueryCompanyID=null
   constructor(private user: UserDataServiceService, private commonServices: CommonserviceService,
     vcr: ViewContainerRef, public toastr: ToastsManager, private router: Router, private route: ActivatedRoute) {
 
@@ -25,11 +26,20 @@ export class SingleOminiChannalsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log("come to params", params);
       this.id = params.id;
-    })
+      if(params.CompanyID)
+      {
+        this.QueryCompanyID=Number(params.CompanyID);
+        
+      }
+    }) 
     
   }
 
   ngOnInit() {
+    if(this.QueryCompanyID)
+    {
+      this.UserData.Company._id= this.QueryCompanyID;
+    }
     this.singlePanel();
     this.SavedListPanel()
   }
@@ -56,21 +66,54 @@ export class SingleOminiChannalsComponent implements OnInit {
   }
 
   GoToPage(item){
+
     //this.router.navigateByUrl('/pages/PanelList')
-    var val={
-      "id":item._id
-    }
+    var val=null
     // this.router.navigateByUrl("/pages/Panel");
-    this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
+
+    if(this.QueryCompanyID)
+    {
+      val={
+        "id":item._id,
+        "CompanyID":this.QueryCompanyID
+      }
+      
+      this.router.navigate(["pages/PanelList"], { skipLocationChange: false, queryParams:val })
+
+    }
+    else
+    {
+      val={
+        "id":item._id
+      }
+      this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
+    }
+
+    
   }
   ClickPanelEdit(item){
 console.log("check",item);
-var val={
-  "_id":item._id,
-  "Type":"Edit"
-}
-this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
+var val=null
 
+if(this.QueryCompanyID)
+    {
+      val={
+        "id":item._id,
+        "Type":"Edit",
+        "CompanyID":this.QueryCompanyID
+      }
+      
+      this.router.navigate(["/pages/PanelList"], { skipLocationChange: false, queryParams:val })
+
+    }
+    else
+    {
+      val={
+        "id":item._id,
+        "Type":"Edit"
+      }
+      this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
+    }
   
 }
 BackNav()
