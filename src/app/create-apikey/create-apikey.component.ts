@@ -24,19 +24,31 @@ export class CreateApikeyComponent  {
   }
   Userdata:any;
   adminToken=null;
+  QueryCompanyID=null;
   constructor(private modalService: NgbModal,private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,
     vcr: ViewContainerRef,public toastr: ToastsManager) {
       this.toastr.setRootViewContainerRef(vcr);
       this.GetAdminToken();
+      this.route.queryParams.subscribe(params => {
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+        }
+      })
+      
      }
 
   ngOnInit() {
 
     this.Userdata= JSON.parse(this.UserService.getData());
     this.payload.IsLive=this.Userdata.IsLive;
-    this.payload.CompanyID=this.Userdata.Company._id;
     this.payload.UserID=this.Userdata._id;
+    if(this.QueryCompanyID)
+      {
+        this.Userdata.Company._id=this.QueryCompanyID;
+      }
+      this.payload.CompanyID=this.Userdata.Company._id;
 
   }
   modelpop: any;
@@ -122,7 +134,17 @@ export class CreateApikeyComponent  {
 
 {
 
-  this.UserService.SetToken(data.Data.Token);
+         if(this.QueryCompanyID)
+         {
+        
+         }
+         else
+         {
+          this.UserService.SetToken(data.Data.Token);
+         }
+ 
+
+  
 }                this. payload={
                   APIName:null,
                   TokenType:null,
@@ -213,7 +235,14 @@ export class CreateApikeyComponent  {
     }
     BackNav()
     {
-      this.router.navigateByUrl("/pages/ViewAPIKeys");
- 
+    
+      if(this.QueryCompanyID)
+      {
+        this.router.navigate(['/pages/ViewAPIKeys'], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+      }
+      else
+      {
+        this.router.navigateByUrl("/pages/ViewAPIKeys");
+      }
     }
 }

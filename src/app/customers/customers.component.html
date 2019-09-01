@@ -64,17 +64,55 @@
       <div class="card">
           <div class="card-body">
               <div class="px-3">
-                <p style="text-align:right;">
-                    <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='search grid' (keyup)='updateFilter($event)'
-                    />
-                </p>
+                  
+                  <form class="form">
+                      <div class="form-body">
+                          <div  class="row">
+                              <div class="col-3">
+                                  <div class="form-group ">
+                                      <label for="projectinput2" > No of records
+                                              
+                                        </label>
+                                      <select name="pageSize" 
+                                       [(ngModel)]="pageSize" 
+                                       aria-controls="ContactTable"
+                                      class="form-control"  >
+                                      <option value="10">10</option>
+                                      <option value="25">25</option>
+                                      <option value="50">50</option>
+                                      <option value="100">100</option>
+                                  </select> 
+                                    </div>
+                              </div>
+                              
+                              <div class="col-6">
+                                 
+                              </div>
+                              <div class="col-3">
+                                  <div class="form-group ">
+                                      <label for="projectinput2" > search grid
+                                              
+                                        </label>
+                                      <input type='text'   class="form-control"  (keyup)='updateFilter($event)'
+                                      />
+                                    </div>
+                                 
+                                </div>
+                              
+                            </div>
+                      </div>
+                        </form>
+
+
+            
       
       <ngx-datatable style="border:solid 1px black;padding:4px;"  #table class="bootstrap" [columns]="columns" [rows]="rows" [loadingIndicator]="loadingIndicator"  [columnMode]="'force'"
-          [headerHeight]="50" [limit]="10"   [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
+          [headerHeight]="50" [limit]="pageSize"   [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
 
           <ng-template #buttonsTemplate let-row="row" let-value="value">
-              <!-- <button class="btn btn-transparent" (click)="OnbuttonClick(row)" >Button
-              </button> -->
+              <button class="btn btn-pink btn-raised" (click)="OnbuttonClick(row)" >
+                <i class="fa fa-th" ng-reflect-ng-class="fa fa-th"></i>
+              </button>
         </ng-template>`
        
       </ngx-datatable>

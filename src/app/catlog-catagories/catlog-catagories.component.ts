@@ -4,6 +4,7 @@ import{UserDataServiceService} from '../shared/user-data-service.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {CommonserviceService} from "../shared/commonservice.service"
 import{ APIURL} from "../../URL"
+import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-catlog-catagories',
   templateUrl: './catlog-catagories.component.html',
@@ -11,9 +12,21 @@ import{ APIURL} from "../../URL"
 })
 export class CatlogCatagoriesComponent implements OnInit {
   UserData: any;
-    constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr: ViewContainerRef,public toastr: ToastsManager,private UserService:UserDataServiceService) {
+  QueryCompanyID=null;
+    constructor(private router: Router,
+      private route: ActivatedRoute,private modalService: NgbModal,public cms: CommonserviceService,vcr: ViewContainerRef,public toastr: ToastsManager,private UserService:UserDataServiceService) {
     this.toastr.setRootViewContainerRef(vcr);
+    this.route.queryParams.subscribe(params => {
+      if(params.CompanyID)
+      {
+        this.QueryCompanyID=Number(params.CompanyID);
+      }
+    })
     this.UserData=JSON.parse(this.UserService.getData());
+    if(  this.QueryCompanyID)
+    {
+      this.UserData.Company._id=this.QueryCompanyID;
+    }
     console.log("this.UserData",this.UserData);
    }
 

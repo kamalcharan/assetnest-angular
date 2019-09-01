@@ -4,6 +4,7 @@ import{UserDataServiceService} from '../shared/user-data-service.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {CommonserviceService} from "../shared/commonservice.service"
 import{ APIURL} from "../../URL"
+import { Router, ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-create-brands',
   templateUrl: './create-brands.component.html',
@@ -25,13 +26,24 @@ filesToUpload: Array<File> = [];
 @ViewChild('filectrl') fileInputVariable: any;
 editActive:boolean=false;
 StatusBrands=[];
-  constructor(private modalService: NgbModal,public cms: CommonserviceService,vcr: ViewContainerRef,public toastr: ToastsManager,private UserService:UserDataServiceService) {
+QueryCompanyID=null;
+  constructor(private router: Router,
+    private route: ActivatedRoute,private modalService: NgbModal,public cms: CommonserviceService,vcr: ViewContainerRef,public toastr: ToastsManager,private UserService:UserDataServiceService) {
     this.toastr.setRootViewContainerRef(vcr);
-
+    this.route.queryParams.subscribe(params => {
+      if(params.CompanyID)
+      {
+        this.QueryCompanyID=Number(params.CompanyID);
+      }
+    })
    }
 
   ngOnInit() {
     this.UserData=JSON.parse(this.UserService.getData());
+    if(this.QueryCompanyID)
+    {
+      this.UserData.Company._id= this.QueryCompanyID;
+    }
     console.log("this.UserData",this.UserData);
     this.CreateCompanyBrandMapping.CreatedBy=this.UserData._id;
     this.CreateCompanyBrandMapping.CompanyID=this.UserData.Company._id;

@@ -26,11 +26,23 @@ export class ViewApikeysComponent {
     NewStatus: null,
     UserID: null
   }
+  QueryCompanyID=null;
   constructor(private modalService: NgbModal,private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,vcr: ViewContainerRef,public toastr: ToastsManager) {
 
       this.toastr.setRootViewContainerRef(vcr);
       this.UserData= JSON.parse(this.UserService.getData());
+   
+      this.route.queryParams.subscribe(params => {
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+        }
+      })
+      if(this.QueryCompanyID)
+      {
+        this.UserData.Company._id=this.QueryCompanyID;
+      }
       this.payload.CompanyID=this.UserData.Company._id;
      }
 
@@ -236,10 +248,26 @@ this.toastr.error(data);
 
     NavigateToAdd()
     {
-      this.router.navigateByUrl("/pages/CreateAPIKey");
+      if(this.QueryCompanyID)
+      {
+        this.router.navigate(['/pages/CreateAPIKey'], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+      }
+      else
+      {
+        this.router.navigateByUrl("/pages/CreateAPIKey");
+      }
+     
     }
     BackNav()
     {
-      this.router.navigateByUrl("pages/Settings");
+      
+      if(this.QueryCompanyID)
+      {
+        this.router.navigate(['pages/Settings'], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+      }
+      else
+      {
+        this.router.navigateByUrl("pages/Settings");
+      }
     }
 }

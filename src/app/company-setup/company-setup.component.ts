@@ -39,17 +39,28 @@ Company:
   filesToUpload: Array<File> = [];
   @ViewChild('f') registerForm: NgForm;
   @ViewChild('filectrl') fileInputVariable: any;
+  QueryCompanyID=null
   constructor(private modalService: NgbModal, private router: Router, private service: CommonserviceService,
     private route: ActivatedRoute, private UserService: UserDataServiceService,
     vcr: ViewContainerRef, public toastr: ToastsManager) {
 
       this.toastr.setRootViewContainerRef(vcr);
+      this.route.queryParams.subscribe(params => {
+        if(params.CompanyID)
+        {
+          this.QueryCompanyID=Number(params.CompanyID);
+        }
+      })
 
      }
 
   ngOnInit() {
 
     this.Userdata = JSON.parse(this.UserService.getData());
+    if(this.QueryCompanyID)
+    {
+      this.Userdata.Company._id=this.QueryCompanyID;
+    }
     this.getCompanyData();
   }
 
@@ -296,6 +307,12 @@ Company:
   }
   BackNav()
   {
+    if(this.QueryCompanyID)
+    {
+      this.router.navigate(['pages/Settings'], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+    }
+    else
     this.router.navigateByUrl("pages/Settings");
+
   }
 }
