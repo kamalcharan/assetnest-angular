@@ -34,7 +34,7 @@ export class MobilepanelageComponent implements OnInit {
     "BillingName":null,
     "_id":null
   }
-  finalID:any;
+  finalID=0;
   userArray=[];
   constructor(private service :CommonserviceService,vcr: ViewContainerRef,private router: Router,public toastr: ToastsManager,
     private route: ActivatedRoute,private UserService: UserDataServiceService) {
@@ -69,7 +69,7 @@ export class MobilepanelageComponent implements OnInit {
 
   }
   SavedData(){
-    this.service.getMethod(APIURL.getSavedPanels+'/'+this._id,this.UserData.Token).subscribe(data=>{
+    this.service.getMethod(APIURL.getSavedPanels+'/'+ this._id,this.UserData.Token).subscribe(data=>{
   console.log("hello alll",data);
   this.finalID=data.Data[0].FK_ID;
   this.FinalRegionList=data.Data[0].RegionList;
@@ -81,6 +81,7 @@ export class MobilepanelageComponent implements OnInit {
   this.panelData.ApiID=data.Data[0].ApiID;
   this.panelData.ApiName=data.Data[0].ApiName;
   this.panelData.Token=data.Data[0].Token;
+  this.panelData.CompalintName=data.Data[0].Data.ComplaintsName;
   this.panelData.OthersName=data.Data[0].Data.OthersName;
   if(this.finalID==1){
     this.userArray=data.Data[0].Data.ContactList;
@@ -97,8 +98,8 @@ export class MobilepanelageComponent implements OnInit {
 
   }
   checkFinishList(){
-    this.service.getMethod(APIURL.GET_SINGLE_PANEL+'/'+ this.finalID, this.UserData.Token).subscribe(data=>{
-      console.log("check meee",data);
+    this.service.getMethod(APIURL.GET_SINGLE_PANEL+'/'+ this.finalID,this.UserData.Token).subscribe(data=>{
+      console.log("check meee hhhhh",data);
       this.SignlePanelList=data.Data;
 
     })
@@ -245,6 +246,22 @@ this.ApiList=list.Data;
       }
     })
    
+
+  }
+  BackNav(){
+    var val;
+    if(this.finalID){
+      val={
+        "id":this.finalID
+      }
+    }else{
+      val={
+        "id":this.id
+      }
+    }
+    
+    // this.router.navigateByUrl("/pages/Panel");
+    this.router.navigate(['/pages/Panel'], { skipLocationChange: false, queryParams: val })
 
   }
   

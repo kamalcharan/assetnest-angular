@@ -75,6 +75,7 @@ this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryPar
 }
 BackNav()
   {
-    
+    this.router.navigate(['/pages/OMNIChannel'])
+
   }
 }
