@@ -8,27 +8,8 @@ export const Full_ROUTES: Routes = [
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
  
-  {
-    path: 'charts',
-    loadChildren: './charts/charts.module#ChartsNg2Module'
-  },
-  {
-    path: 'forms',
-    loadChildren: './forms/forms.module#FormModule'
-  },
-
-  {
-    path: 'tables',
-    loadChildren: './tables/tables.module#TablesModule'
-  },
-  {
-    path: 'datatables',
-    loadChildren: './data-tables/data-tables.module#DataTablesModule'
-  },
-  {
-    path: 'uikit',
-    loadChildren: './ui-kit/ui-kit.module#UIKitModule'
-  },
+  
+ 
   {
     path: 'components',
     loadChildren: './components/ui-components.module#UIComponentsModule'
@@ -38,24 +19,7 @@ export const Full_ROUTES: Routes = [
     loadChildren: './pages/full-pages/full-pages.module#FullPagesModule'
   },
   
-  {
-    path: 'colorpalettes',
-    loadChildren: './color-palette/color-palette.module#ColorPaletteModule'
-  },
-  {
-    path: 'chat',
-    loadChildren: './chat/chat.module#ChatModule'
-  },
-  {
-    path: 'inbox',
-    loadChildren: './inbox/inbox.module#InboxModule'
-  },
-  {
-    path: 'taskboard',
-    loadChildren: './taskboard/taskboard.module#TaskboardModule'
-  },
-  {
-    path: 'player',
-    loadChildren: './player/player.module#PlayerModule'
-  }
+ 
+  
+  
 ];
