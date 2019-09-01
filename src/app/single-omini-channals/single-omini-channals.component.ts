@@ -59,4 +59,8 @@ export class SingleOminiChannalsComponent implements OnInit {
     // this.router.navigateByUrl("/pages/Panel");
     this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
   }
+  BackNav()
+  {
+    
+  }
 }
