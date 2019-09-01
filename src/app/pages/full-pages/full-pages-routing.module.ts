@@ -18,6 +18,11 @@ import {HomeComponent} from "../../home/home/home.component";
   import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-editor.component';
   import { CatlogCatagoriesComponent } from '../../catlog-catagories/catlog-catagories.component';
   import { RegionCreationComponent } from '../../region-creation/region-creation.component';
+  import { SingleOminiChannalsComponent } from '../../single-omini-channals/single-omini-channals.component';
+  import { MobilepanelageComponent } from '../../mobilepanelage/mobilepanelage.component';
+
+
+
   import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
   import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
   import { CompanySetupComponent } from '../../company-setup/company-setup.component';
@@ -62,6 +67,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'PanelList',
+        component: MobilepanelageComponent,
+        data: {
+          title: 'PanelList'
+        }
+      },
+      {
         path: 'Catlog',
         component: CatlogCatagoriesComponent,
         data: {
@@ -83,10 +95,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'OmniChanal',
+        path: 'OMNIChannel',
         component: OminichaneelsComponent,
         data: {
-          title: 'OmniChanal'
+          title: 'OMNIChannel'
+        }
+      },
+      {
+        path: 'Panel',
+        component: SingleOminiChannalsComponent,
+        data: {
+          title: 'Panel'
         }
       },
       

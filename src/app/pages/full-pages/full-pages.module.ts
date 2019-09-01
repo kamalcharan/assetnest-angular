@@ -24,10 +24,15 @@ import { ManageTextEditorComponent } from '../../manage-text-editor/manage-text-
 import { CKEditorModule } from 'ngx-ckeditor';
 import { CatlogCatagoriesComponent } from '../../catlog-catagories/catlog-catagories.component';
 import { RegionCreationComponent } from '../../region-creation/region-creation.component';
+import { SingleOminiChannalsComponent } from '../../single-omini-channals/single-omini-channals.component';
+import { MobilepanelageComponent } from '../../mobilepanelage/mobilepanelage.component';
+
 
 
 import { ViewApikeysComponent } from '../../view-apikeys/view-apikeys.component';
 import { CreateApikeyComponent } from '../../create-apikey/create-apikey.component';
+import { ArchwizardModule } from 'ng2-archwizard';
+
 import { CompanySetupComponent } from '../../company-setup/company-setup.component';
 import { CustomersComponent } from '../../customers/customers.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -39,6 +44,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         ChartistModule,
         AgmCoreModule,
         CKEditorModule,
+        ArchwizardModule,
         NgxDatatableModule
     ],
     declarations: [       
@@ -60,6 +66,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         ManageTextEditorComponent,
         CatlogCatagoriesComponent,
         RegionCreationComponent,
+        SingleOminiChannalsComponent,
+        MobilepanelageComponent,
         CompanySetupComponent,
         CustomersComponent
     ]

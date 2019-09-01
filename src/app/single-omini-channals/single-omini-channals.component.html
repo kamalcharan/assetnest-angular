@@ -1,0 +1,73 @@
+<section id="calendar">
+    <div class="row" style="background: #F2F0C4;margin-left: -32px;
+    margin-right: -32px;height:54px">
+        <div class="col-2" style="margin-top: 22px;">
+            <i class="fa fa-chevron-left btn-pink" aria-hidden="true" style="cursor: pointer;margin-top: -15px;font-size: 36px;" (click)="BackNav()"></i>
+
+        </div>
+        <div class="col-4" style="margin-left: -126px;">
+            <span class="content-header" *ngFor="let item of SignlePanelList">
+
+                <p style="font-weight: lighter">Omini Channels</p>
+                <p style=" margin-top: -15px;"><b>{{item.Name}}</b></p>
+            </span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-6">
+      Create Contact
+        </div>
+        <div class="col-6" text-center  *ngFor="let item of SignlePanelList">
+            <button type="button" class="btn btn-sm  btn-pink btn-block btn-raised" (click)="GoToPage(item)" style="width:161px;">+ {{item.Name}}</button>
+          </div>
+      </div>
+      <div class="row" style="margin-top: 30px;
+      margin-left: 85px;">
+          
+          <div class="col-6">
+              <div class="card horizontal" style="height: 113px;cursor: pointer;width: 200px;">
+                  <div class="card-body">
+                      <div class="card-stacked align-self-center">
+                          <div class="px-3">
+                              <h4 class="card-title" style="text-transform:capitalize">Categories(6)</h4>
+  
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+          </div> 
+          <div class="col-6" style="margin-left:-312px">
+              <div class="card horizontal" style="height: 113px;cursor: pointer;width: 200px;">
+                  <div class="card-body">
+                      <div class="card-stacked align-self-center">
+                          <div class="px-3">
+                              <h4 class="card-title" style="text-transform:capitalize">Regions(6)</h4>
+  
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+          </div>              
+        </div>
+        <div class="row" style="margin-top: -35px;">
+          <div class="col-12" style="margin-left: 102px;">
+              <div class="card horizontal" style="height: 50px;cursor: pointer;width: 417px">
+                  <div class="card-body">
+                      <div class="card-stacked align-self-center">
+                          <div class="px-3">
+                              <h4 class="card-title text-center" style="text-transform:capitalize">779497471</h4>
+  
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+   
+   
+
+
+
+</section>

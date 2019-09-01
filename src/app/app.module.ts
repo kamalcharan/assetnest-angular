@@ -19,6 +19,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import * as $ from 'jquery';
 import { CKEditorModule } from 'ngx-ckeditor';
+import { ArchwizardModule } from 'ng2-archwizard';
 import { TitleCasePipe } from '@angular/common';
 
 
@@ -33,14 +34,13 @@ import { TitleCasePipe } from '@angular/common';
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        ContentLayoutComponent
-       
-       
-      ],
+        ContentLayoutComponent   
+     ],
     imports: [
         HttpClientModule,
         HttpModule,
         CKEditorModule,
+        ArchwizardModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         SharedModule,

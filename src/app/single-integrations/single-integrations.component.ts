@@ -60,6 +60,7 @@ export class SingleIntegrationsComponent implements OnInit {
     console.log("item", item);
     var payload = {
       "CompanyID": this.UserData.Company._id,
+      "IsLive":this.UserData.IsLive,
       "Item": item
     }
     this.commonServices.PostMethod(APIURL.InsertCompanyIntegration, payload, this.UserData.Token).subscribe(data => {

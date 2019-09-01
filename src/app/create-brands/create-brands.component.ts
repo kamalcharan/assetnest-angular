@@ -110,7 +110,7 @@ try{
     
     
     
-    formData.append("CompanyID", 1);
+    formData.append("CompanyID", this.UserData.Company._id);
     this.cms.UploadPostMethod(APIURL.BaseUrl+"FileUploadDrive", formData)
     .subscribe(results => {
     if (results.Response == 1) {
@@ -163,6 +163,7 @@ catch(error)
       if (data.Response == 1) {
         this.allBrands = data.Data;
         this.allBrands.forEach(x=>{
+          x.Icon=APIURL.Image_Path+x.Icon;
           this.StatusBrands.forEach(y=>{
             if(x.Status==y._id){
               x.Status=y._id;
