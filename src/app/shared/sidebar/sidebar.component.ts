@@ -19,10 +19,12 @@ export class SidebarComponent implements OnInit {
 
     newMenuItems=[];
     UserData:any;
+    currentEnv=null;
     constructor(private router: Router,  private service: CommonserviceService,
         private route: ActivatedRoute,private UserService:UserDataServiceService) {
 
             this.UserData= JSON.parse(UserService.getData()) ;
+            this.currentEnv= this.UserData.IsLive;
             this.getMenuItems();
     }
 
@@ -96,4 +98,11 @@ export class SidebarComponent implements OnInit {
         });
 
       }
+      Select(value)
+  {
+
+    this.UserService.SetEnvironment(Number(value));
+    this.currentEnv=value;
+  //  this.router.navigateByUrl("dashboard/dashboard1");
+  }
 }

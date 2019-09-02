@@ -1,18 +1,38 @@
 <!-- Sidebar Header starts -->
 <div class="sidebar-header">
     <div class="logo clearfix">
-        <a  class="logo-text float-left">
+        <!-- <a  class="logo-text ">
             <div class="logo-img">
                 <img src="{{logoUrl}}" style="height:50px;width:50px" />
             </div>
-            <span class="text align-middle">AssetNest</span>
+            <span style="font-size: 14px;" class="text align-middle">AssetNest</span>
+           
         </a>
+        <a  class="logo-text" style="margin-top: 10px;text-align:center">
+            <button style="font-size: 10px;"  *ngIf="this.currentEnv==1" (click)="Select(0)"    type="button" class="btn btn-raised btn-secondary btn-min-width mr-1 mb-1">Test</button>
+            <button style="font-size: 10px;"  *ngIf="this.currentEnv==0" (click)="Select(1)" type="button" class="btn btn-raised btn-success btn-min-width mr-1 mb-1">Live</button>
+           
+        </a> -->
         <!--[routerLink]="['/']" <a class="nav-toggle d-none d-sm-none d-md-none d-lg-block" id="sidebarToggle" href="javascript:;">
             <i class="ft-toggle-right toggle-Icon" data-toggle="expanded"></i>
         </a>
         <a class="nav-close d-block d-md-block d-lg-none d-xl-none" id="sidebarClose" href="javascript:;">
             <i class="ft-x"></i>
         </a> -->
+        <div class="row">
+            <div class="col-4">
+                    <img src="{{logoUrl}}" style="height:60px;width:60px" />
+            </div>
+            <div class="col-8">
+                    <span style="font-size: 14px;" class="text align-middle">AssetNest</span>
+                    <a  class="logo-text">
+                            <button style="font-size: 10px;" title="Change to Test "  *ngIf="this.currentEnv==1" (click)="Select(0)"    type="button" class="btn btn-raised btn-secondary btn-min-width mr-1 mb-1">Test</button>
+                            <button style="font-size: 10px;" title="Change to Live"   *ngIf="this.currentEnv==0" (click)="Select(1)" type="button" class="btn btn-raised btn-success btn-min-width mr-1 mb-1">Live</button>
+                           
+                        </a>
+                </div>
+        </div>
+       
     </div>
 </div>
 
@@ -26,7 +46,7 @@
                     [routerLinkActiveOptions]="{exact: true}">
                     <a [routerLink]="menuItem.class === '' ? [menuItem.Path] : null" >
                         <i [ngClass]="[menuItem.Icon]"></i>
-                        <span class="menu-title">{{menuItem.MenuName}}</span>
+                        <span   style="font-size:14px;" class="menu-title">{{menuItem.MenuName}}</span>
                        
                     </a>
    
@@ -35,7 +55,7 @@
                         <li style="font-size:14px;"  *ngFor="let menuSubItem of menuItem.SubMenus" routerLinkActive="active" >
                             <a [routerLink]="menuSubItem.Path">
                                 <i [ngClass]="[menuSubItem.Icon]"></i>
-                                <span class="menu-title">{{menuSubItem.SubMenuName}}</span>
+                                <span   style="font-size:14px;" class="menu-title">{{menuSubItem.SubMenuName}}</span>
                               
                             </a>
                            
@@ -45,10 +65,10 @@
                       
                     </ul>
                 </li>
-                <li  (click)="LogOut()" >
+                <li  style="font-size:14px;"  (click)="LogOut()" >
                     <a  >
                         <i class="ft-calendar" ng-reflect-ng-class="ft-calendar"></i>
-                        <span class="menu-title">Logout</span>
+                        <span style="font-size:14px;"  class="menu-title">Logout</span>
                      
                     </a>
       
