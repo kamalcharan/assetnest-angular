@@ -98,7 +98,7 @@ var val=null
 if(this.QueryCompanyID)
     {
       val={
-        "id":item._id,
+        "_id":item._id,
         "Type":"Edit",
         "CompanyID":this.QueryCompanyID
       }
@@ -109,7 +109,7 @@ if(this.QueryCompanyID)
     else
     {
       val={
-        "id":item._id,
+        "_id":item._id,
         "Type":"Edit"
       }
       this.router.navigate(['/pages/PanelList'], { skipLocationChange: false, queryParams: val })
