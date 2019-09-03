@@ -30,6 +30,11 @@ export class LoginPageComponent {
         public toastr: ToastsManager
 
         ) {
+            if(this.UserService.isUserDataExists())
+        { 
+            this.router.navigateByUrl("/dashboard/dashboard1");
+        }
+       
             this.toastr.setRootViewContainerRef(vcr);
         this.GetAdminToken()
     }

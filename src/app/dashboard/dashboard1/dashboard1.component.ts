@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ChartType, ChartEvent } from "ng-chartist/dist/chartist.component";
 import { UserDataServiceService } from '../../shared/user-data-service.service'
-
+import { Router, ActivatedRoute } from "@angular/router";
 declare var require: any;
 
 const data: any = require('../../shared/data/chartist.json');
@@ -23,11 +23,18 @@ export interface Chart {
 
 export class Dashboard1Component {
     UserData=null
-    constructor( private UserService: UserDataServiceService) {
+    constructor(  private router: Router,private UserService: UserDataServiceService) {
 
+        if(this.UserService.isUserDataExists())
+        { this.UserData= JSON.parse(UserService.getData()) ;
+            console.log(" this.UserData", this.UserData);
 
-        this.UserData= JSON.parse(UserService.getData()) ;
-        console.log(" this.UserData", this.UserData);
+        }
+        else{
+            this.router.navigateByUrl("/pages/login");
+        }
+
+       
      }
     
     // Line area chart configuration Starts
