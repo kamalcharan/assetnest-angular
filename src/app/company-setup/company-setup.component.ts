@@ -118,61 +118,69 @@ Company:
 
   UpdateCompanyData() {
 
-    console.log(this.payload);
+    try {
+      console.log(this.payload);
 
     if(this.payload.Company.CompanyType&&this.payload.Company.Address&&this.payload.Company.Alias_Name
       &&this.payload.Company.City&&this.payload.Company.Country&&this.payload.Company.Name&&
       this.payload.Company.Pincode&&this.payload.Company.State)
       {
 
-        this.service.PostMethod(APIURL.GetCompanyUpdate, this.payload, this.Userdata.Token)
-        .subscribe(data => {
+        if(this.payload.Company.Pincode.toString().length<=10)
+        {
+          this.service.PostMethod(APIURL.GetCompanyUpdate, this.payload, this.Userdata.Token)
+          .subscribe(data => {
+    
+    
+    
+            console.log(data);
+            if (data) {
+    
+              if (data.Response) {
+                if (data.Response == 1) {
+    
+                  this.toastr.success(data.Message);
   
-  
-  
-          console.log(data);
-          if (data) {
-  
-            if (data.Response) {
-              if (data.Response == 1) {
-  
-                this.toastr.success(data.Message);
-
-                this.getCompanyData();
-                // var ResponseCompanyData = data.Data;
-  
-  
-  
-                // this.payload.id = ResponseCompanyData._id
-                // this.payload.CompanyID = ResponseCompanyData.CompanyID
-                // this.payload.Name = ResponseCompanyData.Name
-                // this.payload.Alias_Name = ResponseCompanyData.Alias_Name
-                // this.payload.LogoURL = ResponseCompanyData.LogoURL
-                // this.payload.Country = ResponseCompanyData.Country
-                // this.payload.State = ResponseCompanyData.State
-                // this.payload.City = ResponseCompanyData.City
-                // this.payload.Address = ResponseCompanyData.Address
-                // this.payload.Pincode = ResponseCompanyData.CompanyID
-                // this.payload.CompanyType = ResponseCompanyData.CompanyType
-                // this.payload.BusinessModelStatus = ResponseCompanyData.BusinessModelStatus
-                // this.CompanyTempImage = APIURL.Image_Path + this.payload.LogoURL
-  
-  
-  
+                  this.getCompanyData();
+                  // var ResponseCompanyData = data.Data;
+    
+    
+    
+                  // this.payload.id = ResponseCompanyData._id
+                  // this.payload.CompanyID = ResponseCompanyData.CompanyID
+                  // this.payload.Name = ResponseCompanyData.Name
+                  // this.payload.Alias_Name = ResponseCompanyData.Alias_Name
+                  // this.payload.LogoURL = ResponseCompanyData.LogoURL
+                  // this.payload.Country = ResponseCompanyData.Country
+                  // this.payload.State = ResponseCompanyData.State
+                  // this.payload.City = ResponseCompanyData.City
+                  // this.payload.Address = ResponseCompanyData.Address
+                  // this.payload.Pincode = ResponseCompanyData.CompanyID
+                  // this.payload.CompanyType = ResponseCompanyData.CompanyType
+                  // this.payload.BusinessModelStatus = ResponseCompanyData.BusinessModelStatus
+                  // this.CompanyTempImage = APIURL.Image_Path + this.payload.LogoURL
+    
+    
+    
+                }
+                else {
+                  this.toastr.error(data.Message);
+    
+                }
+    
               }
               else {
-                this.toastr.error(data.Message);
-  
+                this.toastr.error(data);
               }
-  
+    
+    
             }
-            else {
-              this.toastr.error(data);
-            }
-  
-  
-          }
-        });
+          });
+        }
+        else{
+          this.toastr.error("Only 10 characters are allowed for pincode");
+        }
+      
       }
       else
       {
@@ -214,6 +222,12 @@ Company:
         }
 
       }
+      
+    } catch (error) {
+      
+      console.log(error);
+    }
+    
       
       
 

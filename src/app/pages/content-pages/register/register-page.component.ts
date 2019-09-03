@@ -44,107 +44,124 @@ export class RegisterPageComponent {
     Signup()
     {
 
-
-      if(this.terms&&this.payload.User.Name  && this.EmailValid(this.payload.User.EmailID) && this.payload.User.Password)
+      try
       {
-        var FarePayload= this.payload;
-        var pwd = CryptoJS.HmacMD5(FarePayload.User.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
-        FarePayload.User.Password= pwd;
-        this.service.PostMethod (APIURL.CompanySignup, FarePayload,this.adminToken)
-        .subscribe(data => {
-
-
-            
-    console.log(data);
-      if(data){
-
-        if(data.Response)
+        if(this.terms&&this.payload.User.Name  && this.EmailValid(this.payload.User.EmailID) && this.payload.User.Password)
         {
-            if(data.Response==1)
-            {
-             this.payload={
-                "User":{
-                    "Name":null,
-                  
-                 "EmailID":null,
-                 "Password":null
-               }
-            }
+          var FarePayload= this.payload;
+          var pwd = CryptoJS.HmacMD5(FarePayload.User.Password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
+          FarePayload.User.Password= pwd;
+          this.service.PostMethod (APIURL.CompanySignup, FarePayload,this.adminToken)
+          .subscribe(data => {
+  
+  
               
-              this.toastr.success(data.Message);;
-
-              setTimeout(()=>{
-                this.router.navigateByUrl("pages/login")
-              },2000)
-
-              
-           
-
-            }
-            else
-            {
-              this.toastr.error(data.Message);
-
-            }
-
+      console.log(data);
+        if(data){
+  
+          if(data.Response)
+          {
+              if(data.Response==1)
+              {
+               this.payload={
+                  "User":{
+                      "Name":null,
+                    
+                   "EmailID":null,
+                   "Password":null
+                 }
+              }
+                
+                this.toastr.success(data.Message);;
+  
+                setTimeout(()=>{
+                  this.router.navigateByUrl("pages/login")
+                },2000)
+  
+                
+             
+  
+              }
+              else
+              {
+                this.toastr.error(data.Message);
+  
+              }
+  
+          }
+          else
+          {
+            this.toastr.error(data);
+          }
+          
+    
         }
+        });
+        }
+         
         else
         {
-          this.toastr.error(data);
+          if(!this.payload.User.Name){
+            this.toastr.error("Please Enter Name")
+          }else if(!this.payload.User.EmailID){
+            this.toastr.error("Please Enter EmailID");
+          }else if(!this.EmailValid(this.payload.User.EmailID))
+          {
+            this.toastr.error("Please Enter valid Email ID");
+          }
+          
+          if(!this.payload.User.Password){
+            this.toastr.error("Please Enter Password");  
+          }
+          if(!this.terms)
+          {
+            this.toastr.error("Please check terms and conditions checkbox");
+          }
         }
-        
-  
       }
-      });
-      }
-       
-      else
+      catch(error)
       {
-        if(!this.payload.User.Name){
-          this.toastr.error("Please Enter Name")
-        }else if(!this.payload.User.EmailID){
-          this.toastr.error("Please Enter EmailID");
-        }else if(!this.EmailValid(this.payload.User.EmailID))
-        {
-          this.toastr.error("Please Enter valid Email ID");
-        }
-        
-        if(!this.payload.User.Password){
-          this.toastr.error("Please Enter Password");  
-        }
-        if(!this.terms)
-        {
-          this.toastr.error("Please check terms and conditions checkbox");
-        }
+        console.log(error.Message);
       }
+
+     
 
     }
     
     GetAdminToken() {
 
+
+      try {
+
         this.service.getMethod(APIURL.GetAdminToken, this.adminToken)
-            .subscribe(data => {
-                console.log(data);
-                if (data) {
+        .subscribe(data => {
+            console.log(data);
+            if (data) {
 
-                    if (data.Response) {
-                        if (data.Response == 1) {
+                if (data.Response) {
+                    if (data.Response == 1) {
 
-                            this.adminToken = data.Data.Token
-
-                        }
-                        else {
-
-                        }
+                        this.adminToken = data.Data.Token
 
                     }
                     else {
 
                     }
 
+                }
+                else {
 
                 }
-            });
+
+
+            }
+        });
+        
+      } catch (error) {
+        console.log(error)
+      }
+
+     
     }
 
     fileChangeEvent(fileInput: any) {

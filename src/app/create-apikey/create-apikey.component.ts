@@ -199,29 +199,34 @@ export class CreateApikeyComponent  {
     }
     GetAdminToken() {
 
-      this.service.getMethodWithoutToken(APIURL.GetAdminToken)
-          .subscribe(data => {
-              console.log(data);
-              if (data) {
+      try {
+        this.service.getMethodWithoutToken(APIURL.GetAdminToken)
+        .subscribe(data => {
+            console.log(data);
+            if (data) {
 
-                  if (data.Response) {
-                      if (data.Response == 1) {
+                if (data.Response) {
+                    if (data.Response == 1) {
 
-                          this.adminToken = data.Data.Token
+                        this.adminToken = data.Data.Token
 
-                      }
-                      else {
+                    }
+                    else {
 
-                      }
+                    }
 
-                  }
-                  else {
+                }
+                else {
 
-                  }
+                }
 
 
-              }
-          });
+            }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+     
   }
 
   Cancel()
