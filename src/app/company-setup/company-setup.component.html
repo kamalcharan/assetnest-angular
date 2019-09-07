@@ -83,7 +83,7 @@
                                             <label for="Pincode">Pincode/Zipcode
                                                 <span class="required">*</span>
                                             </label>
-                                            <input autocomplete="off" type="text" id="Pincode" class="form-control" required [(ngModel)]="payload.Company.Pincode"
+                                            <input autocomplete="off" type="number" [maxlength]="10" id="Pincode" class="form-control" required [(ngModel)]="payload.Company.Pincode"
                                               name="Pincode">
                                           </div>
                                       </div>
@@ -163,7 +163,7 @@
                     </div>
                   
                       <div class="col-3" style="text-align: right;">
-                          <button type="button" class="btn btn-raised   btn-outline-secondary ">
+                          <button type="button" (click)="BackNav()" class="btn btn-raised   btn-outline-secondary ">
                               Cancel
                             </button>
                           <button type="button"  (click)="UpdateCompanyData()" [disabled]="!f.valid" class="btn btn-pink  btn-raised">

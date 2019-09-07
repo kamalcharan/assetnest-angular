@@ -73,7 +73,7 @@ export class CustomersComponent implements OnInit {
      
       { prop: 'Category','width':'100' },
       { prop: 'BusinessPlan' ,'width':'120'},
-      {prop :'Actions', name: 'Actions', cellTemplate: this.buttonsTemplate,'width':'200'}
+      {prop :'Actions', name: '', cellTemplate: this.buttonsTemplate,'width':'200'}
       
 
   ];

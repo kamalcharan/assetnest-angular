@@ -23,9 +23,13 @@ export class SidebarComponent implements OnInit {
     constructor(private router: Router,  private service: CommonserviceService,
         private route: ActivatedRoute,private UserService:UserDataServiceService) {
 
-            this.UserData= JSON.parse(UserService.getData()) ;
+            if(this.UserService.isUserDataExists())
+            { 
+                this.UserData= JSON.parse(UserService.getData()) ;
             this.currentEnv= this.UserData.IsLive;
             this.getMenuItems();
+            }
+           
     }
 
     ngOnInit() {
