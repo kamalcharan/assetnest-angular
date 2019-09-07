@@ -242,6 +242,7 @@ this.ApiList=list.Data;
       "ApiName":this.panelData.ApiName,
        "_id":this.panelData._id
     }
+   
     this.service.PostMethod(APIURL.SAVE_MOBILE_LIST,payload,this.UserData.Token).subscribe(data=>{
       if(data.Response==1){
         this.toastr.success(data.Message);

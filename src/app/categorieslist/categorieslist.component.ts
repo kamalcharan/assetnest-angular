@@ -87,6 +87,11 @@ GetParentValueList(val){
           if(data.Response==1){
             this.SalesForceChildList=data.Data;
             x.ChildList=data.Data;
+            x.ChildList.forEach(m=>{
+             if(m.Icon){
+               m.Icon=APIURL.Image_Path + m.Icon
+             }
+            })
             this.AppConnectedData()
 
       
