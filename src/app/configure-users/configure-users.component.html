@@ -65,13 +65,13 @@ Create Users
         <div class="row">
           <div class="col-6">
               <fieldset class="form-group" style="margin-top: -16px;">
-                  <label for="basicInput">UserName</label>
+                  <label for="basicInput">User Name</label>
                   <input type="text" class="form-control" name="Name" id="Name" [(ngModel)]="Users.Name" required  style="height: 33px">
                 </fieldset>
           </div>
           <div class="col-6">
             <fieldset class="form-group" style="margin-top: -16px;">
-              <label for="basicInput">MobileNo</label>
+              <label for="basicInput">Mobile No</label>
               <input type="Number" class="form-control" name="MobileNo" id="MobileNo" [maxlength]="15" [(ngModel)]="Users.MobileNo" required  style="height: 33px">
             </fieldset>
     
@@ -80,17 +80,25 @@ Create Users
         </div> 
         <div class="row">
             <div class="col-lg-6 col-md-12" style="margin-top: -16px;">
-                  <fieldset class="form-group">
-                          <label for="basicInput">EmailID</label>
+                  <fieldset class="form-group" *ngIf="!editActive">
+                          <label for="basicInput">Email ID</label>
                           <input type="email" class="form-control" name="EmailID" id="EmailID" [(ngModel)]="Users.EmailID" style="height: 33px" required >
                         </fieldset>
+                        <fieldset class="form-group" *ngIf="editActive">
+                            <label for="basicInput">Email ID</label>
+                            <input type="email" class="form-control" name="EmailID" id="EmailID" [(ngModel)]="Users.EmailID" style="height: 33px" required [disabled]="true">
+                          </fieldset>
             </div>
 
             <div class="col-lg-6 col-md-12">
-              <fieldset class="form-group" style="margin-top: -18px;">
+              <fieldset class="form-group" style="margin-top: -18px;" *ngIf="!editActive">
                 <label for="basicInput">Password</label>
                 <input type="password" class="form-control" name="password" id="password" [(ngModel)]="Users.password" style="height: 33px" required >
               </fieldset>
+              <fieldset class="form-group" style="margin-top: -18px;" *ngIf="editActive">
+                  <label for="basicInput">Password</label>
+                  <input type="password" class="form-control" name="password" id="password" [(ngModel)]="Users.password" style="height: 33px" required [disabled]="true">
+                </fieldset>
             </div>
         </div>                                    
          
@@ -108,9 +116,9 @@ Create Users
     margin-top: 39px;">Cancel</p>
               </div>
               <div class="col-6">
-                  <button type="button" *ngIf="editActive" (click)="c(SaveUsers(content))" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+                  <button type="button" *ngIf="editActive" (click)="SaveUsers(content)" class="btn btn-pink btn-block btn-raised" style="height: 39px;
                   margin-top: 32px;width: 113px;" data-dismiss="modal">Update User</button>&nbsp;&nbsp;
-                  <button type="button" *ngIf="!editActive" (click)="c(SaveUsers(content))" style="height: 39px;
+                  <button type="button" *ngIf="!editActive" (click)="SaveUsers(content)" style="height: 39px;
                   margin-top: 7px;width: 113px;" class="btn btn-pink btn-block btn-raised">Add User</button>&nbsp;&nbsp;
               </div>
             </div>

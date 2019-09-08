@@ -46,10 +46,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'Settings2',
+        path: 'Integration',
         component: CategorieslistComponent,
         data: {
-          title: 'Settings2'
+          title: 'Integration'
         }
       },
       {

@@ -47,6 +47,7 @@ constructor(private router: Router,
   }
   modelpop: any;
   CreteUsers(content){
+    this.editActive=false;
     this.Users={
     "Name":null,
     "MobileNo": null,
@@ -83,11 +84,12 @@ constructor(private router: Router,
     }
   }
   SaveUsers(content){
-    var pwd = CryptoJS.HmacMD5(this.Users.password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
-this.Users.password=pwd;
+    
 this.Users.CompanyID=this.UserData.Company._id;
 this.Users.DataType=this.UserData.IsLive;
   if(this.Users.Name && this.Users.MobileNo && this.EmailValid(this.Users.EmailID) && this.Users.password){
+    var pwd = CryptoJS.HmacMD5(this.Users.password, "H1veB0*l23$`^60030-rgvbkrdlvk38844").toString(CryptoJS.enc.Hex)
+this.Users.password=pwd;
   console.log("uaudha",this.Users);
   this.cms.PostMethod(APIURL.SaveUsersData,this.Users,this.UserData.Token).subscribe(data=>{
 if (data.Response == 1) {
@@ -106,7 +108,7 @@ if (data.Response == 1) {
   this.getUsers();
 
 }else{
-  this.toastr.success(data.Message);
+  this.toastr.error(data.Message);
   this.Users={
     "Name":null,
     "MobileNo": null,
@@ -121,7 +123,7 @@ if (data.Response == 1) {
   })
   }else{
     if(!this.Users.Name){
-      this.toastr.error("Please Enter Name")
+      this.toastr.error("Please Enter User Name")
     }else if(!this.Users.MobileNo){
       this.toastr.error("Please Enter MobileNo");
     }else if(!this.Users.EmailID){

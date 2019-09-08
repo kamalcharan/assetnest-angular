@@ -197,28 +197,37 @@ catch(error)
          // this.toastr.success(data.Message);
           this.toastr.success(data.Message.MessageContent);
            this.getAllCompanyBrands();
-          this.CreateCompanyBrandMapping = {
-            Name: null,
-    DisplayName: null,
-    Icon: null,
-    BrandID: 0,
-    CompanyID: null,
-    CreatedBy: null,
-    Type: null
-          }
+           this.CreateCompanyBrandMapping.Name=null;
+           this.CreateCompanyBrandMapping.DisplayName=null;
+
+           this.CreateCompanyBrandMapping.Icon=null;
+
+    //       this.CreateCompanyBrandMapping = {
+    //         Name: null,
+    // DisplayName: null,
+    // Icon: null,
+    // BrandID: 0,
+    // CompanyID: this.UserData.Company._id,
+    // CreatedBy: this.UserData._id,
+    // Type: null
+    //       }
           
         }
         else {
           this.toastr.error(data.Message.MessageContent);
-          this.CreateCompanyBrandMapping = {
-            Name: null,
-    DisplayName: null,
-    Icon: null,
-    BrandID: 0,
-    CompanyID: null,
-    CreatedBy: null,
-    Type: null
-          }
+          this.CreateCompanyBrandMapping.Name=null;
+          this.CreateCompanyBrandMapping.DisplayName=null;
+
+          this.CreateCompanyBrandMapping.Icon=null;
+    //       this.CreateCompanyBrandMapping = {
+    //         Name: null,
+    // DisplayName: null,
+    // Icon: null,
+    // BrandID: 0,
+    // CompanyID: this.UserData.Company._id,
+    // CreatedBy: this.UserData._id,
+    // Type: null
+    //       }
         }
       })
     }else{
@@ -281,6 +290,10 @@ catch(error)
   this.getAllCompanyBrands();
 
     })
+  }
+  BackNav(){
+    this.router.navigate(['/pages/Settings'])
+  
   }
 
 }

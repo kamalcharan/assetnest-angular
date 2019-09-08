@@ -1,9 +1,22 @@
 <section id="calendar">
+        <div class="row" style="background: #F2F0C4;margin-left: -32px;
+        margin-right: -32px;height:54px">
+            <div class="col-2" style="margin-top: 22px;">
+                <i class="fa fa-chevron-left btn-pink" aria-hidden="true" style="cursor: pointer;margin-top: -15px;font-size: 36px;" (click)="BackNav()"></i>
+    
+            </div>
+            <div class="col-4" style="margin-left: -153px;">
+                <span class="content-header">
+    
+                    <!-- <p style="font-weight: lighter">Brands</p> -->
+                    <p style=" margin-top: 13px;"><b>Region</b></p>
+                </span>
+            </div>
+        </div>
     <div class="row">
         <div class="col-sm-12">
           <div class="content-header">Region</div>
-          <p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
-            example lists all the events on the calendar.</p>
+          <p class="content-sub-header">Define all the regions where you operate. Select the regions as per the country.. for Eg - India, US, Germany....</p>
         </div>
       </div>
   <div class="row">
@@ -50,7 +63,7 @@
           <div class="row">
             <div class="col-6">
                 <fieldset class="form-group" style="margin-top: -16px;">
-                    <label for="basicInput">RegionName</label>
+                    <label for="basicInput">Region Name</label>
                     <input type="text" class="form-control" name="Name" id="Name" [(ngModel)]="region.Name" required  style="height: 33px;width:250px">
                   </fieldset>
             </div>
@@ -69,13 +82,13 @@
                     margin-left: 396px;
                     height: 37px;
                     border-radius: 5px;
-                    padding-top: 6px;" (click)="c('Close click')" style="cursor: pointer;margin-top:36px">Cancel</p>
+                    padding-top: 6px;" (click)="c(CloseData())" style="cursor: pointer;margin-top:36px">Cancel</p>
                 </div>
                 <div class="col-6">
                     
                     <button type="button" style="height: 39px;
                        margin-top: 32px;width: 113px;" class="btn btn-pink btn-block btn-raised" 
-                       (click)="c(AddRegion())">Add Region</button>&nbsp;&nbsp;
+                       (click)="AddRegion()">Add Region</button>&nbsp;&nbsp;
                 </div>
               </div>
                 

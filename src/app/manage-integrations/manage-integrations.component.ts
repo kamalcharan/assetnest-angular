@@ -68,12 +68,12 @@ export class ManageIntegrationsComponent implements OnInit {
     if(this.QueryCompanyID)
     {
       
-      this.router.navigate(["/pages/Settings2"], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+      this.router.navigate(["/pages/Integration"], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
 
     }
     else
     {
-      this.router.navigate(['/pages/Settings2'], { skipLocationChange: false })
+      this.router.navigate(['/pages/Integration'], { skipLocationChange: false })
     }
 
    }

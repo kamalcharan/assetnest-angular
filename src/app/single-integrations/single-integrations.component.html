@@ -20,14 +20,15 @@
             width: 100px;
             padding: 4px;">
                 <div class="card-body">
-                    <img [src]="item.Icon" alt="Random third slide">
+                    <img [src]="item.Icon" alt="Random third slide" style="width: 75%;">
 
                 </div>
             </div>
         </div>
         <div class="col-4">
             Integrate {{item.Name}} With AssetNest<br>
-            <p *ngIf="item.DisplayText">{{item.DisplayText}}</p>
+            <p style="height: 109px;
+            overflow-x: auto;" *ngIf="item.DisplayText" [innerHTML]="item.DisplayText"></p>
         </div>
 
     </div>
@@ -52,14 +53,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-6" *ngFor="let item of SignleData">
-            <button type="button" class="btn btn-pink btn-block btn-raised" style="height: 39px;
-                        margin-top: 32px;width: 156px;"
-                (click)="clickHeader(item,'Header')">Configure Header</button>&nbsp;&nbsp;
-            <button type="button" style="height: 39px;
-                        margin-top: 7px;width: 156px;" (click)="clickHeader(item,'Footer')"
-                class="btn btn-pink btn-block btn-raised">Configure Footer</button>&nbsp;&nbsp;
+        <div *ngIf="UserData.Company._id=='1'">
+                <div class="col-6" *ngFor="let item of SignleData">
+                        <button type="button" class="btn btn-pink btn-block btn-raised" style="height: 39px;
+                                    margin-top: 32px;width: 156px;"
+                            (click)="clickHeader(item,'Header')">Configure Header</button>&nbsp;&nbsp;
+                        <button type="button" style="height: 39px;
+                                    margin-top: 7px;width: 156px;" (click)="clickHeader(item,'Footer')"
+                            class="btn btn-pink btn-block btn-raised">Configure Footer</button>&nbsp;&nbsp;
+                    </div>
         </div>
+       
 
     </div>
     <div class="row" *ngFor="let item of SignleData" style="margin-top: 54px;">
@@ -67,7 +71,7 @@
             <div class="card text-center" style="padding:10px!important;margin-top: -14px;
                     border-radius: 8px!important;cursor: pointer;width:546px;height: 110px;background-image: url('../../assets/img/gallery/dottedimage.jpg')">
                 <div class="card-body">
-                    <p class="font-medium-2" style="text-transform: capitalize;float: left;">{{item.FooterText}}</p>
+                    <p class="font-medium-2" style="text-transform: capitalize;float: left;color:red" [innerHTML]=" item.FooterText"></p>
                 </div>
             </div>
 

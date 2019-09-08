@@ -250,7 +250,7 @@ OnbuttonClicki(value)
 {
   console.log(value);
 
-  this.router.navigate(['pages/Settings2'], { skipLocationChange: false, queryParams: { CompanyID: value._id} })
+  this.router.navigate(['pages/Integration'], { skipLocationChange: false, queryParams: { CompanyID: value._id} })
 }
 
 OnbuttonClicko(value)

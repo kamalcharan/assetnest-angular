@@ -48,6 +48,11 @@ export class SingleIntegrationsComponent implements OnInit {
     this.commonServices.getMethod(APIURL.getSingleIntegrations + '/' + this.id, this.UserData.Token).subscribe(data => {
       console.log("single latest", data);
       this.SignleData = data.Data;
+      this.SignleData.forEach(x=>{
+        if(x.Icon){
+          x.Icon=APIURL.Image_Path+x.Icon;
+        }
+      })
     })
 
   }
@@ -89,12 +94,12 @@ export class SingleIntegrationsComponent implements OnInit {
     if(this.QueryCompanyID)
     {
       
-      this.router.navigate(["/pages/Settings2"], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
+      this.router.navigate(["/pages/Integrations"], { skipLocationChange: false, queryParams: { CompanyID: this.QueryCompanyID} })
 
     }
     else
     {
-      this.router.navigate(['/pages/Settings2'], { skipLocationChange: false })
+      this.router.navigate(['/pages/Integration'], { skipLocationChange: false })
     }
 
   }

@@ -70,16 +70,32 @@ export class RegionCreationComponent implements OnInit {
         "CompanyID":this.UserData.Company._id,
         "isLive":this.UserData.IsLive,
         "CreatedBy":this.UserData._id
-      }
-      this.cms.PostMethod(APIURL.InsertRegions,payload,this.UserData.Token).subscribe(list=>{
-        if (list.Response == 1) {
-          this.getregionDeatils()
-          this.region={
-            "Name":null  
+      } 
+      if(this.region.Name){
+        this.cms.PostMethod(APIURL.InsertRegions,payload,this.UserData.Token).subscribe(list=>{
+          if (list.Response == 1) {
+            this.getregionDeatils()
+            this.region={
+              "Name":null  
+            }
+            this.toastr.success(list.Message);
+          }else{
+            this.toastr.error(list.Message);
+            this.region={
+              "Name":null  
+            }
           }
-          this.toastr.success(list.Message);
-        }
-      })
+        })
+      }else{
+        this.toastr.error("Please Enter Region Name");
+ 
+      }
+      
+    }
+    CloseData(){
+      this.region={
+        "Name":null  
+      }
     }
     DeleteRegion(item){
       console.log("test",item)
@@ -89,6 +105,10 @@ export class RegionCreationComponent implements OnInit {
           this.getregionDeatils();
         }
       })
+    }
+    BackNav(){
+      this.router.navigate(['/pages/Settings'])
+    
     }
 
 }

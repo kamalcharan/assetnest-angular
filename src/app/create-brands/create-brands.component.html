@@ -1,9 +1,22 @@
 <section id="calendar">
+        <div class="row" style="background: #F2F0C4;margin-left: -32px;
+        margin-right: -32px;height:54px">
+            <div class="col-2" style="margin-top: 22px;">
+                <i class="fa fa-chevron-left btn-pink" aria-hidden="true" style="cursor: pointer;margin-top: -15px;font-size: 36px;" (click)="BackNav()"></i>
+    
+            </div>
+            <div class="col-4" style="margin-left: -153px;">
+                <span class="content-header">
+    
+                    <!-- <p style="font-weight: lighter">Brands</p> -->
+                    <p style=" margin-top: 13px;"><b>Brands</b></p>
+                </span>
+            </div>
+        </div>
     <div class="row">
         <div class="col-sm-12">
           <div class="content-header">Brands</div>
-          <p class="content-sub-header">This is the most basic example having navigation button to navigate next and previous months and today button. This basic
-            example lists all the events on the calendar.</p>
+          <p class="content-sub-header">Setup your Brands, reflect it for the consumers on your exclusive expertise.</p>
         </div>
       </div>
   <div class="row">
@@ -48,7 +61,7 @@
     </div>
 </section>
 
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #content let-c="close" let-d="dismiss" class="modal-backdrop fade in">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Brand</h4>
       <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -103,8 +116,8 @@
                 <div class="col-6">
                     <button type="button" *ngIf="editActive" (click)="SaveBrands()" class="btn btn-pink btn-block btn-raised" style="height: 39px;
                     margin-top: 7px;" data-dismiss="modal">Update Brand</button>&nbsp;&nbsp;
-                    <button type="button" *ngIf="!editActive" (click)="c(SaveBrands(content))" style="height: 39px;
-                    margin-top: 7px;width: 113px;" class="btn btn-pink btn-block btn-raised">Add Brand</button>&nbsp;&nbsp;
+                    <button type="button" *ngIf="!editActive" (click)="SaveBrands(content)" style="height: 39px;
+                    margin-top: 7px;width: 113px;" class="btn btn-pink btn-block btn-raised" backdrop="true">Add Brand</button>&nbsp;&nbsp;
                 </div>
               </div>
                 
