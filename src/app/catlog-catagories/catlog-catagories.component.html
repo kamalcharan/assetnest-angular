@@ -18,22 +18,30 @@
             <div class="card text-center" *ngFor="let item of CategorySavedList" style="padding:10px!important;margin-top: -14px;box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 3px 24px 0 rgba(0, 0, 0, 0.89);
                 border-radius: 8px!important;cursor: pointer;width: 430px;">
                 <div class="row">
-                    <div class="col-2" (click)="DownData(item)">
+                    <div class="col-2" (click)="DownData(item)" *ngIf="item.SubCategoryList.length>0">
                         <i class="fa fa-arrow-down" aria-hidden="true"></i>
                             <!-- <img [src]="item.Icon" alt="Random third slide" style="width:36px"> -->
 
                     </div>
+                    <div class="col-2" *ngIf="item.SubCategoryList.length==0">
+                            
+                                <!-- <img [src]="item.Icon" alt="Random third slide" style="width:36px"> -->
+    
+                        </div>
                     <div class="col-4" style="margin-left: -34px;">
-                            <p class="content-sub-header" style="text-transform:capitalize;float:left"><b>{{item.CategoryName}}</b></p>
+                            <p class="content-sub-header" style="text-transform:capitalize;float:left">{{item.CategoryName}}</p>
 
                     </div>
                     <div class="col-6" >
                         <!-- <button class="btn btn-flat btn-text btn-pink" title="Edit" style="padding:2px 5px !important">
                             <i class="fa fa-edit" aria-hidden="true"></i>
                         </button> -->
-                        <button class="btn btn-flat btn-text btn-pink" title="Delete" (click)="deleteList(item)" style="padding:2px 5px !important">
+                        <!-- <button class="btn btn-flat btn-text btn-pink" title="Delete" (click)="deleteList(item)" style="padding:2px 5px !important">
                             <i class="fa fa-lg fa-trash"></i>
-                        </button>  
+                        </button>   -->
+                        <button class="btn btn-flat btn-text btn-pink" title="Delete" (click)="deletePop(item,Confirm)" style="padding:2px 5px !important">
+                                <i class="fa fa-lg fa-trash"></i>
+                            </button> 
                         <button class="btn btn-flat btn-text btn-pink" title="Add Subcategory" style="padding:2px 5px !important" (click)="AddSubCategory(item,Subcontent)">
                             <i class="fa fa-plus"></i>
                         </button>
@@ -46,16 +54,19 @@
     
                         </div>
                         <div class="col-4">
-                                <p class="content-sub-header" style="text-transform:capitalize">{{pd.SubcategoryName}}</p>
+                                <p class="content-sub-header" style="text-transform:capitalize">{{pd.SubcategoryName}}</p><hr>
     
                         </div>
                         <div class="col-6" >
                             <!-- <button class="btn btn-flat btn-text btn-pink" title="Edit" style="padding:2px 5px !important">
                                 <i class="fa fa-edit" aria-hidden="true"></i>
                             </button> -->
-                            <button class="btn btn-flat btn-text btn-pink" title="Delete" style="padding:2px 5px !important">
+                            <!-- <button class="btn btn-flat btn-text btn-pink" title="Delete" style="padding:2px 5px !important">
                                 <i class="fa fa-lg fa-trash" (click)="DeleteSubList(item,pd)"></i>
-                            </button>                       
+                            </button>                        -->
+                            <button class="btn btn-flat btn-text btn-pink" title="Delete" style="padding:2px 5px !important">
+                                    <i class="fa fa-lg fa-trash" (click)="DeleteSubPopUp(item,pd,SubConfirm)"></i>
+                                </button>   
     
                         </div>
                     </div>
@@ -105,13 +116,25 @@
                       
               </div>
           </div>         
-            
-          <div class="row"> 
-
-              <button type="button" style="height: 39px;
-              margin-top: 7px;width: 127px;float:right;margin-left: 300px;" class="btn btn-pink btn-block btn-raised" (click)="c(AddCategoryData())">Add Category</button>
-              
-          </div>     
+          <div class="row" style="margin-top: -42px;
+          margin-bottom: -31px;">
+            <div class="col-6 text-right">
+                <p style="    margin-top: 33px;
+                border: 1px solid #604E98;
+                width: 81px;
+                padding-right: 10px;
+                margin-left: 396px;
+                height: 37px;
+                border-radius: 5px;
+                padding-top: 6px;" (click)="c('Close click')" style="cursor: pointer;
+margin-top: 39px;">Cancel</p>
+            </div>
+            <div class="col-6">
+                    <button type="button" style="height: 39px;
+                    margin-top: 30px;width: 127px;" class="btn btn-pink btn-block btn-raised" (click)="AddCategoryData()">Add Category</button>&nbsp;&nbsp;
+            </div>
+          </div>
+             
           
           
         </form>           
@@ -158,13 +181,26 @@
                 </div>
             </div>
            
-              
-            <div class="row"> 
-  
-                <button type="button" style="height: 39px;
-                margin-top: 7px;width: 158px;float:right;margin-left: 300px;" class="btn btn-pink btn-block btn-raised" (click)="c(AddSubCategoryData())">Add SubCategory</button>
-                
-            </div>     
+            <div class="row" style="margin-top: -42px;
+            margin-bottom: -31px;">
+              <div class="col-6 text-right">
+                  <p style="    margin-top: 33px;
+                  border: 1px solid #604E98;
+                  width: 81px;
+                  padding-right: 10px;
+                  margin-left: 396px;
+                  height: 37px;
+                  border-radius: 5px;
+                  padding-top: 6px;" (click)="c('Close click')" style="cursor: pointer;
+  margin-top: 39px;">Cancel</p>
+              </div>
+              <div class="col-6">
+                    <button type="button" style="height: 39px;
+                    margin-top: 30px;width: 158px;" class="btn btn-pink btn-block btn-raised" (click)="AddSubCategoryData()">Add SubCategory</button>
+                     &nbsp;&nbsp;
+              </div>
+            </div>
+            
             
             
           </form>           
@@ -173,3 +209,79 @@
      
    
     </ng-template>
+    <ng-template #Confirm let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title" >Confirm</h4>     
+            </div>
+            <div class="modal-body">
+                <form #f="ngForm"> 
+                  <div class="row">
+                   <p>Are You Sure Do You Want to Delete Category?</p>
+                  </div>
+                 
+                  <div class="row" style="margin-top: -42px;
+                  margin-bottom: -31px;">
+                    <div class="col-6 text-right">
+                        <p style="    margin-top: 33px;
+                        border: 1px solid #604E98;
+                        width: 81px;
+                        padding-right: 10px;
+                        margin-left: 396px;
+                        height: 37px;
+                        border-radius: 5px;
+                        padding-top: 6px;" (click)="c('Close click')" style="cursor: pointer;
+        margin-top: 39px;">Cancel</p>
+                    </div>
+                    <div class="col-6">
+                          <button type="button" style="height: 39px;
+                          margin-top: 30px;width: 158px;" class="btn btn-pink btn-block btn-raised" (click)="ConfirmDeleted()">Confirm</button>
+                           &nbsp;&nbsp;
+                    </div>
+                  </div>
+                  
+                  
+                  
+                </form>           
+                     
+        </div>
+           
+         
+          </ng-template>
+          <ng-template #SubConfirm let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title" >Confirm</h4>     
+                </div>
+                <div class="modal-body">
+                    <form #f="ngForm"> 
+                      <div class="row">
+                       <p>Are You Sure Do You Want to Delete Subcategory?</p>
+                      </div>
+                     
+                      <div class="row" style="margin-top: -42px;
+                      margin-bottom: -31px;">
+                        <div class="col-6 text-right">
+                            <p style="    margin-top: 33px;
+                            border: 1px solid #604E98;
+                            width: 81px;
+                            padding-right: 10px;
+                            margin-left: 396px;
+                            height: 37px;
+                            border-radius: 5px;
+                            padding-top: 6px;" (click)="c('Close click')" style="cursor: pointer;
+            margin-top: 39px;">Cancel</p>
+                        </div>
+                        <div class="col-6">
+                              <button type="button" style="height: 39px;
+                              margin-top: 30px;width: 158px;" class="btn btn-pink btn-block btn-raised" (click)="ConfirmDeletedSub()">Confirm</button>
+                               &nbsp;&nbsp;
+                        </div>
+                      </div>
+                      
+                      
+                      
+                    </form>           
+                         
+            </div>
+               
+             
+              </ng-template>

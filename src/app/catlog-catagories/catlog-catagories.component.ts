@@ -78,7 +78,8 @@ export class CatlogCatagoriesComponent implements OnInit {
       this.categoryList=[];
       this.cms.getMethod(APIURL.GetproductCategoories,this.UserData.Token).subscribe(list=>{
         if(list.Response==1){
-          this.categoryList=list.Data
+          this.categoryList=list.Data;
+
         }
 
       })
@@ -88,6 +89,15 @@ export class CatlogCatagoriesComponent implements OnInit {
       this.cms.getMethod(APIURL.GetSubCategories+ '/' +this.paylaod.categoryID,this.UserData.Token).subscribe(list=>{
         if(list.Response==1){
           this.SubCategoryList=list.Data
+          this.CategorySavedList.forEach(x=>{
+            x.SubCategoryList.forEach(y=>{
+              this.SubCategoryList.forEach((z,index)=>{
+                if(y.SubCategoryID==z._id){
+                  this.SubCategoryList.splice(index, 1);
+                }
+              }) 
+            })
+          })
         } 
       })
     }
@@ -123,20 +133,25 @@ export class CatlogCatagoriesComponent implements OnInit {
         "IsLive":this.UserData.IsLive
       }
       console.log("check nsbdjs",payloadData);
-      this.cms.PostMethod(APIURL.InsertCategories,payloadData,this.UserData.Token).subscribe(data=>{
-        if(data.Response==1){
-          this.toastr.success(data.Message);
-          this.getSavedroductCategories()
-          this.paylaod={
-            "categoryID":null,
-            "categoryName":null,
-            "SubcategoryID":null,
-            "SubcategoryName":null,
-            "CompanyID":null,
-            "_id":null
+      if(this.paylaod.categoryName){
+        this.cms.PostMethod(APIURL.InsertCategories,payloadData,this.UserData.Token).subscribe(data=>{
+          if(data.Response==1){
+            this.toastr.success(data.Message);
+            this.getSavedroductCategories()
+            this.paylaod={
+              "categoryID":null,
+              "categoryName":null,
+              "SubcategoryID":null,
+              "SubcategoryName":null,
+              "CompanyID":null,
+              "_id":null
+            }
           }
-        }
-      })
+        })
+      }else{
+        this.toastr.error("Please Select Category"); 
+      }
+     
     }
     subCategoryListFinal=[]
     AddSubCategoryData(){
@@ -185,6 +200,9 @@ export class CatlogCatagoriesComponent implements OnInit {
      
 
     }
+    ConfirmDeleted(){
+     this.deleteList(this.DeletedItem); 
+    }
     deleteList(item){
       this.cms.PostMethod(APIURL.DeleteCategory,item,this.UserData.Token).subscribe(list=>{
         if(list.Response==1){
@@ -192,6 +210,10 @@ export class CatlogCatagoriesComponent implements OnInit {
           this.getSavedroductCategories()
         }
       })
+    }
+    ConfirmDeletedSub(){
+      this.DeleteSubList(this.DeleteSubPopUpData,this.itemvalues); 
+ 
     }
     DeleteSubList(item,values){
       item.SubCategoryList.forEach((y,index)=>{
@@ -226,5 +248,25 @@ export class CatlogCatagoriesComponent implements OnInit {
         })
     
      
+    }
+    DeleteSubPopUpData: any;
+    DeletedItem: any;
+    itemvalues: any;
+    deletePop(item,content){
+      this.DeletedItem=item;
+      this.modalService.open(content, {}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+    DeleteSubPopUp(item,values,content){
+      this.DeleteSubPopUpData=item;
+      this.itemvalues=values
+      this.modalService.open(content, {}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
     }
 }
